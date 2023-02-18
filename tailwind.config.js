@@ -1,0 +1,58 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}", // Note the addition of the `app` directory.
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    backgroundColor: {
+      'red-dark-100': '#DD0426',
+      'red-dark-200': '#C10421',
+      'red-dark-300': '#A6031D',
+      'red-dark-400': '#8A0318',
+      'red-dark-500': '#6F0213',
+      'red-dark-600': '#53020E',
+      'red-dark-700': '#37010A',
+      'red-dark-800': '#1C0105',
+      'red-light-100': '#FEDCE1',
+      'red-light-200': '#FEB9C4',
+      'red-light-300': '#FD96A6',
+      'red-light-400': '#FC7389',
+      'red-light-500': '#FC506B',
+      'red-light-600': '#FB2D4D',
+      'red-light-700': '#FB0A30',
+      'red-light-800': '#DD0426',
+      'dark-100': '#E4E4E4',
+      'dark-200': '#A7A7A7',
+      'dark-300': '#C3C3CE',
+      'light-400': '#7F7F7F',
+      'light-500': '#424242',
+      'light-600': '#242323',
+      'container': '#E7E7E7',
+    },
+    colors: {
+      'red-dark-100': '#DD0426',
+      'red-dark-200': '#C10421',
+      'red-dark-300': '#A6031D',
+      'red-dark-400': '#8A0318',
+      'red-dark-500': '#6F0213',
+      'red-dark-600': '#53020E',
+      'red-dark-700': '#37010A',
+      'red-dark-800': '#1C0105',
+      'red-light-100': '#FEDCE1',
+      'red-light-200': '#FEB9C4',
+      'red-light-300': '#FD96A6',
+      'red-light-400': '#FC7389',
+      'red-light-500': '#FC506B',
+      'red-light-600': '#FB2D4D',
+      'red-light-700': '#FB0A30',
+      'red-light-800': '#DD0426',
+    },
+    extend: {},
+  },
+  plugins: [],
+}

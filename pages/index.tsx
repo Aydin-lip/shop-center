@@ -1,7 +1,11 @@
+import { Display1 } from "@/mui/customize";
+
 export default function Home() {
   return (
     <>
-      Shop center
+      <Display1 className="">
+        Hello, Next.js!
+      </Display1>
     </>
   )
 }
