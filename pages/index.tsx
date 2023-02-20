@@ -1,6 +1,5 @@
-// MUI
 import { Display1, IOSSwitch, BasicButton, BasicTextField } from "@/mui/customize";
-import { Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 export default function Home() {
   return (
