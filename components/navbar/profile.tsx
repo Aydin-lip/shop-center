@@ -2,6 +2,7 @@ import { BasicButton, Button2 } from '@/mui/customize';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
+import Link from 'next/link';
 
 const Profile = () => {
   return (
@@ -25,18 +26,20 @@ const Profile = () => {
             Cart
           </Button2>
         </BasicButton>
-        <BasicButton className='h-10 py-1 pl-2 pr-3 flex gap-1' variant="outlined" color='secondary'>
-          <span className='flex'>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11.68 15.37C11.49 15.37 11.3 15.3 11.15 15.15C11.0105 15.0089 10.9323 14.8184 10.9323 14.62C10.9323 14.4216 11.0105 14.2311 11.15 14.09L13.18 12.06L11.15 10.03C11.0105 9.88886 10.9323 9.69843 10.9323 9.5C10.9323 9.30157 11.0105 9.11114 11.15 8.97C11.44 8.68 11.92 8.68 12.21 8.97L14.77 11.53C15.06 11.82 15.06 12.3 14.77 12.59L12.21 15.15C12.07 15.3 11.87 15.37 11.68 15.37Z" fill="#424242" />
-              <path d="M14.17 12.81H4C3.59 12.81 3.25 12.47 3.25 12.06C3.25 11.65 3.59 11.31 4 11.31H14.17C14.58 11.31 14.92 11.65 14.92 12.06C14.92 12.47 14.58 12.81 14.17 12.81Z" fill="#424242" />
-              <path d="M12 20.75C11.59 20.75 11.25 20.41 11.25 20C11.25 19.59 11.59 19.25 12 19.25C16.27 19.25 19.25 16.27 19.25 12C19.25 7.73 16.27 4.75 12 4.75C11.59 4.75 11.25 4.41 11.25 4C11.25 3.59 11.59 3.25 12 3.25C17.15 3.25 20.75 6.85 20.75 12C20.75 17.15 17.15 20.75 12 20.75Z" fill="#424242" />
-            </svg>
-          </span>
-          <Button2>
-            SignUp | Login
-          </Button2>
-        </BasicButton>
+        <Link href='/login/sign-in' className='no-underline'>
+          <BasicButton className='h-10 py-1 pl-2 pr-3 flex gap-1 rounded-lg' variant="outlined" color='secondary'>
+            <span className='flex'>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.68 15.37C11.49 15.37 11.3 15.3 11.15 15.15C11.0105 15.0089 10.9323 14.8184 10.9323 14.62C10.9323 14.4216 11.0105 14.2311 11.15 14.09L13.18 12.06L11.15 10.03C11.0105 9.88886 10.9323 9.69843 10.9323 9.5C10.9323 9.30157 11.0105 9.11114 11.15 8.97C11.44 8.68 11.92 8.68 12.21 8.97L14.77 11.53C15.06 11.82 15.06 12.3 14.77 12.59L12.21 15.15C12.07 15.3 11.87 15.37 11.68 15.37Z" fill="#424242" />
+                <path d="M14.17 12.81H4C3.59 12.81 3.25 12.47 3.25 12.06C3.25 11.65 3.59 11.31 4 11.31H14.17C14.58 11.31 14.92 11.65 14.92 12.06C14.92 12.47 14.58 12.81 14.17 12.81Z" fill="#424242" />
+                <path d="M12 20.75C11.59 20.75 11.25 20.41 11.25 20C11.25 19.59 11.59 19.25 12 19.25C16.27 19.25 19.25 16.27 19.25 12C19.25 7.73 16.27 4.75 12 4.75C11.59 4.75 11.25 4.41 11.25 4C11.25 3.59 11.59 3.25 12 3.25C17.15 3.25 20.75 6.85 20.75 12C20.75 17.15 17.15 20.75 12 20.75Z" fill="#424242" />
+              </svg>
+            </span>
+            <Button2>
+              SignUp | Login
+            </Button2>
+          </BasicButton>
+        </Link>
       </div>
     </>
   )
