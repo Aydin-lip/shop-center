@@ -1,7 +1,8 @@
 import Head from "next/head"
 
 // Components
-import Footer from "./Footer";
+import Footer from "../footer/Footer";
+import Navbar from "../navbar";
 
 interface PropsLeyout {
   title: string,
@@ -15,6 +16,7 @@ const Leyout = ({ title, children }: PropsLeyout) => {
         <title>{`${title} - Shop-Center`}</title>
       </Head>
       <div>
+        <Navbar />
         <main className="container">{children}</main>
         <Footer />
       </div>
