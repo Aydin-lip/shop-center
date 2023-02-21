@@ -51,8 +51,20 @@ module.exports = {
       'red-light-600': '#FB2D4D',
       'red-light-700': '#FB0A30',
       'red-light-800': '#DD0426',
+      'dark-100': '#E4E4E4',
+      'dark-200': '#A7A7A7',
+      'dark-300': '#C3C3CE',
+      'light-100': '#7F7F7F',
+      'light-200': '#424242',
+      'light-300': '#242323',
+      'container': '#FFFFFF',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        'chewy': ['Chewy'],
+        'poppins': ['Poppins']
+      }
+    },
   },
   plugins: [],
 }
