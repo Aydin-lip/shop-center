@@ -4,12 +4,12 @@ import Head from "next/head"
 import Footer from "../footer/Footer";
 import Navbar from "../navbar";
 
-interface PropsLeyout {
+interface IProps {
   title: string,
   children: JSX.Element
 }
 
-const Leyout = ({ title, children }: PropsLeyout) => {
+const Layout = ({ title, children }: IProps) => {
   return (
     <>
       <Head>
@@ -17,11 +17,11 @@ const Leyout = ({ title, children }: PropsLeyout) => {
       </Head>
       <div>
         <Navbar />
-        <main className="container">{children}</main>
+        <main className="container m-auto">{children}</main>
         <Footer />
       </div>
     </>
   )
 }
 
-export default Leyout
+export default Layout

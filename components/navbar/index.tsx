@@ -18,7 +18,7 @@ const Navbar = () => {
   
   return (
     <>
-      <nav className={`bg-container sticky top-0 left-0 right-0 delay-100 ${scroll ? 'shadow-lg' : ''}`}>
+      <nav className={`z-10 bg-container sticky top-0 left-0 right-0 delay-100 ${scroll ? 'shadow-lg' : ''}`}>
         <Container maxWidth="xl" className="pt-4 px-8">
           <div className="flex justify-between">
             <Logo />
