@@ -11,7 +11,7 @@ const Navbar = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () =>
-        setScroll(window.pageYOffset >= 50),
+        setScroll(window.pageYOffset >= 20),
       );
     }
   }, []);
@@ -26,7 +26,7 @@ const Navbar = () => {
             <Profile />
           </div>
           <div className="flex justify-between">
-            <div className={`px-2 pb-4 transition-all ${scroll ? 'pt-2' : 'pt-8'}`}>
+            <div className={`px-2 pb-4 transition-all pt-8`}>
               <Items />
             </div>
             <div className="flex items-center">

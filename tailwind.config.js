@@ -65,6 +65,9 @@ module.exports = {
       fontFamily: {
         'chewy': ['Chewy'],
         'poppins': ['Poppins']
+      },
+      backgroundPosition: {
+        'bottom-right-_7': 'bottom -7rem right'
       }
     },
   },
