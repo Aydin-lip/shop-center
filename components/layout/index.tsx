@@ -6,7 +6,7 @@ import Navbar from "../navbar";
 
 interface IProps {
   title: string,
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }
 
 const Layout = ({ title, children }: IProps) => {

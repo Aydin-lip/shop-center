@@ -12,7 +12,7 @@ const Header = () => {
         {/* <div className="absolute top-72 right-40 w-28 h-28 bg-[#980053] rounded-full z-[1]"></div> */}
         <div className="w-full sticky z-[2] bg-[#f6f6f680] rounded-3xl flex mt-4" style={{ backdropFilter: "blur(30px)" }}>
           <div className="py-24 px-16">
-            <Display2>
+            <Display2 className="cursor-default">
               2023 Summer Collections
             </Display2>
             <Heading6 className="text-dark-200 my-8 w-full max-w-sm">
@@ -31,13 +31,13 @@ const Header = () => {
           <div className="bg-[url('/images/home/header/girl-with-packages.png')] w-6/12 bg-no-repeat bg-cover pr-40"></div>
         </div>
       </div>
-      <div className="h-20 relative mt-8 mb-12">
+      <div className="h-20 relative mt-8 mb-6">
         <div className="absolute top-0 bottom-0 left-[-10rem] right-[-10rem] h-20 bg-[#FFF5F1] flex justify-center items-center gap-4">
-          <Image src='/images/home/header/H&M.png' alt="Brands" width={100} height={60} />
-          <Image src='/images/home/header/DeFacto.png' alt="Brands" width={100} height={100} />
-          <Image src='/images/home/header/LACOSTE.png' alt="Brands" width={200} height={200} />
-          <Image src='/images/home/header/PUMA.png' alt="Brands" width={70} height={60} />
-          <Image src='/images/home/header/MANGO.png' alt="Brands" width={100} height={60} />
+          <Image src='/images/home/header/H&M.png' alt="Brands" width={90} height={50} />
+          <Image src='/images/home/header/DeFacto.png' alt="Brands" width={90} height={90} />
+          <Image src='/images/home/header/LACOSTE.png' alt="Brands" width={190} height={190} />
+          <Image src='/images/home/header/PUMA.png' alt="Brands" width={60} height={50} />
+          <Image src='/images/home/header/MANGO.png' alt="Brands" width={90} height={50} />
         </div>
       </div>
     </>
