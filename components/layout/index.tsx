@@ -13,9 +13,9 @@ const Layout = ({ title, children }: IProps) => {
   return (
     <>
       <Head>
-        <title>{`${title} - Shop-Center`}</title>
+        <title>{`${title} | Shop-Center`}</title>
       </Head>
-      <div>
+      <div className="bg-container">
         <Navbar />
         <main className="container m-auto">{children}</main>
         <Footer />

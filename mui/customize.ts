@@ -1,35 +1,35 @@
 import { styled } from '@mui/material/styles';
-import { Typography, Switch, Button, TextField } from '@mui/material';
+import { Typography, Switch, Button, TextField, Checkbox } from '@mui/material';
 
-const Display1 = styled(Typography)({ color: '#131212', fontSize: 64, fontWeight: 700 });
+const Display1 = styled(Typography)({ color: '#131212', fontSize: 64, fontWeight: 700, fontFamily: "Inter" });
 
-const Display2 = styled(Typography)({ color: '#131212', fontSize: 56, fontWeight: 700 });
+const Display2 = styled(Typography)({ color: '#131212', fontSize: 56, fontWeight: 700, fontFamily: "Inter" });
 
-const Heading1 = styled(Typography)({ color: '#131212', fontSize: 48, fontWeight: 700 });
+const Heading1 = styled(Typography)({ color: '#131212', fontSize: 48, fontWeight: 700, fontFamily: "Inter" });
 
-const Heading2 = styled(Typography)({ color: '#131212', fontSize: 40, fontWeight: 700 });
+const Heading2 = styled(Typography)({ color: '#131212', fontSize: 40, fontWeight: 700, fontFamily: "Inter" });
 
-const Heading3 = styled(Typography)({ color: '#131212', fontSize: 32, fontWeight: 700 });
+const Heading3 = styled(Typography)({ color: '#131212', fontSize: 32, fontWeight: 700, fontFamily: "Inter" });
 
-const Heading4 = styled(Typography)({ color: '#131212', fontSize: 28, fontWeight: 700 });
+const Heading4 = styled(Typography)({ color: '#131212', fontSize: 28, fontWeight: 700, fontFamily: "Inter" });
 
-const Heading5 = styled(Typography)({ color: '#131212', fontSize: 24, fontWeight: 700 });
+const Heading5 = styled(Typography)({ color: '#131212', fontSize: 24, fontWeight: 700, fontFamily: "Inter" });
 
-const Heading6 = styled(Typography)({ color: '#131212', fontSize: 20, fontWeight: 500 });
+const Heading6 = styled(Typography)({ color: '#131212', fontSize: 20, fontWeight: 500, fontFamily: "Inter" });
 
-const SubTitle1 = styled(Typography)({ color: '#131212', fontSize: 18, fontWeight: 500 });
+const SubTitle1 = styled(Typography)({ color: '#131212', fontSize: 18, fontWeight: 500, fontFamily: "Inter" });
 
-const SubTitle2 = styled(Typography)({ color: '#131212', fontSize: 16, fontWeight: 500 });
+const SubTitle2 = styled(Typography)({ color: '#131212', fontSize: 16, fontWeight: 500, fontFamily: "Inter" });
 
-const Body1 = styled(Typography)({ color: '#131212', fontSize: 16, fontWeight: 500 });
+const Body1 = styled(Typography)({ color: '#131212', fontSize: 16, fontWeight: 500, fontFamily: "Inter" });
 
-const Body2 = styled(Typography)({ color: '#131212', fontSize: 14, fontWeight: 400 });
+const Body2 = styled(Typography)({ color: '#131212', fontSize: 14, fontWeight: 400, fontFamily: "Inter" });
 
-const Button1 = styled(Typography)({ color: '#131212', fontSize: 16, fontWeight: 500 });
+const Button1 = styled(Typography)({ color: '#131212', fontSize: 16, fontWeight: 500, fontFamily: "Inter" });
 
-const Button2 = styled(Typography)({ color: '#131212', fontSize: 14, fontWeight: 400 });
+const Button2 = styled(Typography)({ color: '#131212', fontSize: 14, fontWeight: 400, fontFamily: "Inter" });
 
-const Caption = styled(Typography)({ color: '#131212', fontSize: 12, fontWeight: 400 });
+const Caption = styled(Typography)({ color: '#131212', fontSize: 12, fontWeight: 400, fontFamily: "Inter" });
 
 const IOSSwitch = styled(Switch)(({
   width: 42,
@@ -74,6 +74,10 @@ const IOSSwitch = styled(Switch)(({
 const BasicButton = styled(Button)({ textTransform: 'capitalize', fontSize: 16, fontWeight: 500, fontFamily: 'Inter' })
 
 const BasicTextField = styled(TextField)({ '& .css-1d3z3hw-MuiOutlinedInput-notchedOutline': { borderWidth: '1px !important' } })
+
+const CheckBoxFilter = styled(Checkbox)({
+  '& .css-ahj2mt-MuiTypography-root': { fontFamily: "Inter", fontWeight: 400, fontSize: 12 }
+})
 
 export {
   Display1, Display2, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, SubTitle1, SubTitle2,

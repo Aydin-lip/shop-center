@@ -33,6 +33,7 @@ module.exports = {
       'light-100': '#7F7F7F',
       'light-200': '#424242',
       'light-300': '#242323',
+      'light-400': '#F1F1F1',
       'container': '#FFFFFF',
     },
     colors: {
@@ -60,6 +61,9 @@ module.exports = {
       'light-200': '#424242',
       'light-300': '#242323',
       'container': '#FFFFFF',
+    },
+    borderColor: {
+      'dark-100': '#E4E4E4',
     },
     extend: {
       fontFamily: {
