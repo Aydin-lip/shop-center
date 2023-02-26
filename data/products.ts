@@ -123,7 +123,7 @@ const allProduct = [
     id: 13,
     name: 'Suit & Glasses',
     price: 99,
-    onSale: 0,
+    onSale: 10,
     category: 'Kids',
     size: ['XS', 'S'],
     color: ['blue', 'gray'],

@@ -20,7 +20,7 @@ const NewCollection = () => {
           )}
         </div>
       </div>
-      <div className="rounded-lg bg-red-light-400 flex justify-between w-full h-full max-h-80 mt-10" style={{ background: 'linear-gradient(93.5deg, rgba(221, 78, 4, 0.81) 3.27%, #E87306 50.63%, rgba(243, 154, 9, 0.76) 100%)' }}>
+      <div className="rounded-lg bg-red-light-400 flex justify-between w-full h-full max-h-80 my-10" style={{ background: 'linear-gradient(93.5deg, rgba(221, 78, 4, 0.81) 3.27%, #E87306 50.63%, rgba(243, 154, 9, 0.76) 100%)' }}>
         <div className="w-1/2 flex justify-center items-end">
           <Image src='/images/home/new-collection/newCollection-Women-1.png' alt="" width={240} height={330} />
           <Image src='/images/home/new-collection/newCollection-Women-2.png' alt="" width={220} height={280} />

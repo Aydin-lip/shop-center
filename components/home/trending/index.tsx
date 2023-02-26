@@ -14,7 +14,7 @@ interface IProduct {
   category: string
   star: number
 }
-const Trending = () => {
+const TrendingProducts = () => {
   const [category, setCategory] = useState<string>('all')
   const [products, setProducts] = useState<IProduct[]>(Products())
   const allProduct = Products()
@@ -45,4 +45,4 @@ const Trending = () => {
   )
 }
 
-export default Trending;
+export default TrendingProducts;
