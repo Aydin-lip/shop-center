@@ -132,6 +132,8 @@ const allProduct = [
   }
 ]
 
-export const Products = () => {
+const Products = () => {
   return allProduct
 }
+
+export default Products

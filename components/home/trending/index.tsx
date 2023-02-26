@@ -2,7 +2,7 @@ import { useState, MouseEvent } from 'react'
 import Card from "@/components/card";
 import { BasicButton, Heading3 } from "@/mui/customize";
 import SwiperBox from "../swiper";
-import { Products } from "@/data/products";
+import Products from "@/data/products";
 
 interface IProduct {
   id: number
@@ -29,7 +29,7 @@ const Trending = () => {
   return (
     <>
       <div className="flex justify-between items-center mt-8 mb-6">
-        <Heading3 className="text-light-300 "><span className="text-red-dark-100">Trending</span> Products</Heading3>
+        <Heading3 className="text-light-300 cursor-default"><span className="text-red-dark-100">Trending</span> Products</Heading3>
         <div className="flex gap-3 ">
           <BasicButton variant="text" className={`text-light-200 ${category === 'Women' ? 'bg-[#fef5f6]' : ''}`} onClick={changeCategory}>Women</BasicButton>
           <BasicButton variant="text" className={`text-light-200 ${category === 'Men' ? 'bg-[#fef5f6]' : ''}`} onClick={changeCategory}>Men</BasicButton>

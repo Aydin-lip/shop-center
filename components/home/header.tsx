@@ -12,7 +12,7 @@ const Header = () => {
         {/* <div className="absolute top-72 right-40 w-28 h-28 bg-[#980053] rounded-full z-[1]"></div> */}
         <div className="w-full sticky z-[2] bg-[#f6f6f680] rounded-3xl flex mt-4" style={{ backdropFilter: "blur(30px)" }}>
           <div className="py-24 px-16">
-            <Display2>
+            <Display2 className="cursor-default">
               2023 Summer Collections
             </Display2>
             <Heading6 className="text-dark-200 my-8 w-full max-w-sm">
