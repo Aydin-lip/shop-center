@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <>
+    <div className="container mx-auto">
       <div className="relative">
         <div className="absolute top-4 left-4 w-40 h-40 bg-red-dark-300 rounded-full z-[1]"></div>
         <div className="absolute bottom-8 left-96 w-52 h-52 bg-[#ffe442] rounded-full z-[1]"></div>
@@ -40,7 +40,7 @@ const Header = () => {
           <Image src='/images/home/header/MANGO.png' alt="Brands" width={90} height={50} />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

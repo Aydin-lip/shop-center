@@ -7,7 +7,9 @@ const itemsFooter: string[] = ['Home', 'Women', 'men', 'kids', 'On Sale', 'Conta
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center pt-9 pb-2 bg-[url('/images/footer/bg-Footer.jpg')] bg-cover bg-bottom-right-_7 bg-origin-border">
+    <div
+      className="w-full flex flex-col mt-10 justify-center items-center pt-9 pb-2 bg-[url('/images/footer/bg-Footer.jpg')] bg-cover bg-bottom-right-_7 bg-origin-border"
+    >
       <div></div>
       <Heading4 className="font-poppins text-center">
         Join Our Community to Get More<br />

@@ -57,6 +57,7 @@ const Filters = () => {
             placeholder="Search brands..."
             size="small"
             className="w-3/4 rounded text-xs"
+            color="secondary"
             sx={{
               '& .css-1qw6wlz-MuiInputBase-root-MuiOutlinedInput-root': { height: 37 },
               '& .css-1ua80n0-MuiInputBase-input-MuiOutlinedInput-input': { color: '#7F7F7F' }

@@ -1,14 +1,39 @@
 import { useState } from 'react';
-import { Heading6, SubTitle2 } from '@/mui/customize'
-import { ButtonGroup, TextField, Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Heading6, SubTitle2 } from '@/mui/customize';
+import { ButtonGroup, Button, MenuItem, Select, SelectChangeEvent, Pagination } from '@mui/material';
+import Card from "@/components/card";
+import Products from "@/data/products";
+
+interface IProduct {
+  id: number
+  name: string
+  img: string
+  price: number
+  onSale?: number
+  showOnSale?: boolean
+  category: string
+  star: number
+}
 
 const listFilter = ['T-shirt', 'Dress', 'Top', 'Skirt', 'Hoodie'];
 
 const ListCart = () => {
 
   const [age, setAge] = useState('Popular');
+  const [page, setPage] = useState(1);
+  // const [products, setProducts] = useState<IProduct[]>(Products())
+  const [products, setProducts] = useState<IProduct[]>(Products())
+  const allProduct = Products()
+
 
   const handleChange = (event: SelectChangeEvent) => setAge(event.target.value as string);
+  const changePagination = (event: React.ChangeEvent<unknown>, value: number) => {
+    // setProducts(Products().splice((page * 9) - 9, page * 9))
+    setPage(value);
+    // let filterProduct = allProduct.splice((page * 9) - 9, page * 9)
+    // let filterProduct = allProduct.filter
+    // setProducts(filterProduct)
+  };
 
   return (
     <div className='w-[73%]'>
@@ -57,8 +82,38 @@ const ListCart = () => {
           </Select>
         </ButtonGroup>
       </div>
+      <div className="flex flex-wrap justify-center mt-6">
+        {products.filter((product, idx) => idx > (page * 9) - 9 && idx <= page * 9).map(product =>
+          <Card data={{ ...product, showOnSale: true }} key={product.id} />
+        )}
+      </div>
+      <Pagination
+        className="mt-11 flex justify-center"
+        count={Math.ceil(Products().length / 9)}
+        color="primary"
+        size="large"
+        variant="outlined"
+        shape="rounded"
+        page={page}
+        onChange={changePagination}
+      />
     </div>
   )
 }
+
+// export function getStaticProps() {
+//   const res = Product
+//   const posts = await res.json()
+
+//   return {
+//     props: {
+//       posts,
+//     },
+//     // Next.js will attempt to re-generate the page:
+//     // - When a request comes in
+//     // - At most once every 10 seconds
+//     revalidate: 10, // In seconds
+//   }
+// }
 
 export default ListCart

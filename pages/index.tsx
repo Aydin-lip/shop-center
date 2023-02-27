@@ -12,7 +12,7 @@ export default function Home() {
       <TrendingProducts />
       <NewCollection />
       <OnSaleProducts />
-      <Heading4 className="min-h-screen">test</Heading4>
+      {/* <Heading4 className="min-h-screen">test</Heading4> */}
     </Layout>
   )
 }

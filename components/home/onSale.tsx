@@ -7,8 +7,8 @@ const OnSaleProducts = () => {
 
   return (
     <>
-      <div className="relative">
-        <div className="bg-[#FFF5F1] absolute top-0 right-[-10rem] left-[-10rem] h-[950px]">
+      <div>
+        <div className="bg-[#FFF5F1] pb-10">
           <div className="container m-auto mb-6">
             <div className="flex justify-between items-center py-6">
               <Heading3 className="text-light-300 cursor-default"><span className="text-red-dark-100">On Sale</span> Products</Heading3>

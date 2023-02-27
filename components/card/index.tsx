@@ -25,7 +25,7 @@ interface IProps {
 const Card = ({ data }: IProps) => {
   return (
     <>
-      <div className="w-full rounded-2xl bg-container p-3" style={{ maxWidth: "280px" }}>
+      <div className="w-full mx-auto rounded-2xl bg-container p-3" style={{ maxWidth: "280px" }}>
         <div className="rounded-lg w-full bg-dark-50 flex relative">
           {data.showOnSale && data.onSale ?
             <div className="rounded-tr-lg rounded-bl bg-red-light-800 absolute top-0 right-0 py-1 px-2">

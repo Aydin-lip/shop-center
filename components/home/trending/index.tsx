@@ -27,7 +27,7 @@ const TrendingProducts = () => {
   }
 
   return (
-    <>
+    <div className='container mx-auto'>
       <div className="flex justify-between items-center mt-8 mb-6">
         <Heading3 className="text-light-300 cursor-default"><span className="text-red-dark-100">Trending</span> Products</Heading3>
         <div className="flex gap-3 ">
@@ -41,7 +41,7 @@ const TrendingProducts = () => {
           <Card data={{ ...product, showOnSale: true }} key={product.id} />
         )}
       </SwiperBox>
-    </>
+    </div>
   )
 }
 

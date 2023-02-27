@@ -17,7 +17,7 @@ const Layout = ({ title, children }: IProps) => {
       </Head>
       <div className="bg-container">
         <Navbar />
-        <main className="container m-auto">{children}</main>
+        <main className="m-auto">{children}</main>
         <Footer />
       </div>
     </>

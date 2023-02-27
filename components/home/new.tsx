@@ -6,7 +6,7 @@ import Collections from "@/data/collection";
 const NewCollection = () => {
   const collections = Collections()
   return (
-    <>
+    <div className="container mx-auto">
       <div className="flex justify-between items-center mt-10 mb-6">
         <Heading3 className="text-light-300 cursor-default"><span className="text-red-dark-100">New</span> Collection</Heading3>
       </div>
@@ -36,7 +36,7 @@ const NewCollection = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
