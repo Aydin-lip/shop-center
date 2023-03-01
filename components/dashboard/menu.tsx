@@ -5,8 +5,9 @@ import { Dispatch, SetStateAction } from "react";
 interface IProps {
   setItem: Dispatch<SetStateAction<string>>
   item: string
+  setLogout: Dispatch<SetStateAction<boolean>>
 }
-const Menu = ({ item, setItem }: IProps) => {
+const Menu = ({ item, setItem, setLogout }: IProps) => {
   return (
     <>
       <div className="bg-dark-50 w-full max-w-[300px] h-full">
@@ -41,7 +42,7 @@ const Menu = ({ item, setItem }: IProps) => {
         </div>
         <div className="py-3 flex">
           {item === 'Favorites' &&
-             <div className="w-1 h-14 bg-red-dark-100 rounded-r-lg"></div>
+            <div className="w-1 h-14 bg-red-dark-100 rounded-r-lg"></div>
           }
           <div className="h-14 flex items-center gap-3 px-5 cursor-pointer w-full" onClick={() => setItem('Favorites')}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@ const Menu = ({ item, setItem }: IProps) => {
         </div>
         <div className="py-3 flex">
           {item === 'Messages' &&
-           <div className="w-1 h-14 bg-red-dark-100 rounded-r-lg"></div>
+            <div className="w-1 h-14 bg-red-dark-100 rounded-r-lg"></div>
           }
           <div className="h-14 flex items-center gap-3 px-5 cursor-pointer w-full" onClick={() => setItem('Messages')}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,14 +62,11 @@ const Menu = ({ item, setItem }: IProps) => {
               <path d="M12.0195 22.81C11.0295 22.81 10.0695 22.41 9.36953 21.71C8.66953 21.01 8.26953 20.05 8.26953 19.06H9.76953C9.76953 19.65 10.0095 20.23 10.4295 20.65C10.8495 21.07 11.4295 21.31 12.0195 21.31C13.2595 21.31 14.2695 20.3 14.2695 19.06H15.7695C15.7695 21.13 14.0895 22.81 12.0195 22.81Z" fill="#7F7F7F" />
             </svg>
             <SubTitle2 className="text-light-200">Messages</SubTitle2>
-            <Badge badgeContent={4} color="primary" className="ml-auto mr-4" />
+            <Badge badgeContent={2} color="primary" className="ml-auto mr-4" />
           </div>
         </div>
         <div className="py-3 flex">
-          {item === 'Logout' &&
-            <div className="w-1 h-14 bg-red-dark-100 rounded-r-lg"></div>
-          }
-          <div className="h-14 flex items-center gap-3 px-5 cursor-pointer w-full" onClick={() => setItem('Logout')}>
+          <div className="h-14 flex items-center gap-3 px-5 cursor-pointer w-full" onClick={() => setLogout(true)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.4399 15.37C17.2499 15.37 17.0599 15.3 16.9099 15.15C16.6199 14.86 16.6199 14.38 16.9099 14.09L18.9399 12.06L16.9099 10.03C16.6199 9.74 16.6199 9.26 16.9099 8.97C17.1999 8.68 17.6799 8.68 17.9699 8.97L20.5299 11.53C20.8199 11.82 20.8199 12.3 20.5299 12.59L17.9699 15.15C17.8199 15.3 17.6299 15.37 17.4399 15.37Z" fill="#7F7F7F" />
               <path d="M19.9298 12.81H9.75977C9.34977 12.81 9.00977 12.47 9.00977 12.06C9.00977 11.65 9.34977 11.31 9.75977 11.31H19.9298C20.3398 11.31 20.6798 11.65 20.6798 12.06C20.6798 12.47 20.3398 12.81 19.9298 12.81Z" fill="#7F7F7F" />

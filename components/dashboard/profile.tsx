@@ -42,8 +42,8 @@ const Profile = () => {
         setCategory([...category, target.innerText])
       }
     } else {
-      if (category.includes(target.innerText)) {
-        setFavorite(category.filter(c => c !== target.innerText))
+      if (favorite.includes(target.innerText)) {
+        setFavorite(favorite.filter(c => c !== target.innerText))
       } else {
         setFavorite([...favorite, target.innerText])
       }

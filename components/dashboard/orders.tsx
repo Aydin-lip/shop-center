@@ -14,7 +14,7 @@ interface IDetailDeliverdBox {
 const DeliverdBox = (detail: IDetailDeliverdBox, hr: boolean) => {
   return (
     <div key={detail.id}>
-      <div className="flex gap-4 items-end my-10">
+      <div className="flex gap-4 items-end my-9">
         <Image src={detail.image} alt={detail.name} width={180} height={180} />
         <div className="flex flex-col gap-5 py-4">
           <p className="m-0">{detail.name}</p>
@@ -43,13 +43,6 @@ const Orders = () => {
       price: 156.00
     }, {
       id: 2,
-      image: '/images/data/hodi.png',
-      name: 'Heart Print Thermal Lined Drawstring Hoodie',
-      code: '2346004',
-      date: '2023-Jan-12',
-      price: 156.00
-    }, {
-      id: 3,
       image: '/images/data/hodi.png',
       name: 'Heart Print Thermal Lined Drawstring Hoodie',
       code: '2346004',
@@ -92,14 +85,13 @@ const Orders = () => {
           </div>
         </div>
 
-        {deliverdItem ?
-          <div className="overflow-y-auto overflow-x-hidden h-[85%]">
-            {Deliverd.map((del, i) => DeliverdBox(del, Deliverd[++i] ? true : false))}
-          </div> :
-          <div className="overflow-y-auto overflow-x-hidden h-[85%]">
-            {Processing.map((del, i) => DeliverdBox(del, Processing[++i] ? true : false))}
-          </div>
-        }
+        <div className="overflow-y-auto overflow-x-hidden h-[85%]">
+          {deliverdItem ?
+            Deliverd.map((del, i) => DeliverdBox(del, Deliverd[++i] ? true : false))
+            :
+            Processing.map((del, i) => DeliverdBox(del, Processing[++i] ? true : false))
+          }
+        </div>
 
       </div>
     </>
