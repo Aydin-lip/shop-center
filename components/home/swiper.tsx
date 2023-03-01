@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Button } from "@mui/material";
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -5,7 +6,6 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Pagination, Navigation, Swiper as SwiperType } from "swiper";
-import { useRef } from "react";
 
 interface IProps {
   children: JSX.Element[]

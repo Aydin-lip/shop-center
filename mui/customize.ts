@@ -73,6 +73,10 @@ const IOSSwitch = styled(Switch)(({
 
 const BasicButton = styled(Button)({ textTransform: 'capitalize', fontSize: 16, fontWeight: 500, fontFamily: 'Inter' })
 
+const ButtonWithIcon = styled(Button)({
+  textTransform: 'capitalize', fontSize: 16, fontWeight: 500, fontFamily: 'Inter', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'
+})
+
 const BasicTextField = styled(TextField)({ '& .css-1d3z3hw-MuiOutlinedInput-notchedOutline': { borderWidth: '1px !important' } })
 
 const CheckBoxFilter = styled(Checkbox)({
@@ -81,5 +85,5 @@ const CheckBoxFilter = styled(Checkbox)({
 
 export {
   Display1, Display2, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, SubTitle1, SubTitle2,
-  Body1, Body2, Button1, Button2, Caption, IOSSwitch, BasicButton, BasicTextField
+  Body1, Body2, Button1, Button2, Caption, IOSSwitch, BasicButton, BasicTextField, ButtonWithIcon
 };
