@@ -19,8 +19,8 @@ const listFilter = ['T-shirt', 'Dress', 'Top', 'Skirt', 'Hoodie'];
 
 const ListCart = () => {
 
-  const [age, setAge] = useState('Popular');
-  const [page, setPage] = useState(1);
+  const [age, setAge] = useState<string>('Popular');
+  const [page, setPage] = useState<number>(1);
   // const [products, setProducts] = useState<IProduct[]>(Products())
   const [products, setProducts] = useState<IProduct[]>(Products())
 

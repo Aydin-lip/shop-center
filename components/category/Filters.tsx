@@ -5,7 +5,7 @@ import { Slider, InputAdornment, FormControl, FormControlLabel, Checkbox, Button
 
 const Filters = () => {
   const [value, setValue] = useState<number[]>([20, 37]);
-  const [displayValue, setDisplayValue] = useState(7)
+  const [displayValue, setDisplayValue] = useState<number>(7)
 
   const handleChange = (event: Event, newValue: number | number[]) => setValue(newValue as number[]);
 

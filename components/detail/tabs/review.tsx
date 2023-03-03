@@ -21,7 +21,7 @@ interface Comment {
 const Review = () => {
 
   const allComments = Comments();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const changePagination = (event: React.ChangeEvent<unknown>, value: number) => setPage(value);
 
   return (

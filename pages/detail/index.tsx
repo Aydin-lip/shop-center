@@ -20,7 +20,7 @@ const listTabs = [{ id: 1, title: 'Description' }, { id: 2, title: 'Review' }, {
 
 const index = () => {
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<number>(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => setValue(newValue);
 
   return (
