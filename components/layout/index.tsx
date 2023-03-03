@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 // Components
-import Footer from "../footer/Footer";
+import Footer from "../footer/footer";
 import Navbar from "../navbar";
 
 interface IProps {
