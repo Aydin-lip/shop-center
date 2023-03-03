@@ -5,7 +5,7 @@ const listDetails = ['Casual Style', 'Heart Pattern', 'Heart Pattern', '100% Pol
 const Description = () => {
   return (
     <div className="flex flex-col justify-start py-11">
-      <SubTitle2 className="text-[#7F7F7F]">
+      <SubTitle2 className="text-light-100">
         Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual
         mockups.In publishing and graphic<br /> design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document
         or a typeface without relying on meaningful content. Lorem<br /> ipsum may be used as a placeholder before final copy is available.

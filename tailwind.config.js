@@ -35,6 +35,7 @@ module.exports = {
       'light-300': '#242323',
       'light-400': '#F1F1F1',
       'container': '#FFFFFF',
+      'form': 'rgba(246, 246, 246, 0.8)',
     },
     colors: {
       'red-dark-100': '#DD0426',
@@ -57,9 +58,12 @@ module.exports = {
       'dark-100': '#E4E4E4',
       'dark-200': '#A7A7A7',
       'dark-300': '#C3C3CE',
+      'dark-400': '#424242B2',
+      'dark-500': '#000000',
       'light-100': '#7F7F7F',
       'light-200': '#424242',
       'light-300': '#242323',
+      'light-400': '#91929D',
       'container': '#FFFFFF',
     },
     borderColor: {
@@ -68,7 +72,8 @@ module.exports = {
     extend: {
       fontFamily: {
         'chewy': ['Chewy'],
-        'poppins': ['Poppins']
+        'poppins': ['Poppins'],
+        'inter': ['Inter'],
       },
       backgroundPosition: {
         'bottom-right-_7': 'bottom -7rem right'

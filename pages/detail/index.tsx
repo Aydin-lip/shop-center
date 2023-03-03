@@ -34,7 +34,7 @@ const index = () => {
           <AppBar
             position="static"
             sx={{ '& .css-1nlllfd-MuiTabs-indicator': { height: 3 } }}
-            className="color-[#424242] shadow-none bg-transparent border-0 border-b-[#C3C3CE] border-b border-solid"
+            className="text-[#424242] shadow-none bg-transparent border-0 border-b-[#C3C3CE] border-b border-solid"
           >
             <Tabs
               className='bg-[#ffffff] border-[#C3C3CE]'
@@ -44,7 +44,7 @@ const index = () => {
               textColor="inherit"
               aria-label="full width tabs example"
             >
-              {listTabs.map(item => <Tab className="text-[#424242] font-bold text-2xl font-poppins capitalize" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
+              {listTabs.map(item => <Tab className="text-light-200 font-bold text-2xl font-poppins capitalize" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
             </Tabs>
           </AppBar>
           {value === 0 ? <Description /> : value === 1 ? <Review /> : <TrendingProducts from="detail" />}
