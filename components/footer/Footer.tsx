@@ -48,9 +48,9 @@ const Footer = () => {
         </div>
         <span className="h-4 w-px bg-[#000000] ml-12 mr-14"></span>
         <ul className="list-none flex flex-row items-center justify-center p-0">
-          <li className="flex justify-center items-center mr-4 cursor-pointer"><Instagram className="text-[#7F7F7F]" /></li>
-          <li className="flex justify-center items-center mx-4 cursor-pointer"><Facebook className="text-[#7F7F7F]" /></li>
-          <li className="flex justify-center items-center mx-4 cursor-pointer"><Twitter className="text-[#7F7F7F]" /></li>
+          <li className="flex justify-center items-center mr-4 cursor-pointer"><Instagram className="text-light-100" /></li>
+          <li className="flex justify-center items-center mx-4 cursor-pointer"><Facebook className="text-light-100" /></li>
+          <li className="flex justify-center items-center mx-4 cursor-pointer"><Twitter className="text-light-100" /></li>
         </ul>
       </div>
       <Caption className="text-light-100 mt-4">© 2023 All Rights Reserved</Caption>

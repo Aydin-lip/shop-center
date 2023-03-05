@@ -19,21 +19,14 @@ const listFilter = ['T-shirt', 'Dress', 'Top', 'Skirt', 'Hoodie'];
 
 const ListCart = () => {
 
-  const [age, setAge] = useState('Popular');
-  const [page, setPage] = useState(1);
+  const [age, setAge] = useState<string>('Popular');
+  const [page, setPage] = useState<number>(1);
   // const [products, setProducts] = useState<IProduct[]>(Products())
   const [products, setProducts] = useState<IProduct[]>(Products())
-  const allProduct = Products()
 
 
   const handleChange = (event: SelectChangeEvent) => setAge(event.target.value as string);
-  const changePagination = (event: React.ChangeEvent<unknown>, value: number) => {
-    // setProducts(Products().splice((page * 9) - 9, page * 9))
-    setPage(value);
-    // let filterProduct = allProduct.splice((page * 9) - 9, page * 9)
-    // let filterProduct = allProduct.filter
-    // setProducts(filterProduct)
-  };
+  const changePagination = (event: React.ChangeEvent<unknown>, value: number) => setPage(value);
 
   return (
     <div className='w-[73%]'>
@@ -100,20 +93,5 @@ const ListCart = () => {
     </div>
   )
 }
-
-// export function getStaticProps() {
-//   const res = Product
-//   const posts = await res.json()
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//     // Next.js will attempt to re-generate the page:
-//     // - When a request comes in
-//     // - At most once every 10 seconds
-//     revalidate: 10, // In seconds
-//   }
-// }
 
 export default ListCart

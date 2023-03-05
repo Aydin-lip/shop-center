@@ -1,5 +1,5 @@
-import Filters from "@/components/category/Filters";
-import ListCart from "@/components/category/ListCart";
+import Filters from "@/components/category/filters";
+import ListCart from "@/components/category/listCart";
 import Layout from "@/components/layout";
 
 const index = () => {

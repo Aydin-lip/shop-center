@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 // Components
-import Footer from "../footer/Footer";
+import Footer from "../footer/footer";
 import Navbar from "../navbar";
 
 interface IProps {
@@ -13,7 +13,8 @@ const Layout = ({ title, children }: IProps) => {
   return (
     <>
       <Head>
-        <title>{`${title} | Shop-Center`}</title>
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <title>{`${title} - Shop Center`}</title>
       </Head>
       <div className="bg-container">
         <Navbar />

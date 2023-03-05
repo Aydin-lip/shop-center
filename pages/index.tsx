@@ -4,13 +4,12 @@ import OnSaleProducts from "@/components/home/onSale";
 import PopularProducts from "@/components/home/popular";
 import TrendingProducts from "@/components/home/trending";
 import Layout from "@/components/layout";
-import { Heading4 } from "@/mui/customize";
 
 export default function Home() {
   return (
     <Layout title='Home'>
       <Header />
-      <TrendingProducts />
+      <TrendingProducts from="home" />
       <NewCollection />
       <OnSaleProducts />
       <PopularProducts />

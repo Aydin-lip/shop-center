@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <>
       <Layout title="Dashboard">
-        <div className="container m-auto flex mb-56 h-[600px]">
+        <div className="container m-auto flex mb-56 h-[600px] mt-20">
           <Menu item={item} setItem={setItem} setLogout={setLogout} />
           {item === "Profile" && <Profile />}
           {item === "Orders" && <Orders />}

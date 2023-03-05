@@ -4,11 +4,16 @@ import { Caption } from "@/mui/customize";
 import { BasicButton } from "@/mui/customize";
 import { Heading5 } from "@/mui/customize";
 import { TextField } from "@mui/material";
+import Head from "next/head";
 import Link from "next/link";
 
 const SignUp = () => {
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <title>Sign Up - Shop Center</title>
+      </Head>
       <div className="fixed overflow-auto bg-container top-0 right-0 bottom-0 left-0 flex justify-center items-center">
         <div className="absolute top-0 my-4 flex flex-col items-center max-w-sm w-full px-12 py-8 bg-dark-50 rounded-xl border border-solid border-dark-100">
           <div>
