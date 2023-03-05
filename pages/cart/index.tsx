@@ -1,9 +1,10 @@
+import Address from "@/components/cart/address";
 import Items from "@/components/cart/items";
 import OrderSummary from "@/components/cart/orderSummary";
 import RelatedProduct from "@/components/cart/related";
 import StepperCart from "@/components/cart/stepper";
 import Layout from "@/components/layout";
-import { IBag } from "@/models/bag";
+import { IBag } from "@/models/cart";
 import { Heading5 } from "@/mui/customize";
 import { useState } from "react";
 
@@ -29,12 +30,20 @@ const Cart = () => {
       <Layout title="Cart">
         <div className="container m-auto">
           <StepperCart step={step} />
-          <Heading5 className="text-light-300">Your Items</Heading5>
+          <Heading5 className="text-light-300">{step === 1 ? 'Your Items' : 'Select Delivery Address'}</Heading5>
           <div className="flex justify-center gap-4 mt-8">
-            <Items bag={bag} price={price} setPrice={setPrice} />
-            <OrderSummary total={price} />
+            {step === 1 ?
+              <Items bag={bag} price={price} setPrice={setPrice} />
+              :
+              <Address />
+            }
+            <OrderSummary step={step} setStep={setStep} total={price} />
           </div>
-          <RelatedProduct />
+          {step === 1 ?
+            <RelatedProduct />
+            :
+            <div className="m-20 p-20"></div>
+          }
         </div>
       </Layout>
     </>

@@ -1,4 +1,4 @@
-import { IBag } from "@/models/bag";
+import { IBag } from "@/models/cart";
 import Item from "./item";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import Products from "@/data/products";

@@ -9,8 +9,7 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import { IBag } from "@/models/bag";
-import { IProduct } from "@/models/product";
+import { IBag, IProduct } from "@/models/cart";
 
 
 const Size = (options: string[], size: number) => {

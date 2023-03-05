@@ -1,18 +1,25 @@
 import { BasicButton, Heading5 } from "@/mui/customize";
+import { Dispatch, SetStateAction } from "react";
 
 interface IProps {
+  step: number
+  setStep: Dispatch<SetStateAction<number>>
   total: {
     id: number
     price: number
     discount: number
   }[]
 }
-const OrderSummary = ({ total }: IProps) => {
+const OrderSummary = ({ step, setStep, total }: IProps) => {
 
   let allTotal = 0
   let discount = 0
   total.forEach(t => allTotal += t.price)
   total.forEach(t => discount += t.discount)
+
+  const nextStep = () => {
+    setStep(step + 1)
+  }
 
   return (
     <>
@@ -35,7 +42,7 @@ const OrderSummary = ({ total }: IProps) => {
             <span>{(allTotal - discount).toFixed(2)} $</span>
           </div>
         </div>
-        <BasicButton color="primary" variant="contained" className="w-full mt-3">Check Out Now</BasicButton>
+        <BasicButton color="primary" variant="contained" className="w-full mt-3" onClick={nextStep}>Check Out Now</BasicButton>
       </div>
     </>
   )
