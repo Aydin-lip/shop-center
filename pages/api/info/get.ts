@@ -1,4 +1,4 @@
-import CollectionDB from "@/db/mongoDB";
+import UsersCollection from "@/db/users";
 import { NextApiHandler } from "next";
 
 const Handler: NextApiHandler = async (req, res) => {
@@ -9,8 +9,7 @@ const Handler: NextApiHandler = async (req, res) => {
       return
     }
 
-    let collectionToken = await CollectionDB('users-token')
-    let collectionInfo = await CollectionDB('users-info')
+    let {collectionToken, collectionInfo} = await UsersCollection()
 
     let userToken = await collectionToken.find({ token }).toArray()
     let userInfo = await collectionInfo.find({ token }).toArray()

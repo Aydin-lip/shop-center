@@ -4,23 +4,25 @@ export interface IProfile {
   category: string[]
   style: string[]
 }
+export interface IDeliverd {
+  id: number
+  image: string
+  title: string
+  code: string
+  data: string
+  price: number
+}
+export interface IProcessing {
+  id: number
+  image: string
+  title: string
+  code: string
+  data: string
+  price: number
+}
 export interface IOrder {
-  deliverd: {
-    id: number
-    image: string
-    title: string
-    code: string
-    data: string
-    price: number
-  }[]
-  processing: {
-    id: number
-    image: string
-    title: string
-    code: string
-    data: string
-    price: number
-  }[]
+  deliverd: IDeliverd[]
+  processing: IProcessing[]
 }
 export interface IMessage {
   id: number

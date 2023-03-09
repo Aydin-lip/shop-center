@@ -1,7 +1,7 @@
 import * as bcrypt from "bcrypt"
 import { NextApiHandler } from "next";
-import CollectionDB from "@/db/mongoDB";
 import { uuid } from "uuidv4";
+import UsersCollection from "@/db/users";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
@@ -11,8 +11,7 @@ const Handler: NextApiHandler = async (req, res) => {
       return
     }
 
-    let collectionToken = await CollectionDB('users-token')
-    let collectionInfo = await CollectionDB('users-info')
+    let {collectionToken, collectionInfo} = await UsersCollection()
 
     let token: string = uuid()
     let passHash = await bcrypt.hash(password, 10)
@@ -61,10 +60,11 @@ const Handler: NextApiHandler = async (req, res) => {
       await collectionInfo.insertOne(userInfo)
       res.status(201).json({
         message: "Your account has been successfully created", user: {
-          fullname,
-          email,
-          phone,
-          token
+          ...userInfo,
+          profile: {
+            ...userInfo.profile,
+            email
+          }
         }
       })
     } catch (err) {

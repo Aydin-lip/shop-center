@@ -1,6 +1,6 @@
-import CollectionDB from "@/db/mongoDB";
 import { NextApiHandler } from "next";
 import * as bcrypt from "bcrypt"
+import UsersCollection from "@/db/users";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "GET") {
@@ -9,8 +9,7 @@ const Handler: NextApiHandler = async (req, res) => {
       res.status(400).json({ message: "One of the parameters is wrong!" })
       return
     }
-    let collectionToken = await CollectionDB('users-token')
-    let collectionInfo = await CollectionDB('users-info')
+    let {collectionToken, collectionInfo} = await UsersCollection()
 
     let userToken = await collectionToken.find({ email }).toArray()
     if (userToken[0]) {
