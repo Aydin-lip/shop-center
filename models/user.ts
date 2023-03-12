@@ -38,8 +38,16 @@ export interface IAddress {
   detail: string
   phone: string
 }
+export interface IBag {
+  id: number
+  product_id: number
+  count: {
+    size: string
+    color: string
+  }[]
+}
 export interface ICart {
-  bag: number[]
+  bag: IBag[]
   address: IAddress[]
 }
 export interface IUserInfo {
