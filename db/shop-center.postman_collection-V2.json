@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "39160ebe-bba7-4d53-a3e2-9f81760e1d30",
+		"name": "shop-center",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20164366"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "sign-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aaa@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/register/sign-in"
+					},
+					"response": []
+				},
+				{
+					"name": "sign-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"Tom\",\r\n    \"phone\": \"09123456789\",\r\n    \"email\": \"example@gmail.com\",\r\n    \"password\": \"tom-1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/register/sign-up"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Info",
+			"item": [
+				{
+					"name": "Edit",
+					"item": [
+						{
+							"name": "Cart",
+							"item": [
+								{
+									"name": "add Bag",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"product_id\": 10,\r\n    \"count\": [{\r\n        \"size\": \"XL\",\r\n        \"color\": \"Black\"\r\n    }]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/info/edit/cart/bag/add"
+									},
+									"response": []
+								},
+								{
+									"name": "delete Bag",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+												"type": "text"
+											}
+										],
+										"url": "http://localhost:3000/api/info/edit/cart/bag/delete/2"
+									},
+									"response": []
+								},
+								{
+									"name": "add Address",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Main Address\",\r\n    \"detail\": \"iran Tehran ...\",\r\n    \"phone\": \"0912345678\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/info/edit/cart/address/add"
+									},
+									"response": []
+								},
+								{
+									"name": "delete Address",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+												"type": "text"
+											}
+										],
+										"url": "http://localhost:3000/api/info/edit/cart/address/delete/3"
+									},
+									"response": []
+								},
+								{
+									"name": "edit Address",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Home\",\r\n    \"detail\": \"shiraz\",\r\n    \"phone\": \"09123456789\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/info/edit/cart/address/edit"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\": \"aydin\",\r\n    \"phone\": \"09123456789\",\r\n    \"category\": [\"Women\", \"Kids\"],\r\n    \"style\": [\"Basic\", \"Sport\"],\r\n    \"email\": \"example@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/info/edit/profile"
+							},
+							"response": []
+						},
+						{
+							"name": "favorites",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_id\": 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/info/edit/favorites"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Add",
+					"item": [
+						{
+							"name": "order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"deliverd\": {\r\n        \"image\": \"/images/data/hodi.png\",\r\n        \"title\": \"Heart Print Thermal Lined Drawstring Hoodie\",\r\n        \"code\": \"2346004\",\r\n        \"price\": 156,\r\n        \"date\": \"2023-Jan-12\"\r\n    },\r\n    \"processing\": {\r\n        \"image\": \"/images/data/hodi.png\",\r\n        \"title\": \"Heart Print Thermal Lined Drawstring Hoodie\",\r\n        \"code\": \"2346004\",\r\n        \"price\": 156,\r\n        \"date\": \"2023-Jan-12\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/info/add/order"
+							},
+							"response": []
+						},
+						{
+							"name": "message",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token_user\": \"b55b7b92-e280-4f9c-b1fd-a84be972dac0\",\r\n    \"title\": \"Test\",\r\n    \"message\": \"this message just for test api\",\r\n    \"url\": \"/\",\r\n    \"urlText\": \"Home\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/info/edit/favorites"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "b55b7b92-e280-4f9c-b1fd-a84be972dac0",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/api/info/edit/profile"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/products"
+			},
+			"response": []
+		},
+		{
+			"name": "collection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/collection"
+			},
+			"response": []
+		}
+	]
+}

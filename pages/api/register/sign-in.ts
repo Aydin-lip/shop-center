@@ -3,7 +3,7 @@ import * as bcrypt from "bcrypt"
 import UsersCollection from "@/db/users";
 
 const Handler: NextApiHandler = async (req, res) => {
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     const { email, password }: { email: string, password: string } = req.body
     if (!email || !password || password.length < 8 || !email.includes("@")) {
       res.status(400).json({ message: "One of the parameters is wrong!" })
