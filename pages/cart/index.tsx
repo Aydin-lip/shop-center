@@ -27,7 +27,7 @@ const Cart = () => {
 
   return (
     <>
-      <Layout title="Cart">
+      <Layout title="Cart" privet={true}>
         <div className="container m-auto">
           <StepperCart step={step} />
           <Heading5 className="text-light-300">{step === 1 ? 'Your Items' : 'Select Delivery Address'}</Heading5>

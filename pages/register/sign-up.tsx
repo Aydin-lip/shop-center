@@ -1,14 +1,26 @@
 import LoginGmail from "@/components/login/byGmail";
 import Logo from "@/components/logo/shopCenter";
+import { useAppContext } from "@/context/state";
 import { Caption } from "@/mui/customize";
 import { BasicButton } from "@/mui/customize";
 import { Heading5 } from "@/mui/customize";
 import { TextField } from "@mui/material";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const SignUp = () => {
-  return (
+  const { info } = useAppContext()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (info._id !== '0') {
+      router.replace('/')
+    }
+  }, [info])
+
+  return info._id === '0' && (
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon/favicon.ico" />

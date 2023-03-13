@@ -5,6 +5,7 @@ import Profile from "./profile";
 import Items from "./items";
 import AppButton from "./appButton";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState<boolean>(false)
@@ -15,13 +16,15 @@ const Navbar = () => {
       );
     }
   }, []);
-  
+
   return (
     <>
       <nav className={`z-10 bg-container sticky top-0 left-0 right-0 delay-100 ${scroll ? 'shadow-lg' : ''}`}>
         <Container maxWidth="xl" className="pt-4 px-8">
           <div className="flex justify-between">
-            <Logo />
+            <Link href='/' className="no-underline">
+              <Logo />
+            </Link>
             <SearchNav />
             <Profile />
           </div>

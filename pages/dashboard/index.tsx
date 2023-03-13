@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Layout title="Dashboard">
+      <Layout title="Dashboard" privet={true}>
         <div className="container m-auto flex mb-56 h-[600px] mt-20">
           <Menu item={item} setItem={setItem} setLogout={setLogout} />
           {item === "Profile" && <Profile />}
