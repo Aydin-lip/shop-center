@@ -3,10 +3,9 @@ import { Heading3 } from "@/mui/customize";
 import Image from "next/image";
 import SwiperBox from "./swiper";
 import Card from "../card";
-import Products from "@/data/products";
+import IProducts from "@/models/products";
 
-const PopularProducts = () => {
-  const products = Products()
+const PopularProducts = ({ products }: { products: IProducts[] }) => {
 
   return (
     <>
@@ -43,8 +42,8 @@ const PopularProducts = () => {
         <div className="mt-8">
           <Heading3 className="text-light-300 cursor-default mb-6"><span className="text-red-dark-100">Popular</span> Products</Heading3>
           <SwiperBox>
-            {products.map(product =>
-              <Card data={{ ...product, showOnSale: true }} key={product.id} />
+            {products?.map(product =>
+              <Card data={{ ...product, showOnSale: true }} key={product._id} />
             )}
           </SwiperBox>
         </div>

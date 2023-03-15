@@ -4,16 +4,37 @@ import OnSaleProducts from "@/components/home/onSale";
 import PopularProducts from "@/components/home/popular";
 import TrendingProducts from "@/components/home/trending";
 import Layout from "@/components/layout";
+import ICollection from "@/models/collection";
+import IProducts from "@/models/products";
+import { getAllCollection, getAllProduct } from "@/services/http.service";
 
-export default function Home() {
+const Home = ({ collections, products }: { collections: ICollection[], products: IProducts[] }) => {
   return (
     <Layout title='Home'>
       <Header />
-      <TrendingProducts from="home" />
-      <NewCollection />
-      <OnSaleProducts />
-      <PopularProducts />
-      {/* <Heading4 className="min-h-screen">test</Heading4> */}
+      <TrendingProducts from="home" products={products} />
+      <NewCollection collections={collections} />
+      <OnSaleProducts products={products} />
+      <PopularProducts products={products} />
     </Layout>
   )
 }
+
+export const getStaticProps = async () => {
+  let collections = []
+  let products = []
+  try {
+    let collectionRes = await getAllCollection()
+    let productRes = await getAllProduct()
+    collections = collectionRes.data.collection
+    products = productRes.data.products
+  } catch (err) { }
+  return {
+    props: {
+      collections,
+      products
+    }
+  }
+}
+
+export default Home

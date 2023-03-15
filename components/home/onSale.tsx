@@ -1,10 +1,8 @@
-import Products from "@/data/products";
 import { Body2, Heading3 } from "@/mui/customize";
 import Card from "../card";
+import IProducts from "@/models/products";
 
-const OnSaleProducts = () => {
-  const products = Products()
-
+const OnSaleProducts = ({products}: {products: IProducts[]}) => {
   return (
     <>
       <div>
@@ -15,8 +13,8 @@ const OnSaleProducts = () => {
               <Body2 className="text-red-dark-100 cursor-pointer">View All</Body2>
             </div>
             <div className="flex flex-wrap justify-center gap-y-8 gap-x-4">
-              {products.map(product => product.onSale > 0 ?
-                <Card data={product} key={product.id} /> : ''
+              {products.map((product, i) => product.onSale > 0 && i <= 11 ?
+                <Card data={product} key={product._id} /> : ''
               )}
             </div>
           </div>

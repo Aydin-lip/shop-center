@@ -1,10 +1,9 @@
 import { BasicButton, Heading3 } from "@/mui/customize";
 import Image from "next/image";
 import SmallCard from "../card/small";
-import Collections from "@/data/collection";
+import ICollection from "@/models/collection";
 
-const NewCollection = () => {
-  const collections = Collections()
+const NewCollection = ({collections}: {collections: ICollection[]}) => {
   return (
     <div className="container mx-auto">
       <div className="flex justify-between items-center mt-10 mb-6">
@@ -16,7 +15,7 @@ const NewCollection = () => {
         </div>
         <div className="flex flex-wrap justify-center">
           {collections.map(collection =>
-            <SmallCard data={collection} key={collection.id} />
+            <SmallCard collection={collection} key={collection._id} />
           )}
         </div>
       </div>

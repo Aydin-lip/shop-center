@@ -2,33 +2,22 @@ import { useState, MouseEvent } from 'react'
 import Card from "@/components/card";
 import { BasicButton, Heading3, Heading5 } from "@/mui/customize";
 import SwiperBox from "../swiper";
-import Products from "@/data/products";
-
-interface IProduct {
-  id: number
-  name: string
-  img: string
-  price: number
-  onSale?: number
-  showOnSale?: boolean
-  category: string
-  star: number
-}
+import IProducts from '@/models/products';
 
 interface IProps {
   from: string
+  products: IProducts[]
 }
-
-const TrendingProducts = ({ from }: IProps) => {
+const TrendingProducts = ({ from, products }: IProps) => {
   const [category, setCategory] = useState<string>('all')
-  const [products, setProducts] = useState<IProduct[]>(Products())
-  const allProduct = Products()
+  const [productState, setProductState] = useState<IProducts[]>(products)
+  const allProduct = products
 
   const changeCategory = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
     const target = e.target as HTMLElement;
     setCategory(target.innerText)
     let filterProduct = allProduct.filter(product => product.category === target.innerText)
-    setProducts(filterProduct)
+    setProductState(filterProduct)
   }
 
   return (
@@ -40,7 +29,6 @@ const TrendingProducts = ({ from }: IProps) => {
             <span className="text-red-dark-100">Trending</span> Products
           </Heading3> :
           <Heading5 className="text-light-200">Related Product</Heading5>
-
         }
         {from === 'home' &&
           <div className="flex gap-3 ">
@@ -51,8 +39,8 @@ const TrendingProducts = ({ from }: IProps) => {
         }
       </div>
       <SwiperBox>
-        {products.map(product =>
-          <Card data={{ ...product, showOnSale: true }} key={product.id} />
+        {productState?.map(product =>
+          <Card data={{ ...product, showOnSale: true }} key={product._id} />
         )}
       </SwiperBox>
     </div>

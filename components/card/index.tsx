@@ -1,4 +1,4 @@
-import { Body2, Heading6, SubTitle1 } from "@/mui/customize";
+import { Body2, SubTitle1 } from "@/mui/customize";
 import { star } from "@/helper";
 import Image from "next/image"
 
@@ -23,7 +23,7 @@ const Card = ({ data }: IProps) => {
             </div>
             : ''
           }
-          <Image src={data.img} alt={data.name} width={280} height={280} className="w-full" />
+          <Image src={data.img} alt={data.name} width={280} height={280} className="w-full rounded-tr-lg" />
         </div>
         <span className="text-light-100 block my-4">{data.name}</span>
         <div className="flex justify-between items-center">
