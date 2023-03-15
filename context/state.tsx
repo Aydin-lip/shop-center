@@ -38,14 +38,13 @@ const AppContext = createContext<IContext>(contextDefaultValue);
 
 const Context = ({ children }: { children: JSX.Element }) => {
   const [userInfo, setUserInfo] = useState<IUserInfo>(defaultUser)
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(true)
 
   const setInfo = (info: IUserInfo) => {
     setUserInfo(info)
   }
 
   useEffect(() => {
-    setLoading(true)
     getInfo()
       .then(res => {
         setUserInfo(res.data.user)
