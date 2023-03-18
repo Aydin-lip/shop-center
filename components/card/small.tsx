@@ -8,7 +8,7 @@ interface IProps {
 const SmallCard = ({ collection }: IProps) => {
   return (
     <>
-      <div className="rounded hover:bg-dark-50 cursor-pointer p-2">
+      <div className="rounded hover:bg-dark-50 p-2">
         <Image src={collection.image} alt={collection.name} width={190} height={190} />
         <Body2 className="text-light-100 my-1">{collection.name}</Body2>
         <span>{collection.price}$</span>

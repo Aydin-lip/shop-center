@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Comments from '@/data/comments';
 import { star } from '@/helper';
 import hoodie from "@/public/images/detail/hoodie.png";
-import { Pagination } from '@mui/material';
+import { Avatar, Pagination } from '@mui/material';
+import { IComment } from '@/models/products';
 
 interface Comment {
   id: number,
@@ -18,7 +19,7 @@ interface Comment {
   like: number,
 }
 
-const Review = () => {
+const Review = ({data}: {data: IComment[]}) => {
 
   const allComments = Comments();
   const [page, setPage] = useState<number>(1);
@@ -27,21 +28,22 @@ const Review = () => {
   return (
     <div className="mt-11">
       <Heading5 className="font-poppins text-light-200 mb-7">Customer Review</Heading5>
-      {allComments.filter((comment, idx) => idx > (page * 3) - 3 && idx <= page * 3).map((item: Comment, idx: number) =>
+      {data?.filter((comment, idx) => idx >= (page * 3) - 3 && idx <= page * 3).map((item: IComment, idx: number) =>
         <div className={`flex flex-row items-center justify-start ${idx !== 0 && 'mt-10'}`} key={item.id}>
           <div className="flex flex-col justify-center items-start w-[54%]">
             <div className="flex flex-row items-center justify-start">
-              <Image src={item.image_profile} alt="profile" width={24} height={24} className="rounded-full" />
+              {/* <Image src={item.image_profile} alt="profile" width={24} height={24} className="rounded-full" /> */}
+              <Avatar>{item.name[0]}</Avatar>
               <Body2 className="text-light-100 ml-2">{item.name}</Body2>
             </div>
             <div className="flex flex-row items-center justify-start mt-2">
               <div className='flex flex-row items-center justify-start gap-1'>
                 {Array(5).fill({}).map((arr, idx) => idx + 1 <= item.star ? star(true, idx) : star(false, idx))}
               </div>
-              <Body2 className="text-light-200 ml-2 mt-2">Awesome Hoodie!</Body2>
+              <Body2 className="text-light-200 ml-2 mt-2">{item.title}</Body2>
             </div>
             <Caption className="text-light-400 mt-2">{item.date}</Caption>
-            <SubTitle1 className="text-light-200 leading-8">{item.description}</SubTitle1>
+            <SubTitle1 className="text-light-200 leading-8">{item.text}</SubTitle1>
           </div>
           <div className="w-[15%] ml-[1%]">
             <Image src={hoodie} alt="product" className="w-full h-fit" />
@@ -60,7 +62,7 @@ const Review = () => {
       )}
       <Pagination
         className="mt-11 mb-14 flex justify-center"
-        count={Math.ceil(allComments.length / 3)}
+        count={Math.ceil(data.length / 3)}
         color="primary"
         size="large"
         variant="outlined"

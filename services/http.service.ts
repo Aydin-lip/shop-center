@@ -21,7 +21,11 @@ export const getAllCollection = () => {
 }
 
 export const getAllProduct = () => {
-  return httpService.get('/products')
+  return httpService.get('/product/all')
+}
+
+export const getProductByID = (id: string | string[]) => {
+  return httpService.get(`/product/${id}`)
 }
 
 export const getInfo = () => {

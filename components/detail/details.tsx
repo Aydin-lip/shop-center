@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import { Heading6, SubTitle2, Heading5, SubTitle1, Body1, BasicButton, ButtonWithIcon } from '@/mui/customize';
 import { Button } from '@mui/material';
+import IProducts from '@/models/products';
 
 const listSize = ['XS', 'S', 'M', 'L', 'XL'];
 const listColors = ['#F58289', '#CBC0B9', '#D5641B', '#456BF1', '#80838F', '#3B3D43'];
 
-const Details = () => {
+const Details = ({ data }: { data: IProducts }) => {
 
   const [currencySize, setCurrencySize] = useState<string>(listSize[0]);
   const [currencyColor, setCurrencyColor] = useState<string>(listColors[0]);
 
   return (
     <div className="flex flex-col justify-center items-start w-[48%]">
-      <Heading6 className='text-light-200 !font-poppins'>Heart Print Thermal Lined Drawstring Hoodie</Heading6>
+      <Heading6 className='text-light-200 !font-poppins'>{data.name}</Heading6>
       <div className='flex flex-row items-center justify-start text-light-100 mt-5'>
         <div className='flex flex-row items-center'>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,13 +25,15 @@ const Details = () => {
         <SubTitle2 className='!font-poppins text-light-100 ml-9'>654 sold</SubTitle2>
       </div>
       <div className='flex flex-row items-center justify-start my-8'>
-        <Heading5 className='text-light-200 !font-poppins'>365.99 $</Heading5>
-        <SubTitle1 className='text-dark-300 line-through ml-7 !font-poppins'>475.99$</SubTitle1>
+        <Heading5 className='text-light-200 !font-poppins'>{data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</Heading5>
+        {data.onSale > 1 &&
+          <SubTitle1 className='text-dark-300 line-through ml-7 !font-poppins'>{data.onSale}$</SubTitle1>
+        }
       </div>
       <div className='flex flex-row items-center justify-start'>
         <Heading6 className='text-light-200 !font-poppins mr-4'>Size:</Heading6>
         <div className='flex flex-row items-center justify-start'>
-          {listSize.map((item, index) =>
+          {data.size.map((item, index) =>
             <BasicButton
               color={item === currencySize ? 'primary' : 'secondary'}
               onClick={() => setCurrencySize(item)}
@@ -45,7 +48,7 @@ const Details = () => {
       </div>
       <div className='flex flex-row items-center justify-start my-8'>
         <Heading6 className='text-light-200 !font-poppins mr-4'>Color:</Heading6>
-        {listColors.map(color =>
+        {data.color.map(color =>
           <Button
             variant='text'
             className={`ml-4 min-w-0 w-10 h-10 rounded-full ${color === currencyColor && 'outline outline-offset-2 outline-1'}`}

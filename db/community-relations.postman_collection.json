@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "3f78afa9-e46c-4df9-8f73-270706bdf1cf",
+		"name": "community-relations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20164366"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "sign-in",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Amir-reza\",\r\n    \"password\": \"Amir-reza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/login/sign-in"
+					},
+					"response": []
+				},
+				{
+					"name": "sign-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"community\",\r\n    \"email\": \"example@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/login/sign-up"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get-info",
+			"item": [
+				{
+					"name": "user-info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "a0ada7df-b544-44b1-a780-f704e1a632c8",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/api/get-info"
+					},
+					"response": []
+				},
+				{
+					"name": "other-user-info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "9c17f1b7-9916-4f68-b731-2f91b9d88ab1",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/api/get-info/4"
+					},
+					"response": []
+				},
+				{
+					"name": "all-user-info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/get-info/all"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "update-user",
+			"item": [
+				{
+					"name": "info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "d052c44c-be9b-4d28-bdb8-cd41c29a6544",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"mohammad\",\r\n    // \"last_name\": \"\",\r\n    // \"username\": \"\",\r\n    // \"birthday\": \"\",\r\n    // \"bio\": \"\",\r\n    // \"avatar\": \"\",\r\n    // \"email\": \"\",\r\n    \"phone\": \"09000000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/update-user/info"
+					},
+					"response": []
+				},
+				{
+					"name": "password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user_samira\",\r\n    \"old_password\": \"user_samira\",\r\n    \"new_password\": \"user_samiraa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/update-user/password"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "get",
+					"item": [
+						{
+							"name": "get-all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/api/comment/get"
+							},
+							"response": []
+						},
+						{
+							"name": "by-username",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/api/comment/get/setayesh"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "by-id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "4bfe3df8-62ce-4ed6-ab03-751a8052af82",
+										"type": "text"
+									}
+								],
+								"url": "http://localhost:3000/api/comment/delete/21"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "4bfe3df8-62ce-4ed6-ab03-751a8052af82",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"lorem\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/comment/add"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reply",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "4bfe3df8-62ce-4ed6-ab03-751a8052af82",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reply_token\": \"3cc3de2a-b1aa-441e-b6ad-9f4a90c2ec4a\",\r\n    \"text\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/reply/add"
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reply_token\": \"09b4879b-bef8-429d-9c46-884de135276d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/reply/get"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "4bfe3df8-62ce-4ed6-ab03-751a8052af82",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reply_token\": \"2b0cc9b0-47a9-4c27-8118-adae1418f661\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/reply/delete"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/reply/get/all"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
