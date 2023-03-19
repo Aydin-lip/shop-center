@@ -4,14 +4,23 @@ import { useAppContext } from "@/context/state";
 import { Body2, Caption } from "@/mui/customize";
 import { BasicButton } from "@/mui/customize";
 import { Heading5 } from "@/mui/customize";
-import { Checkbox, FormControlLabel, FormGroup, TextField } from "@mui/material";
+import { signIn } from "@/services/http.service";
+import { Alert, Checkbox, FormControlLabel, FormGroup, TextField, Tooltip } from "@mui/material";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const SignIn = () => {
-  const { info } = useAppContext()
+  const [email, setEmail] = useState<string>("")
+  const [emailErr, setEmailErr] = useState<boolean>(false)
+  const [password, setPassword] = useState<string>("")
+  const [passwordErr, setPasswordErr] = useState<boolean>(false)
+  const [remember, setRemember] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [login, setLogin] = useState<boolean | null>(null)
+
+  const { info, setInfo } = useAppContext()
   const router = useRouter()
 
   useEffect(() => {
@@ -19,6 +28,32 @@ const SignIn = () => {
       router.replace('/')
     }
   }, [info])
+
+  const signInFunc = async () => {
+    if (!email.includes("@")) setEmailErr(true)
+    if (password.length < 8) setPasswordErr(true)
+    if (email.includes("@") && password.length >= 8) {
+      setLoading(true)
+      signIn({ email, password })
+        .then(res => {
+          setLogin(true)
+          setTimeout(() => {
+            setLogin(null)
+          }, 3000);
+          setInfo(res.data.user)
+          if (remember) localStorage.setItem("token", res.data.user.token)
+          router.replace('/')
+          setLoading(false)
+        })
+        .catch(err => {
+          setLogin(false)
+          setLoading(false)
+          setTimeout(() => {
+            setLogin(null)
+          }, 3000);
+        })
+    }
+  }
 
   return info._id === '0' && (
     <>
@@ -33,21 +68,61 @@ const SignIn = () => {
           </div>
           <Heading5 className="py-8">Welcome Back!</Heading5>
           <form className="flex flex-col gap-6 w-full max-w-sm">
-            <TextField type="text" size="small" label="Phone number" variant="outlined" color="secondary" />
-            <TextField type="password" size="small" label="Password" variant="outlined" color="secondary" />
+            <TextField
+              error={emailErr}
+              name="email"
+              type="email"
+              size="small"
+              label="Email"
+              variant="outlined"
+              color="secondary"
+              value={email}
+              onChange={e => {
+                setEmail(e.target.value)
+                if (emailErr && e.target.value.includes('@')) setEmailErr(false)
+              }}
+            />
+            <TextField
+              error={passwordErr}
+              name="password"
+              type="password"
+              size="small"
+              label="Password"
+              variant="outlined"
+              color="secondary"
+              value={password}
+              onChange={e => {
+                setPassword(e.target.value)
+                if (passwordErr && e.target.value.length >= 8) setPasswordErr(false)
+              }}
+            />
+
             <div className="flex items-center justify-between">
               <FormGroup>
-                <FormControlLabel control={<Checkbox color="primary" />} label={<Body2>Remember me</Body2>} />
+                <FormControlLabel
+                  control={<Checkbox checked={remember} onChange={() => setRemember(!remember)} color="primary" />}
+                  label={<Body2>Remember me</Body2>}
+                />
               </FormGroup>
               <span>
-                <Link href='/' className="no-underline">
+                {/* <Link href='/' className="no-underline"> */}
+                <Tooltip title="It will be built soon">
                   <Body2 className="text-red-dark-100">
                     Forgot Password?
                   </Body2>
-                </Link>
+                </Tooltip>
+                {/* </Link> */}
               </span>
             </div>
-            <BasicButton variant="contained" color="primary">Sign In</BasicButton>
+            <span className={loading ? 'cursor-progress' : ''}>
+              <BasicButton
+                variant="contained"
+                color="primary"
+                className="w-full"
+                onClick={signInFunc}
+                disabled={loading}
+              >Sign In</BasicButton>
+            </span>
             <Caption className="flex justify-center items-center gap-1 cursor-default">
               Don’t Have An Account?
               <Link href='/register/sign-up' className="no-underline text-red-dark-100">
@@ -59,6 +134,24 @@ const SignIn = () => {
             <LoginGmail login="Sign In" />
           </div>
         </div>
+      </div>
+      <div className='max-w-lg fixed bottom-0 left-0 p-4'>
+        {login === false &&
+          <Alert
+            variant="outlined"
+            severity="error"
+          >
+            The username or password is wrong.
+          </Alert>
+        }
+        {login &&
+          <Alert
+            variant="outlined"
+            severity="success"
+          >
+            You have successfully Sign In.
+          </Alert>
+        }
       </div>
     </>
   )

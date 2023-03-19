@@ -9,9 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <div>
     <ThemeProvider theme={theme}>
       <Context>
-        <Loading>
-          <Component {...pageProps} />
-        </Loading>
+        <Component {...pageProps} />
       </Context>
     </ThemeProvider>
   </div>

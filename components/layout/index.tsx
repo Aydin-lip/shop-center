@@ -19,7 +19,7 @@ const Layout = ({ title, children, privet }: IProps) => {
 
   useEffect(() => {
     if (info._id == '0' && privet) {
-      router.replace('/regester/sign-in')
+      router.replace('/register/sign-in')
     }
   }, [])
 

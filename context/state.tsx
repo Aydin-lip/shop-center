@@ -1,3 +1,4 @@
+import Loading from '@/components/loading';
 import { IUserInfo } from '@/models/user';
 import { getInfo } from '@/services/http.service';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -51,7 +52,7 @@ const Context = ({ children }: { children: JSX.Element }) => {
         setLoading(false)
       })
       .catch(err => {
-        if (err.status === 404) {
+        if (err.response.status === 404) {
           localStorage.removeItem('token')
         }
         setLoading(false)
@@ -66,6 +67,7 @@ const Context = ({ children }: { children: JSX.Element }) => {
 
   return (
     <AppContext.Provider value={value}>
+      {loading && <Loading />}
       {children}
     </AppContext.Provider>
   )
