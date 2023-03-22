@@ -40,7 +40,7 @@ export interface IAddress {
 }
 export interface IBag {
   id: number
-  product_id: number
+  product_id: string
   count: {
     size: string
     color: string
@@ -54,7 +54,7 @@ export interface IUserInfo {
   _id: string
   profile: IProfile
   order: IOrder
-  favorites: number[]
+  favorites: string[]
   messages: IMessage[]
   cart: ICart
   token: string

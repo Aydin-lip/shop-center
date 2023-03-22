@@ -1,5 +1,8 @@
+import { useAppContext } from "@/context/state";
 import { BasicButton, Heading5 } from "@/mui/customize";
-import { Dispatch, SetStateAction } from "react";
+import { addOrder, cartDeleteBagAll } from "@/services/http.service";
+import { useRouter } from "next/router";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 
 interface IProps {
   step: number
@@ -11,14 +14,50 @@ interface IProps {
   }[]
 }
 const OrderSummary = ({ step, setStep, total }: IProps) => {
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const router = useRouter()
 
   let allTotal = 0
   let discount = 0
   total.forEach(t => allTotal += t.price)
   total.forEach(t => discount += t.discount)
 
+  const { info, setInfo } = useAppContext()
+
+  useEffect(() => {
+    if (info.cart.bag.length === 0) {
+      setLoading(true)
+    }
+  }, [])
+
   const nextStep = () => {
-    setStep(step + 1)
+    if (step === 2) {
+      setLoading(true)
+      let example = {
+        image: "/images/data/hodi.png",
+        title: "Heart Print Thermal Lined Drawstring Hoodie",
+        code: "2346004",
+        price: 156,
+        data: "2023-Jan-12"
+      }
+      addOrder({ processing: example })
+        .then(res => {
+          cartDeleteBagAll()
+            .then(res => {
+              setInfo({ ...info, cart: { ...info.cart, bag: [] } })
+            })
+            .catch(err => { })
+          setLoading(false)
+          setStep(1)
+          router.replace('/')
+        })
+        .catch(err => {
+          setLoading(false)
+        })
+    } else {
+      setStep(step + 1)
+    }
   }
 
   return (
@@ -42,7 +81,9 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
             <span>{(allTotal - discount).toFixed(2)} $</span>
           </div>
         </div>
-        <BasicButton color="primary" variant="contained" className="w-full mt-3" onClick={nextStep}>Check Out Now</BasicButton>
+        <span className={loading ? 'cursor-progress' : ''}>
+          <BasicButton color="primary" variant="contained" className="w-full mt-3" onClick={nextStep} disabled={loading}>Check Out Now</BasicButton>
+        </span>
       </div>
     </>
   )

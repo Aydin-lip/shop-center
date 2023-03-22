@@ -9,7 +9,10 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import { IBag, IProduct } from "@/models/cart";
+import { IBag } from "@/models/user";
+import IProducts from "@/models/products";
+import { cartDeleteBag, editFavorites } from "@/services/http.service";
+import { useAppContext } from "@/context/state";
 
 
 const Size = (options: string[], size: number) => {
@@ -159,7 +162,7 @@ const Color = (options: string[], color: number) => {
                       onClick={(event) => handleMenuItemClick(event, index)}
                       className="p-1"
                     >
-                      <div className='w-10 h-10 rounded-full' style={{ backgroundColor: `${option}` }}></div>
+                      <div className='w-10 h-10 rounded-full border border-dark-100 border-solid' style={{ backgroundColor: `${option}` }}></div>
                     </MenuItem>
                   ))}
                 </MenuList>
@@ -175,7 +178,7 @@ const Color = (options: string[], color: number) => {
 
 interface IProps {
   data: IBag
-  product?: IProduct
+  product?: IProducts
   price: {
     id: number;
     price: number;
@@ -188,7 +191,9 @@ interface IProps {
   }[]>>
 }
 const Item = ({ data, product, price, setPrice }: IProps) => {
-  const [count, setCount] = useState<number>(data.count)
+  const [count, setCount] = useState<number>(data.count.length)
+  const [saveDis, setSaveDis] = useState<boolean>(false)
+  const { info, setInfo } = useAppContext()
 
   let allSize = ['XS', 'S', 'M', 'L', 'XL']
   let allColor = ['red', 'pink', 'blue', 'black']
@@ -213,6 +218,25 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
     }
   }
 
+  const deleteHandler = (target: string) => {
+    setSaveDis(true)
+    if (target === 'delete') {
+      cartDeleteBag(data.id)
+        .then(() => { })
+        .catch(() => setSaveDis(false))
+    } else {
+      editFavorites({ product_id: data.product_id })
+        .then(() => { })
+        .catch(() => setSaveDis(false))
+    }
+
+    let priceFilter = price.filter(p => p.id !== data.id)
+    setPrice([...priceFilter, { id: data.id, price: 0, discount: 0 }])
+
+    let filterBag = info.cart.bag.filter(b => b.id !== data.id)
+    setInfo({ ...info, cart: { ...info.cart, bag: filterBag } })
+  }
+
   return product ? (
     <>
       <div className="border border-dark-100 border-solid flex h-[250px] w-[800px]">
@@ -223,8 +247,8 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
           <SubTitle2 className="text-light-300">{product.name}</SubTitle2>
           <div>
             <div className="flex justify-between items-center mb-8">
-              <div className="flex gap-4 items-center"><span>Size: </span> {Size(allSize, allSize.indexOf(data.size))}</div>
-              <div className="flex gap-4 items-center"><span>Color: </span> {Color(allColor, allColor.indexOf(data.color))}</div>
+              <div className="flex gap-4 items-center"><span>Size: </span> {Size(allSize, allSize.indexOf(data.count[0].size.toLocaleUpperCase()))}</div>
+              <div className="flex gap-4 items-center"><span>Color: </span> {Color(allColor, allColor.indexOf(data.count[0].color.toLocaleLowerCase()))}</div>
             </div>
             <div className="flex items-center justify-between">
               <ButtonGroup color="secondary" variant="outlined">
@@ -236,9 +260,9 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
             </div>
           </div>
           <div>
-            <BasicButton color="secondary" variant="text">Delete</BasicButton>
+            <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('delete')}>Delete</BasicButton>
             <Tooltip title='Add favorites and delete from cart'>
-              <BasicButton color="secondary" variant="text">Save for later</BasicButton>
+              <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('save')} disabled={saveDis}>Save for later</BasicButton>
             </Tooltip>
           </div>
         </div>

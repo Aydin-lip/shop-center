@@ -2,7 +2,7 @@ import UsersCollection from "@/db/users";
 import { NextApiHandler } from "next";
 
 interface IAddBag {
-  product_id: number
+  product_id: string
   count: {
     color: string
     size: string

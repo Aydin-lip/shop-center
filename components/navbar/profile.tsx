@@ -23,7 +23,7 @@ const Profile = () => {
             </Button2>
           </BasicButton>
         </Link>
-        {info._id > '0' ?
+        {info._id > '1' ?
           <div className='pr-2'>
             <Link href='/dashboard'>
               <Tooltip title="Dashboard">

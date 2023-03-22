@@ -47,7 +47,7 @@ const SignUp = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (info._id !== '0') {
+    if (info._id > '1') {
       router.replace('/')
     }
   }, [info])
@@ -98,7 +98,7 @@ const SignUp = () => {
     }
   }
 
-  return info._id === '0' && (
+  return info._id <= '1' && (
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon/favicon.ico" />

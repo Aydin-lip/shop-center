@@ -53,7 +53,15 @@ export const sendMessage = (data: IMess) => {
   })
 }
 
-export const addOrder = (data: { deliverd?: IDeliverd, processing?: IProcessing }) => {
+interface IProcessingAndDeliverd {
+  image: string
+  title: string
+  code: string
+  data: string
+  price: number
+}
+
+export const addOrder = (data: { deliverd?: IProcessingAndDeliverd, processing?: IProcessingAndDeliverd }) => {
   const token = localStorage.getItem("token")
   return httpService.post('/info/add/order', data, {
     headers: {
@@ -71,7 +79,7 @@ export const editProfile = (data: IProfile | { password: string, email: string }
   })
 }
 
-export const editFavorites = (data: { product_id: number }) => {
+export const editFavorites = (data: { product_id: string }) => {
   const token = localStorage.getItem("token")
   return httpService.post('/info/edit/favorites', data, {
     headers: {
@@ -81,7 +89,7 @@ export const editFavorites = (data: { product_id: number }) => {
 }
 
 interface IAddBag {
-  product_id: number
+  product_id: string
   count: {
     color: string
     size: string
@@ -99,6 +107,15 @@ export const cartAddBag = (data: IAddBag) => {
 export const cartDeleteBag = (id: number) => {
   const token = localStorage.getItem("token")
   return httpService.delete(`/info/edit/cart/bag/delete/${id}`, {
+    headers: {
+      token
+    }
+  })
+}
+
+export const cartDeleteBagAll = () => {
+  const token = localStorage.getItem("token")
+  return httpService.delete(`/info/edit/cart/bag/delete/all`, {
     headers: {
       token
     }

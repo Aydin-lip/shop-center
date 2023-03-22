@@ -1,28 +1,60 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import { BasicButton, SubTitle1 } from "@/mui/customize";
 import { TextField } from "@mui/material";
-import { IAddress } from '@/models/cart';
+import { IAddress } from '@/models/user';
+import { cartDeleteAddress, cartEditAddress } from '@/services/http.service';
+import { useAppContext } from '@/context/state';
 
 interface IProps {
   data: IAddress
-  addres: IAddress[]
-  setAddres: Dispatch<SetStateAction<IAddress[]>>
 }
-const Item = ({ data, addres, setAddres }: IProps) => {
+const Item = ({ data }: IProps) => {
   const [edit, setEdit] = useState<boolean>(data.title.length <= 0)
+  const [loadingEdit, setLoadingEdit] = useState<boolean>(false)
+  const [loadingRemove, setLoadingRemove] = useState<boolean>(false)
 
   const openEdit = () => setEdit(true)
   const closeEdit = () => setEdit(false)
 
   let title = data.title
-  let address = data.address
+  let detail = data.detail
   let phone = data.phone
 
+  const { info, setInfo } = useAppContext()
+
   const saveChange = () => {
-    let addressFilter = addres.filter(a => a.id !== data.id)
-    addressFilter.push({ id: data.id, title, address, phone })
-    setAddres(addressFilter)
-    setEdit(false)
+    setLoadingEdit(true)
+    let editAddress = {
+      id: data.id,
+      title,
+      detail,
+      phone
+    }
+    cartEditAddress(editAddress)
+      .then(res => {
+        let filterAddress = info.cart.address.filter(a => a.id !== data.id)
+        filterAddress.push(editAddress)
+        setInfo({ ...info, cart: { ...info.cart, address: filterAddress } })
+        setLoadingEdit(false)
+        setEdit(false)
+      })
+      .catch(err => {
+        setLoadingEdit(false)
+        setEdit(false)
+      })
+  }
+
+  const removeAddress = () => {
+    setLoadingRemove(true)
+    cartDeleteAddress(data.id)
+      .then(res => {
+        let filterAddress = info.cart.address.filter(a => a.id !== data.id)
+        setInfo({ ...info, cart: { ...info.cart, address: filterAddress } })
+        setLoadingRemove(false)
+      })
+      .catch(err => {
+        setLoadingRemove(false)
+      })
   }
 
   return (
@@ -48,12 +80,12 @@ const Item = ({ data, addres, setAddres }: IProps) => {
             variant="outlined"
             multiline
             placeholder="address"
-            defaultValue={data.address}
+            defaultValue={data.detail}
             color='secondary'
             className="w-full"
-            onChange={e => address = e.target.value} />
+            onChange={e => detail = e.target.value} />
           :
-          data.address
+          data.detail
         }
         <span className="block">phone number:
           {edit ?
@@ -73,19 +105,23 @@ const Item = ({ data, addres, setAddres }: IProps) => {
         {edit ?
           <>
             <BasicButton variant="outlined" color="secondary" onClick={closeEdit}>Cancle</BasicButton>
-            <BasicButton variant="outlined" color="success" onClick={saveChange}>Save</BasicButton>
+            <span className={loadingEdit ? 'cursor-progress' : ""}>
+              <BasicButton variant="outlined" color="success" onClick={saveChange} disabled={loadingEdit}>Save</BasicButton>
+            </span>
           </>
           :
           <>
-            <BasicButton
-              variant="outlined"
-              color="secondary"
-              startIcon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#7F7F7F" />
-                <path d="M9.16986 15.58C8.97986 15.58 8.78986 15.51 8.63986 15.36C8.34986 15.07 8.34986 14.59 8.63986 14.3L14.2999 8.63999C14.5899 8.34999 15.0699 8.34999 15.3599 8.63999C15.6499 8.92999 15.6499 9.40998 15.3599 9.69998L9.69986 15.36C9.55986 15.51 9.35986 15.58 9.16986 15.58Z" fill="#7F7F7F" />
-                <path d="M14.8299 15.58C14.6399 15.58 14.4499 15.51 14.2999 15.36L8.63986 9.69998C8.34986 9.40998 8.34986 8.92999 8.63986 8.63999C8.92986 8.34999 9.40986 8.34999 9.69986 8.63999L15.3599 14.3C15.6499 14.59 15.6499 15.07 15.3599 15.36C15.2099 15.51 15.0199 15.58 14.8299 15.58Z" fill="#7F7F7F" />
-              </svg>
-              }>Remove</BasicButton>
+            <span className={loadingRemove ? 'cursor-progress' : ''}>
+              <BasicButton
+                variant="outlined"
+                color="secondary"
+                startIcon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#7F7F7F" />
+                  <path d="M9.16986 15.58C8.97986 15.58 8.78986 15.51 8.63986 15.36C8.34986 15.07 8.34986 14.59 8.63986 14.3L14.2999 8.63999C14.5899 8.34999 15.0699 8.34999 15.3599 8.63999C15.6499 8.92999 15.6499 9.40998 15.3599 9.69998L9.69986 15.36C9.55986 15.51 9.35986 15.58 9.16986 15.58Z" fill="#7F7F7F" />
+                  <path d="M14.8299 15.58C14.6399 15.58 14.4499 15.51 14.2999 15.36L8.63986 9.69998C8.34986 9.40998 8.34986 8.92999 8.63986 8.63999C8.92986 8.34999 9.40986 8.34999 9.69986 8.63999L15.3599 14.3C15.6499 14.59 15.6499 15.07 15.3599 15.36C15.2099 15.51 15.0199 15.58 14.8299 15.58Z" fill="#7F7F7F" />
+                </svg>
+                } disabled={loadingRemove} onClick={removeAddress}>Remove</BasicButton>
+            </span>
             <BasicButton
               variant="outlined"
               color="secondary"
@@ -96,7 +132,7 @@ const Item = ({ data, addres, setAddres }: IProps) => {
                   <path d="M17.3399 10.95C17.3199 10.95 17.2899 10.95 17.2699 10.95C14.1499 10.64 11.6399 8.27 11.1599 5.17C11.0999 4.76 11.3799 4.38 11.7899 4.31C12.1999 4.25 12.5799 4.53 12.6499 4.94C13.0299 7.36 14.9899 9.22 17.4299 9.46C17.8399 9.5 18.1399 9.87 18.0999 10.28C18.0499 10.66 17.7199 10.95 17.3399 10.95Z" fill="#8EAAF2" />
                   <path d="M21 22.75H3C2.59 22.75 2.25 22.41 2.25 22C2.25 21.59 2.59 21.25 3 21.25H21C21.41 21.25 21.75 21.59 21.75 22C21.75 22.41 21.41 22.75 21 22.75Z" fill="#8EAAF2" />
                 </svg>
-              } onClick={openEdit}>Edit</BasicButton>
+              }>Edit</BasicButton>
           </>
         }
       </div>

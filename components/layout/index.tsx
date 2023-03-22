@@ -4,7 +4,6 @@ import Head from "next/head"
 import Footer from "../footer";
 import Navbar from "../navbar";
 import { useAppContext } from "@/context/state";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 interface IProps {
@@ -14,16 +13,15 @@ interface IProps {
 }
 
 const Layout = ({ title, children, privet }: IProps) => {
-  const { info } = useAppContext()
+  const { info, loading } = useAppContext()
   const router = useRouter()
 
-  useEffect(() => {
-    if (info._id == '0' && privet) {
-      router.replace('/register/sign-in')
-    }
-  }, [])
+  if (privet && !loading) {
+    if (info._id == '0') router.replace('/')
+    if (info._id == '1') router.replace('/register/sign-in')
+  }
 
-  return info._id == '0' && privet ?
+  return info._id <= '1' && privet && !loading ?
     <></> : (
       <>
         <Head>

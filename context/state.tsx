@@ -52,10 +52,12 @@ const Context = ({ children }: { children: JSX.Element }) => {
         setLoading(false)
       })
       .catch(err => {
+        setLoading(false)
         if (err.response.status === 404) {
           localStorage.removeItem('token')
+        } else {
+          setUserInfo({ ...userInfo, _id: '1' })
         }
-        setLoading(false)
       })
   }, [])
 

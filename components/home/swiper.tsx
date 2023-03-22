@@ -26,8 +26,8 @@ const SwiperBox = ({ children }: IProps) => {
             swiperRef.current = swiper;
           }}
         >
-          {children.map((child, i) =>
-            <SwiperSlide key={i}> {child}</SwiperSlide>
+          {children?.map((child, i) =>
+            <SwiperSlide key={i}>{child}</SwiperSlide>
           )}
           <Button onClick={() => swiperRef.current?.slidePrev()} variant="outlined" color="secondary" className="z-[2] absolute top-1/2 left-0 founded py-2 bg-container">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

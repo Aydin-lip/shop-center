@@ -2,23 +2,32 @@ import { useState } from 'react'
 import { Heading6 } from "@/mui/customize";
 import { FormControl, FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import Item from './item';
-import { IAddress } from '@/models/cart';
+import { IAddress } from '@/models/user';
+import { useAppContext } from '@/context/state';
+import { cartAddAddress } from '@/services/http.service';
 
 
-const Address = () => {
-  const [addres, setAddres] = useState<IAddress[]>([
-    {
-      id: 1,
-      title: 'default address',
-      address: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      phone: '0123456789'
-    }, {
-      id: 2,
-      title: 'default address',
-      address: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      phone: '0123456789'
+const Address = ({ address }: { address: IAddress[] }) => {
+  const [loading, setLoading] = useState<boolean>(false)
+  const { info, setInfo } = useAppContext()
+
+  const addNewAddress = () => {
+    if (!loading) {
+      setLoading(true)
+      const id = address[address.length - 1] ? address[address.length - 1].id + 1 : 1
+      const newAddress = {
+        title: 'Title',
+        detail: 'Address',
+        phone: '09'
+      }
+      cartAddAddress(newAddress)
+        .then(res => {
+          setInfo({ ...info, cart: { ...info.cart, address: [...address, { ...newAddress, id }] } })
+          setLoading(false)
+        })
+        .catch(err => setLoading(false))
     }
-  ])
+  }
 
   return (
     <>
@@ -31,15 +40,15 @@ const Address = () => {
               defaultValue='1'
               name="radio-buttons-group"
             >
-              {addres.map(a =>
-                <FormControlLabel key={a.id} value={`${a.id}`} className='items-start' control={<Radio className='pt-8' />} label={
-                  <Item addres={addres} setAddres={setAddres} data={a} />
+              {address.map(a =>
+                <FormControlLabel key={a.id} value={`${a.id}`} className='items-start' control={<Radio style={{ marginBottom: "auto", paddingTop: "2rem" }} />} label={
+                  <Item data={a} />
                 } />
               )}
             </RadioGroup>
           </FormControl>
 
-          <div className="mx-4 my-16 flex gap-2 cursor-pointer ml-[-.5rem]" onClick={() => setAddres([...addres, { id: addres[addres.length - 1].id + 1, title: '', address: '', phone: '' }])}>
+          <div className={`mx-4 my-16 flex gap-2 ml-[-.5rem] ${loading ? "cursor-progress opacity-70" : "cursor-pointer"}`} onClick={addNewAddress}>
             <span className="flex items-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16 12.75H8C7.59 12.75 7.25 12.41 7.25 12C7.25 11.59 7.59 11.25 8 11.25H16C16.41 11.25 16.75 11.59 16.75 12C16.75 12.41 16.41 12.75 16 12.75Z" fill="#DD0426" />

@@ -3,7 +3,7 @@ import { NextApiHandler } from "next";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
-    const { product_id }: { product_id: number } = req.body
+    const { product_id }: { product_id: string } = req.body
     const { token } = req.headers
     if (!token) {
       res.status(400).json({ message: "There is no token in the header" })
@@ -17,7 +17,7 @@ const Handler: NextApiHandler = async (req, res) => {
     let userInfoAll = await collectionInfo.find({ token }).toArray()
     let userInfo = userInfoAll[0]
     if (userInfo) {
-      let favorites: number[] = userInfo.favorites
+      let favorites: string[] = userInfo.favorites
       if (favorites.find(n => n === product_id)) {
         favorites = favorites.filter(n => n !== product_id)
       } else {
