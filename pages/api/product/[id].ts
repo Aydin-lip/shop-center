@@ -1,12 +1,11 @@
-import CollectionDB from "@/db/mongoDB";
+import ConnectionJSON from "@/db/json";
 import { NextApiHandler } from "next";
 
 const Handler: NextApiHandler = async (req, res) => {
   const { id } = req.query
   if (id) {
-    let collection = await CollectionDB('products')
-    let allProduct = await collection.find({}).toArray()
-    let productID = allProduct.filter(p => p._id.toString() === id)
+    let data = await ConnectionJSON('products')
+    let productID = data.filter(p => p._id.toString() === id)
     if (productID) {
       res.status(200).json({message: "Success", product: productID})
     } else {

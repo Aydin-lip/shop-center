@@ -2,6 +2,7 @@ import UsersCollection from "@/db/users";
 import { IProfile } from "@/models/user";
 import { NextApiHandler } from "next";
 import * as bcrypt from 'bcrypt'
+import ConnectionJSON from "@/db/json";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
@@ -23,10 +24,8 @@ const Handler: NextApiHandler = async (req, res) => {
     }
 
     let { collectionToken, collectionInfo } = await UsersCollection()
-    let userTokenAll = await collectionToken.find({ token }).toArray()
-    let userInfoAll = await collectionInfo.find({ token }).toArray()
-    let userToken = userTokenAll[0]
-    let userInfo = userInfoAll[0]
+    let userToken = collectionToken.find(ct => ct.token === token)
+    let userInfo = collectionInfo.find(ci => ci.token === token)
 
     if (userToken && userInfo) {
       let edit = { info: false, token: false }
@@ -37,9 +36,17 @@ const Handler: NextApiHandler = async (req, res) => {
         category: category ? category : userInfo.profile.category,
         style: style ? style : userInfo.profile.style,
       }
+
       if (fullname || phone || category || style) {
+        let newUserInfo = {
+          ...userInfo,
+          profile
+        }
+        let filterCollectionInfo = collectionInfo.filter(ci => ci._id !== userInfo?._id)
+        filterCollectionInfo.push(newUserInfo)
+
         try {
-          await collectionInfo.updateOne({ token }, { $set: { profile } })
+          await ConnectionJSON('usersInfo', filterCollectionInfo)
           edit.info = true
         } catch (err) { }
       }
@@ -49,10 +56,16 @@ const Handler: NextApiHandler = async (req, res) => {
         let newToken = {
           email: email ? email : userToken.email,
           password: password ? hash : userToken.password,
-          token
         }
+        let newUserToken = {
+          ...userToken,
+          ...newToken
+        }
+        let filterCollectionToken = collectionToken.filter(ct => ct._id !== userToken?._id)
+        filterCollectionToken.push(newUserToken)
+
         try {
-          await collectionToken.updateOne({ token }, { $set: newToken })
+          await ConnectionJSON('usersToken', filterCollectionToken)
           edit.token = true
         } catch (err) { }
       }

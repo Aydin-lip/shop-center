@@ -1,0 +1,737 @@
+[
+  {
+    "_id": "64079896671b3565194c4513",
+    "name": "suit",
+    "price": 269,
+    "onSale": 35,
+    "category": "Women",
+    "size": [
+      "M",
+      "L"
+    ],
+    "color": [
+      "pink",
+      "white",
+      "red",
+      "purple"
+    ],
+    "img": "/images/data/suit.png",
+    "star": 5,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "HS0976",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c4514",
+    "name": "Dors",
+    "price": 189,
+    "onSale": 15,
+    "category": "Women",
+    "size": [
+      "M",
+      "L",
+      "XL",
+      "XXl"
+    ],
+    "color": [
+      "wormy",
+      "white",
+      "purple"
+    ],
+    "img": "/images/data/dors.png",
+    "star": 4,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": false,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "HE9863",
+        "fabric": false
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c4515",
+    "name": "Hodi",
+    "price": 150,
+    "onSale": 20,
+    "category": "Women",
+    "size": [
+      "S",
+      "M",
+      "XL"
+    ],
+    "color": [
+      "purple",
+      "yellow"
+    ],
+    "img": "/images/data/hodi.png",
+    "star": 4,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": false,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": false,
+        "productCode": "LI0987",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      },
+      {
+        "id": 4,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c4516",
+    "name": "Nim Tane & Short",
+    "price": 120,
+    "onSale": 1,
+    "category": "Women",
+    "size": [
+      "S",
+      "L"
+    ],
+    "color": [
+      "blue"
+    ],
+    "img": "/images/data/nimtane.png",
+    "star": 2,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": false,
+        "longSleeve": false,
+        "polyester": true,
+        "productCode": "AL986",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c4517",
+    "name": "T-shert",
+    "price": 80,
+    "onSale": 1,
+    "category": "Men",
+    "size": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "color": [
+      "white",
+      "black",
+      "blue",
+      "gray"
+    ],
+    "img": "/images/data/Tshert-white-men.png",
+    "star": 3,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": false,
+        "heartPattern": true,
+        "longSleeve": false,
+        "polyester": true,
+        "productCode": "HE424",
+        "fabric": false
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      },
+      {
+        "id": 4,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 70
+      },
+      {
+        "id": 5,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c4518",
+    "name": "Li set",
+    "price": 339,
+    "onSale": 40,
+    "category": "Men",
+    "size": [
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "color": [
+      "blue"
+    ],
+    "img": "/images/data/set-li-men.png",
+    "star": 5,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "PO1010",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c4519",
+    "name": "Sport Set",
+    "price": 178,
+    "onSale": 10,
+    "category": "Women",
+    "size": [
+      "S",
+      "L"
+    ],
+    "color": [
+      "white",
+      "black",
+      "blue",
+      "red"
+    ],
+    "img": "/images/data/set-sport.png",
+    "star": 3,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "LH5092",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c451a",
+    "name": "Daman Green",
+    "price": 299,
+    "onSale": 1,
+    "category": "Women",
+    "size": [
+      "M",
+      "L"
+    ],
+    "color": [
+      "green",
+      "red",
+      "blue"
+    ],
+    "img": "/images/data/daman-green.png",
+    "star": 3,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": false,
+        "polyester": false,
+        "productCode": "HL11228",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c451b",
+    "name": "T-shert",
+    "price": 85,
+    "onSale": 1,
+    "category": "Women",
+    "size": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "color": [
+      "white",
+      "black",
+      "blue",
+      "gray"
+    ],
+    "img": "/images/data/Tshert-white.png",
+    "star": 4,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "KE5289",
+        "fabric": false
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c451c",
+    "name": "Li set & hat",
+    "price": 69,
+    "onSale": 1,
+    "category": "Kids",
+    "size": [
+      "XS",
+      "S"
+    ],
+    "color": [
+      "blue"
+    ],
+    "img": "/images/data/kids-dress-boy-set.png",
+    "star": 5,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "AE8787",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c451d",
+    "name": "Dress",
+    "price": 80,
+    "onSale": 25,
+    "category": "Kids",
+    "size": [
+      "XS",
+      "S",
+      "M"
+    ],
+    "color": [
+      "orange",
+      "white"
+    ],
+    "img": "/images/data/kids-dress-orange.png",
+    "star": 4,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": false,
+        "polyester": true,
+        "productCode": "AM9972",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c451e",
+    "name": "Daman",
+    "price": 110,
+    "onSale": 30,
+    "category": "Kids",
+    "size": [
+      "XS",
+      "S",
+      "M"
+    ],
+    "color": [
+      "gray",
+      "black"
+    ],
+    "img": "/images/data/kids-dress.png",
+    "star": 4,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "HE0945",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  },
+  {
+    "_id": "64079896671b3565194c451f",
+    "name": "Suit & Glasses",
+    "price": 99,
+    "onSale": 10,
+    "category": "Kids",
+    "size": [
+      "XS",
+      "S"
+    ],
+    "color": [
+      "blue",
+      "gray"
+    ],
+    "img": "/images/data/kids-dress-boy.png",
+    "star": 4,
+    "description": {
+      "text": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      "items": {
+        "casualStyle": true,
+        "heartPattern": true,
+        "longSleeve": true,
+        "polyester": true,
+        "productCode": "Hs0909",
+        "fabric": true
+      }
+    },
+    "comments": [
+      {
+        "id": 1,
+        "name": "Ehsan Ahmadi",
+        "star": 2,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 192
+      },
+      {
+        "id": 2,
+        "name": "Ehsan Ahmadi",
+        "star": 4,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 78
+      },
+      {
+        "id": 3,
+        "name": "Ehsan Ahmadi",
+        "star": 5,
+        "title": "Awesome Hoodie!",
+        "date": "Feb 11, 2023",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "like": 123
+      }
+    ]
+  }
+]

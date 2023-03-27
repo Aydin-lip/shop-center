@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "6407868a671b356519483afe",
+    "email": "ms1166760@gmail.com",
+    "password": "11228",
+    "token": "hash"
+  },
+  {
+    "_id": "6408e35d43cf4b8440ae97fd",
+    "email": "example@gmail.com",
+    "password": "$2b$10$WqhyIaOe5uo9ciXKt.GyueSgYo.WNcNwZ0K9Burr0AjECTW/ZZYWW",
+    "token": "b55b7b92-e280-4f9c-b1fd-a84be972dac0"
+  },
+  {
+    "_id": "64176b0188d5e18c87ffbf82",
+    "email": "ms1166760@gmail.com",
+    "password": "$2b$10$LJxg5CAW2w/cnf/AuGhY4ubJgpuoowZ16QbGaHxPGYgQbJVc0zixW",
+    "token": "c93d4469-cfcf-4bc1-834e-82e870b0552a"
+  },
+  {
+    "_id": "6418824df2b6b3c2f1aff7ce",
+    "email": "email@gmail.com",
+    "password": "$2b$10$WqhyIaOe5uo9ciXKt.GyueSgYo.WNcNwZ0K9Burr0AjECTW/ZZYWW",
+    "token": "b2703a97-129a-4e01-9529-6b1d62293a2b"
+  }
+]

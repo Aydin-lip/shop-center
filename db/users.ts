@@ -1,9 +1,13 @@
-import CollectionDB from "./mongoDB"
+import { IUserInfo, IUserToken } from "@/models/user"
+import ConnectionJSON from "./json"
 
-const UsersCollection = async () => {
-  let collectionToken = await CollectionDB("users-token")
-  let collectionInfo = await CollectionDB("users-info")
-  return {collectionToken, collectionInfo}
+const UsersCollection = async (): Promise<{
+  collectionToken: IUserToken[]
+  collectionInfo: IUserInfo[]
+}> => {
+  let collectionToken = await ConnectionJSON("usersToken")
+  let collectionInfo = await ConnectionJSON("usersInfo")
+  return { collectionToken, collectionInfo }
 }
 
 export default UsersCollection;

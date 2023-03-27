@@ -30,9 +30,7 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
   const router = useRouter()
   let loading = router.isFallback
 
-  console.log(productID._id, productState._id)
   if (productID._id !== productState._id) {
-    console.log("set")
     setProductState(productID)
   }
 

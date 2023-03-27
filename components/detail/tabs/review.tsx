@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Heading5, Body2, Caption, SubTitle1 } from '@/mui/customize';
 import Image from 'next/image';
-import Comments from '@/data/comments';
 import { star } from '@/helper';
 import hoodie from "@/public/images/detail/hoodie.png";
 import { Avatar, Pagination } from '@mui/material';
@@ -21,7 +20,6 @@ interface Comment {
 
 const Review = ({data}: {data: IComment[]}) => {
 
-  const allComments = Comments();
   const [page, setPage] = useState<number>(1);
   const changePagination = (event: React.ChangeEvent<unknown>, value: number) => setPage(value);
 
