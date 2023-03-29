@@ -1,5 +1,6 @@
 import { BasicButton, Display2, Heading6 } from "@/mui/customize";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -19,15 +20,17 @@ const Header = () => {
               <Heading6 className="text-dark-200 my-8 w-full max-w-sm">
                 you can find new collections of summer in differet brands only here.
               </Heading6>
-              <BasicButton variant="contained" color="primary" endIcon={
-                <span className="flex">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.90999 20.67C8.71999 20.67 8.52999 20.6 8.37999 20.45C8.24051 20.3089 8.16229 20.1184 8.16229 19.92C8.16229 19.7216 8.24051 19.5311 8.37999 19.39L14.9 12.87C15.38 12.39 15.38 11.61 14.9 11.13L8.37999 4.60999C8.24051 4.46885 8.16229 4.27842 8.16229 4.07999C8.16229 3.88156 8.24051 3.69113 8.37999 3.54999C8.66999 3.25999 9.14999 3.25999 9.43999 3.54999L15.96 10.07C16.47 10.58 16.76 11.27 16.76 12C16.76 12.73 16.48 13.42 15.96 13.93L9.43999 20.45C9.28999 20.59 9.09999 20.67 8.90999 20.67Z" fill="white" />
-                  </svg>
-                </span>
-              }>
-                Shop Now
-              </BasicButton>
+              <Link href='/#Collection' className="no-underline">
+                <BasicButton variant="contained" color="primary" endIcon={
+                  <span className="flex">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.90999 20.67C8.71999 20.67 8.52999 20.6 8.37999 20.45C8.24051 20.3089 8.16229 20.1184 8.16229 19.92C8.16229 19.7216 8.24051 19.5311 8.37999 19.39L14.9 12.87C15.38 12.39 15.38 11.61 14.9 11.13L8.37999 4.60999C8.24051 4.46885 8.16229 4.27842 8.16229 4.07999C8.16229 3.88156 8.24051 3.69113 8.37999 3.54999C8.66999 3.25999 9.14999 3.25999 9.43999 3.54999L15.96 10.07C16.47 10.58 16.76 11.27 16.76 12C16.76 12.73 16.48 13.42 15.96 13.93L9.43999 20.45C9.28999 20.59 9.09999 20.67 8.90999 20.67Z" fill="white" />
+                    </svg>
+                  </span>
+                }>
+                  Shop Now
+                </BasicButton>
+              </Link>
             </div>
             <div className="bg-[url('/images/home/header/girl-with-packages.png')] w-6/12 bg-no-repeat bg-cover pr-40"></div>
           </div>

@@ -1,24 +1,34 @@
-import { useState, MouseEvent } from 'react'
+import { useState, useMemo } from 'react'
 import Card from "@/components/card";
 import { BasicButton, Heading3, Heading5 } from "@/mui/customize";
 import SwiperBox from "../swiper";
 import IProducts from '@/models/products';
+import { useRouter } from 'next/router';
 
 interface IProps {
   from: string
   products: IProducts[]
 }
 const TrendingProducts = ({ from, products }: IProps) => {
-  const [category, setCategory] = useState<string>('all')
-  const [productState, setProductState] = useState<IProducts[]>(products)
-  const allProduct = products
+  const router = useRouter()
 
-  const changeCategory = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
-    const target = e.target as HTMLElement;
-    setCategory(target.innerText)
-    let filterProduct = allProduct.filter(product => product.category === target.innerText)
+  const [category, setCategory] = useState<string>('Women')
+  const [productState, setProductState] = useState<IProducts[]>(products)
+
+  const changeCategory = (target: string) => {
+    setCategory(target)
+    let filterProduct = products.filter(product => product.category === target)
     setProductState(filterProduct)
   }
+
+  useMemo(() => {
+    if (router.asPath) {
+      const path = router.asPath.split('#')[1]
+      if (['Women', 'Men', 'Kids'].includes(path)) {
+        changeCategory(path)
+      }
+    }
+  }, [router.asPath])
 
   return (
     <div className={`container mx-auto ${from !== 'home' && 'mb-24'}`}>
@@ -32,9 +42,9 @@ const TrendingProducts = ({ from, products }: IProps) => {
         }
         {from === 'home' &&
           <div className="flex gap-3 ">
-            <BasicButton variant="text" className={`text-light-200 ${category === 'Women' ? 'bg-[#fef5f6]' : ''}`} onClick={changeCategory}>Women</BasicButton>
-            <BasicButton variant="text" className={`text-light-200 ${category === 'Men' ? 'bg-[#fef5f6]' : ''}`} onClick={changeCategory}>Men</BasicButton>
-            <BasicButton variant="text" className={`text-light-200 ${category === 'Kids' ? 'bg-[#fef5f6]' : ''}`} onClick={changeCategory}>Kids</BasicButton>
+            <BasicButton variant="text" className={`text-light-200 ${category === 'Women' ? 'bg-[#fef5f6]' : ''}`} onClick={() => changeCategory("Women")}>Women</BasicButton>
+            <BasicButton variant="text" className={`text-light-200 ${category === 'Men' ? 'bg-[#fef5f6]' : ''}`} onClick={() => changeCategory("Men")}>Men</BasicButton>
+            <BasicButton variant="text" className={`text-light-200 ${category === 'Kids' ? 'bg-[#fef5f6]' : ''}`} onClick={() => changeCategory("Kids")}>Kids</BasicButton>
           </div>
         }
       </div>

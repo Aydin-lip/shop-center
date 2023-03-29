@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Tooltip } from "@mui/material";
 import Logo from "../logo/shopCenter";
 import SearchNav from "./search";
 import Profile from "./profile";
@@ -33,7 +33,11 @@ const Navbar = () => {
               <Items />
             </div>
             <div className="flex items-center">
-              <AppButton />
+              <Tooltip title="Coming Soon..">
+                <div>
+                  <AppButton />
+                </div>
+              </Tooltip>
             </div>
           </div>
         </Container>
