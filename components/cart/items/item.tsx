@@ -192,7 +192,6 @@ interface IProps {
 }
 const Item = ({ data, product, price, setPrice }: IProps) => {
   const [count, setCount] = useState<number>(data.count.length)
-  const [saveDis, setSaveDis] = useState<boolean>(false)
   const { info, setInfo } = useAppContext()
 
   let allSize = ['XS', 'S', 'M', 'L', 'XL']
@@ -219,15 +218,10 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
   }
 
   const deleteHandler = (target: string) => {
-    setSaveDis(true)
     if (target === 'delete') {
       cartDeleteBag(data.id)
-        .then(() => { })
-        .catch(() => setSaveDis(false))
     } else {
       editFavorites({ product_id: data.product_id })
-        .then(() => { })
-        .catch(() => setSaveDis(false))
     }
 
     let priceFilter = price.filter(p => p.id !== data.id)
@@ -262,7 +256,7 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
           <div>
             <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('delete')}>Delete</BasicButton>
             <Tooltip title='Add favorites and delete from cart'>
-              <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('save')} disabled={saveDis}>Save for later</BasicButton>
+              <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('save')}>Save for later</BasicButton>
             </Tooltip>
           </div>
         </div>

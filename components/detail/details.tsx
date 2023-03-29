@@ -1,15 +1,83 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Heading6, SubTitle2, Heading5, SubTitle1, Body1, BasicButton, ButtonWithIcon } from '@/mui/customize';
 import { Button } from '@mui/material';
 import IProducts from '@/models/products';
+import { useAppContext } from '@/context/state';
+import { useRouter } from 'next/router';
+import { cartAddBag, cartDeleteBag, editFavorites } from '@/services/http.service';
+import { IBag } from '@/models/user';
 
-const listSize = ['XS', 'S', 'M', 'L', 'XL'];
-const listColors = ['#F58289', '#CBC0B9', '#D5641B', '#456BF1', '#80838F', '#3B3D43'];
 
 const Details = ({ data }: { data: IProducts }) => {
+  const router = useRouter()
+  const { info, setInfo, loading } = useAppContext()
+
+  let listSize = ['XS', 'S', 'M', 'L', 'XL'];
+  let listColors = ['#F58289', '#CBC0B9', '#D5641B', '#456BF1', '#80838F', '#3B3D43'];
+  if (data) {
+    listSize = data.size
+    listColors = data.color
+  }
 
   const [currencySize, setCurrencySize] = useState<string>(listSize[0]);
   const [currencyColor, setCurrencyColor] = useState<string>(listColors[0]);
+  const [favorites, setFavorites] = useState<boolean>(info.favorites.includes(data._id))
+  const [cart, setCart] = useState<boolean>(info.cart.bag.map(b => b.product_id)?.includes(data._id))
+
+  useEffect(() => {
+    setFavorites(info.favorites.includes(data._id))
+    setCart(info.cart.bag.map(b => b.product_id)?.includes(data._id))
+  }, [!loading])
+
+  const favoritesHandler = () => {
+    if (info._id === '0') {
+      router.replace('/register/sign-in')
+      return
+    }
+    editFavorites({ product_id: data._id })
+    const favorites = info.favorites
+    if (favorites.includes(data._id)) {
+      let filter = favorites.filter(f => f !== data._id)
+      setInfo({ ...info, favorites: filter })
+      setFavorites(false)
+    } else {
+      setInfo({ ...info, favorites: [...favorites, data._id] })
+      setFavorites(true)
+    }
+  }
+
+  const cartHandler = () => {
+    if (info._id === '0') {
+      router.replace('/register/sign-in')
+      return
+    }
+
+    if (cart) {
+      let id = info.cart.bag.find(b => b.product_id === data._id)?.id
+      if (id)
+        cartDeleteBag(id)
+          .then(res => {
+            let filter = info.cart.bag.filter(f => f.product_id !== data._id)
+            setInfo({ ...info, cart: { ...info.cart, bag: filter } })
+            setCart(false)
+          })
+
+    } else {
+      let id = info.cart.bag[info.cart.bag.length - 1] ? info.cart.bag[info.cart.bag.length - 1].id + 1 : 1
+      let newCart = {
+        product_id: data._id,
+        count: [{
+          color: currencyColor,
+          size: currencySize
+        }]
+      }
+      cartAddBag(newCart)
+        .then(res => {
+          setInfo({ ...info, cart: { ...info.cart, bag: [...info.cart.bag, { id, ...newCart }] } })
+          setCart(true)
+        })
+    }
+  }
 
   return (
     <div className="flex flex-col justify-center items-start w-[48%]">
@@ -51,7 +119,7 @@ const Details = ({ data }: { data: IProducts }) => {
         {data.color.map(color =>
           <Button
             variant='text'
-            className={`ml-4 min-w-0 w-10 h-10 rounded-full ${color === currencyColor && 'outline outline-offset-2 outline-1'}`}
+            className={`ml-4 min-w-0 w-10 h-10 rounded-full border border-solid border-dark-100 ${color === currencyColor && 'outline outline-offset-2 outline-1'}`}
             sx={{ background: color, outlineColor: color }}
             onClick={() => setCurrencyColor(color)}
             key={color}
@@ -82,23 +150,42 @@ const Details = ({ data }: { data: IProducts }) => {
       </div>
       <div className="flex flex-row items-center justify-between mt-12 w-full">
         <ButtonWithIcon
-          className="flex flex-row items-center justify-center w-[55%] h-10"
+          className={`flex flex-row items-center justify-center w-[55%] h-10 ${cart ? 'bg-dark-300 hover:bg-light-200' : ''}`}
           variant='contained'
+          onClick={cartHandler}
         >
-          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.69 17.75H8.04C7.05 17.75 6.1 17.33 5.43 16.6C5.09767 16.2381 4.84355 15.8115 4.68353 15.347C4.52351 14.8824 4.46104 14.3898 4.5 13.9L5.33 3.94C5.36 3.63 5.25 3.33 5.04 3.1C4.83 2.87 4.54 2.75 4.23 2.75H2.5C2.09 2.75 1.75 2.41 1.75 2C1.75 1.59 2.09 1.25 2.5 1.25H4.24C4.97 1.25 5.66 1.56 6.15 2.09C6.42 2.39 6.62 2.74 6.73 3.13H19.22C20.23 3.13 21.16 3.53 21.84 4.25C22.51 4.98 22.85 5.93 22.77 6.94L22.23 14.44C22.12 16.27 20.52 17.75 18.69 17.75ZM6.78 4.62L6 14.02C5.95 14.6 6.14 15.15 6.53 15.58C6.92 16.01 7.46 16.24 8.04 16.24H18.69C19.73 16.24 20.67 15.36 20.75 14.32L21.29 6.82C21.3137 6.53647 21.2779 6.25111 21.1848 5.98225C21.0917 5.71339 20.9434 5.46698 20.7494 5.25885C20.5554 5.05073 20.32 4.88548 20.0583 4.77374C19.7966 4.66199 19.5145 4.60622 19.23 4.61H6.78V4.62ZM16.75 22.75C15.65 22.75 14.75 21.85 14.75 20.75C14.75 19.65 15.65 18.75 16.75 18.75C17.85 18.75 18.75 19.65 18.75 20.75C18.75 21.85 17.85 22.75 16.75 22.75ZM16.75 20.25C16.47 20.25 16.25 20.47 16.25 20.75C16.25 21.03 16.47 21.25 16.75 21.25C17.03 21.25 17.25 21.03 17.25 20.75C17.25 20.47 17.03 20.25 16.75 20.25ZM8.75 22.75C7.65 22.75 6.75 21.85 6.75 20.75C6.75 19.65 7.65 18.75 8.75 18.75C9.85 18.75 10.75 19.65 10.75 20.75C10.75 21.85 9.85 22.75 8.75 22.75ZM8.75 20.25C8.47 20.25 8.25 20.47 8.25 20.75C8.25 21.03 8.47 21.25 8.75 21.25C9.03 21.25 9.25 21.03 9.25 20.75C9.25 20.47 9.03 20.25 8.75 20.25Z" fill="white" />
-            <path d="M21.5 8.75H9.5C9.09 8.75 8.75 8.41 8.75 8C8.75 7.59 9.09 7.25 9.5 7.25H21.5C21.91 7.25 22.25 7.59 22.25 8C22.25 8.41 21.91 8.75 21.5 8.75Z" fill="white" />
-          </svg>
-          <SubTitle2 className="text-container text-sm ml-1">Add To Cart</SubTitle2>
+          {cart ?
+            <>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
+              </svg>
+              <SubTitle2 className="text-container text-sm ml-1">Added To Cart</SubTitle2>
+            </>
+            :
+            <>
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.69 17.75H8.04C7.05 17.75 6.1 17.33 5.43 16.6C5.09767 16.2381 4.84355 15.8115 4.68353 15.347C4.52351 14.8824 4.46104 14.3898 4.5 13.9L5.33 3.94C5.36 3.63 5.25 3.33 5.04 3.1C4.83 2.87 4.54 2.75 4.23 2.75H2.5C2.09 2.75 1.75 2.41 1.75 2C1.75 1.59 2.09 1.25 2.5 1.25H4.24C4.97 1.25 5.66 1.56 6.15 2.09C6.42 2.39 6.62 2.74 6.73 3.13H19.22C20.23 3.13 21.16 3.53 21.84 4.25C22.51 4.98 22.85 5.93 22.77 6.94L22.23 14.44C22.12 16.27 20.52 17.75 18.69 17.75ZM6.78 4.62L6 14.02C5.95 14.6 6.14 15.15 6.53 15.58C6.92 16.01 7.46 16.24 8.04 16.24H18.69C19.73 16.24 20.67 15.36 20.75 14.32L21.29 6.82C21.3137 6.53647 21.2779 6.25111 21.1848 5.98225C21.0917 5.71339 20.9434 5.46698 20.7494 5.25885C20.5554 5.05073 20.32 4.88548 20.0583 4.77374C19.7966 4.66199 19.5145 4.60622 19.23 4.61H6.78V4.62ZM16.75 22.75C15.65 22.75 14.75 21.85 14.75 20.75C14.75 19.65 15.65 18.75 16.75 18.75C17.85 18.75 18.75 19.65 18.75 20.75C18.75 21.85 17.85 22.75 16.75 22.75ZM16.75 20.25C16.47 20.25 16.25 20.47 16.25 20.75C16.25 21.03 16.47 21.25 16.75 21.25C17.03 21.25 17.25 21.03 17.25 20.75C17.25 20.47 17.03 20.25 16.75 20.25ZM8.75 22.75C7.65 22.75 6.75 21.85 6.75 20.75C6.75 19.65 7.65 18.75 8.75 18.75C9.85 18.75 10.75 19.65 10.75 20.75C10.75 21.85 9.85 22.75 8.75 22.75ZM8.75 20.25C8.47 20.25 8.25 20.47 8.25 20.75C8.25 21.03 8.47 21.25 8.75 21.25C9.03 21.25 9.25 21.03 9.25 20.75C9.25 20.47 9.03 20.25 8.75 20.25Z" fill="white" />
+                <path d="M21.5 8.75H9.5C9.09 8.75 8.75 8.41 8.75 8C8.75 7.59 9.09 7.25 9.5 7.25H21.5C21.91 7.25 22.25 7.59 22.25 8C22.25 8.41 21.91 8.75 21.5 8.75Z" fill="white" />
+              </svg>
+              <SubTitle2 className="text-container text-sm ml-1">Add To Cart</SubTitle2>
+            </>
+          }
         </ButtonWithIcon>
         <ButtonWithIcon
           className="flex flex-row items-center justify-center w-[40%] h-10"
           variant='text'
           color="secondary"
+          onClick={favoritesHandler}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.3094 21.0495L11.3094 21.0495L11.3022 21.047C9.47224 20.4195 7.07073 18.9765 5.13174 16.8528C3.19727 14.7341 1.75 11.9692 1.75 8.68998C1.75 5.46406 4.3582 2.84998 7.56 2.84998C9.11753 2.84998 10.5695 3.45733 11.6449 4.54202L12 4.90011L12.3551 4.54202C13.4305 3.45733 14.8825 2.84998 16.44 2.84998C19.6413 2.84998 22.25 5.47354 22.25 8.68998C22.25 11.9743 20.8026 14.7392 18.8684 16.8565C16.9295 18.9788 14.528 20.4194 12.6978 21.047L12.6978 21.047L12.6906 21.0495C12.511 21.1142 12.2722 21.15 12 21.15C11.7278 21.15 11.489 21.1142 11.3094 21.0495ZM11.4682 20.5831L11.4719 20.5843C11.6379 20.6397 11.8437 20.655 12.005 20.655C12.1663 20.655 12.3721 20.6397 12.5381 20.5843L12.5381 20.5843L12.5424 20.5829C13.7588 20.1651 16.0443 18.9819 18.0332 17.0251C20.0283 15.0623 21.76 12.284 21.76 8.68998C21.76 5.74653 19.3788 3.34998 16.45 3.34998C14.7711 3.34998 13.2121 4.13547 12.208 5.4926L12.2075 5.49338C12.1781 5.53319 12.111 5.57498 12.01 5.57498C11.909 5.57498 11.8419 5.53319 11.8125 5.49338L11.8125 5.49337L11.81 5.48998C10.7866 4.12544 9.23908 3.34998 7.56 3.34998C4.63116 3.34998 2.25 5.74653 2.25 8.68998C2.25 12.2789 3.97909 15.0571 5.97286 17.0212C7.96037 18.9791 10.246 20.1651 11.4682 20.5831Z" fill="#424242" stroke="#424242" />
-          </svg>
+          {favorites ?
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dd0426" className="w-6 h-6">
+              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
+            :
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#000" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          }
           <SubTitle2 className="text-light-200 text-sm ml-1">Add to Favorites</SubTitle2>
         </ButtonWithIcon>
       </div>
