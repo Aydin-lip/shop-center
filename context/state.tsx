@@ -8,6 +8,7 @@ let defaultUser: IUserInfo = {
   profile: {
     fullname: '',
     phone: '',
+    email: '',
     category: [],
     style: []
   },

@@ -221,6 +221,7 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
     if (target === 'delete') {
       cartDeleteBag(data.id)
     } else {
+      cartDeleteBag(data.id)
       editFavorites({ product_id: data.product_id })
     }
 

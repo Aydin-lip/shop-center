@@ -1,6 +1,7 @@
 export interface IProfile {
   fullname: string
   phone: string
+  email: string
   category: string[]
   style: string[]
 }

@@ -1,3 +1,4 @@
+import { useAppContext } from "@/context/state";
 import { BasicButton, Body2, SubTitle2 } from "@/mui/customize";
 import Link from "next/link";
 
@@ -67,27 +68,12 @@ const messageBox = (detail: IDetailMessageBox, hr: boolean) => {
 }
 
 const Messages = () => {
-  let messages = [
-    {
-      id: 1,
-      title: 'On sale products',
-      date: '2023-Feb-17',
-      message: 'hey saghar! some of our new products are on sale! you can see them here.',
-      url: '/',
-      urlText: 'on sale products'
-    }, {
-      id: 2,
-      title: 'On sale products',
-      date: '2023-Feb-17',
-      message: 'hey saghar! some of our new products are on sale! you can see them here.',
-      url: '/',
-      urlText: 'on sale products'
-    }
-  ]
+  const { info } = useAppContext()
+
   return (
     <>
       <div className="w-full h-full mx-4 border-solid border border-dark-100 px-10 overflow-y-auto">
-        {messages.map((m, i) => messageBox(m, messages[++i] ? true : false))}
+        {info.messages.map((m, i) => messageBox(m, info.messages[++i] ? true : false))}
       </div>
     </>
   )
