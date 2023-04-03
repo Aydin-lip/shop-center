@@ -20,6 +20,7 @@ export interface IComment {
 }
 export default interface IProducts {
   _id: string
+  style: string[]
   name: string
   price: number
   onSale: number

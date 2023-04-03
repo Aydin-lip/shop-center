@@ -2,8 +2,11 @@ import { BasicButton, Heading3 } from "@/mui/customize";
 import Image from "next/image";
 import SmallCard from "../card/small";
 import ICollection from "@/models/collection";
+import { useRouter } from "next/router";
 
-const NewCollection = ({collections}: {collections: ICollection[]}) => {
+const NewCollection = ({ collections }: { collections: ICollection[] }) => {
+  const router = useRouter()
+
   return (
     <div className="container mx-auto">
       <div className="flex justify-between items-center mt-10 mb-6">
@@ -27,11 +30,16 @@ const NewCollection = ({collections}: {collections: ICollection[]}) => {
         <div className="w-1/2 flex flex-col justify-center items-center">
           <div className="max-w-lg mr-auto">
             <Heading3 className="text-container">Best Summer Collection for Women Up To 50% OFF Now! </Heading3>
-            <BasicButton variant="contained" color="secondary" className="mt-10 rounded-3xl mr-auto bg-container hover:bg-dark-50" endIcon={
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.91006 20.67C8.72006 20.67 8.53006 20.6 8.38006 20.45C8.24058 20.3089 8.16235 20.1185 8.16235 19.92C8.16235 19.7216 8.24058 19.5312 8.38006 19.39L14.9001 12.87C15.3801 12.39 15.3801 11.61 14.9001 11.13L8.38006 4.61002C8.24058 4.46888 8.16235 4.27845 8.16235 4.08002C8.16235 3.88159 8.24058 3.69116 8.38006 3.55002C8.67006 3.26002 9.15005 3.26002 9.44005 3.55002L15.9601 10.07C16.4701 10.58 16.7601 11.27 16.7601 12C16.7601 12.73 16.4801 13.42 15.9601 13.93L9.44005 20.45C9.29005 20.59 9.10006 20.67 8.91006 20.67Z" fill="#424242" />
-              </svg>
-            }>Shop Now</BasicButton>
+            <BasicButton
+              variant="contained"
+              color="secondary"
+              className="mt-10 rounded-3xl mr-auto bg-container hover:bg-dark-50"
+              onClick={() => router.replace('/category')}
+              endIcon={
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.91006 20.67C8.72006 20.67 8.53006 20.6 8.38006 20.45C8.24058 20.3089 8.16235 20.1185 8.16235 19.92C8.16235 19.7216 8.24058 19.5312 8.38006 19.39L14.9001 12.87C15.3801 12.39 15.3801 11.61 14.9001 11.13L8.38006 4.61002C8.24058 4.46888 8.16235 4.27845 8.16235 4.08002C8.16235 3.88159 8.24058 3.69116 8.38006 3.55002C8.67006 3.26002 9.15005 3.26002 9.44005 3.55002L15.9601 10.07C16.4701 10.58 16.7601 11.27 16.7601 12C16.7601 12.73 16.4801 13.42 15.9601 13.93L9.44005 20.45C9.29005 20.59 9.10006 20.67 8.91006 20.67Z" fill="#424242" />
+                </svg>
+              }>Shop Now</BasicButton>
           </div>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import { BasicButton, Display2, Heading6 } from "@/mui/customize";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter()
+
   return (
     <>
       <div className="container mx-auto">
@@ -39,11 +42,36 @@ const Header = () => {
       <div className="bg-[#FFF5F1] mt-8 mb-6">
         <div className="container m-auto">
           <div className="h-20 flex justify-center items-center gap-4">
-            <Image src='/images/home/header/H&M.png' alt="Brands" width={90} height={50} />
-            <Image src='/images/home/header/DeFacto.png' alt="Brands" width={90} height={90} />
-            <Image src='/images/home/header/LACOSTE.png' alt="Brands" width={190} height={190} />
-            <Image src='/images/home/header/PUMA.png' alt="Brands" width={60} height={50} />
-            <Image src='/images/home/header/MANGO.png' alt="Brands" width={90} height={50} />
+            <Image className="cursor-pointer"
+              onClick={() => router.replace('/category')}
+              src='/images/home/header/H&M.png'
+              alt="Brands"
+              width={90}
+              height={50} />
+            <Image className="cursor-pointer"
+              onClick={() => router.replace('/category')}
+              src='/images/home/header/DeFacto.png'
+              alt="Brands"
+              width={90}
+              height={90} />
+            <Image className="cursor-pointer"
+              onClick={() => router.replace('/category')}
+              src='/images/home/header/LACOSTE.png'
+              alt="Brands"
+              width={190}
+              height={190} />
+            <Image className="cursor-pointer"
+              onClick={() => router.replace('/category')}
+              src='/images/home/header/PUMA.png'
+              alt="Brands"
+              width={60}
+              height={50} />
+            <Image className="cursor-pointer"
+              onClick={() => router.replace('/category')}
+              src='/images/home/header/MANGO.png'
+              alt="Brands"
+              width={90}
+              height={50} />
           </div>
         </div>
       </div>

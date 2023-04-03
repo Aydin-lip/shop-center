@@ -34,7 +34,7 @@ const Filters = () => {
 
   return (
     <div className='border border-dark-100 border-solid rounded px-4 py-2.5 w-[22%]'>
-      <SubTitle2 className='text-light-200 border-0 border-b border-b-dark-100 border-solid pb-3 font-poppins'>Filters</SubTitle2>
+      <SubTitle2 className='text-light-200 border-0 border-b border-b-dark-100 border-solid pb-3 font-poppins'>Filters (Not yet launched)</SubTitle2>
       <div className='flex flex-col justify-start items-center border-0 border-b border-b-dark-100 border-solid py-3'>
         <SubTitle2 className="w-full">Price</SubTitle2>
         <div className="flex flex-row items-center justify-between w-full py-3">

@@ -1,6 +1,7 @@
 [
   {
     "_id": "64079896671b3565194c4513",
+    "style": ["Dress"],
     "name": "suit",
     "price": 269,
     "onSale": 35,
@@ -60,6 +61,7 @@
   },
   {
     "_id": "64079896671b3565194c4514",
+    "style": ["Dress"],
     "name": "Dors",
     "price": 189,
     "onSale": 15,
@@ -111,6 +113,7 @@
   },
   {
     "_id": "64079896671b3565194c4515",
+    "style": ["Hoodie"],
     "name": "Hodi",
     "price": 150,
     "onSale": 20,
@@ -178,6 +181,7 @@
   },
   {
     "_id": "64079896671b3565194c4516",
+    "style": ["Top", "T-shirt"],
     "name": "Nim Tane & Short",
     "price": 120,
     "onSale": 1,
@@ -216,6 +220,7 @@
   },
   {
     "_id": "64079896671b3565194c4517",
+    "style": ["T-shirt"],
     "name": "T-shert",
     "price": 80,
     "onSale": 1,
@@ -297,6 +302,7 @@
   },
   {
     "_id": "64079896671b3565194c4518",
+    "style": ["Dress"],
     "name": "Li set",
     "price": 339,
     "onSale": 40,
@@ -354,6 +360,7 @@
   },
   {
     "_id": "64079896671b3565194c4519",
+    "style": ["T-shirt", "Top"],
     "name": "Sport Set",
     "price": 178,
     "onSale": 10,
@@ -413,6 +420,7 @@
   },
   {
     "_id": "64079896671b3565194c451a",
+    "style": ["Top", "Skirt"],
     "name": "Daman Green",
     "price": 299,
     "onSale": 1,
@@ -453,6 +461,7 @@
   },
   {
     "_id": "64079896671b3565194c451b",
+    "style": ["T-shirt"],
     "name": "T-shert",
     "price": 85,
     "onSale": 1,
@@ -516,6 +525,7 @@
   },
   {
     "_id": "64079896671b3565194c451c",
+    "style": ["Dress"],
     "name": "Li set & hat",
     "price": 69,
     "onSale": 1,
@@ -563,6 +573,7 @@
   },
   {
     "_id": "64079896671b3565194c451d",
+    "style": ["Dress"],
     "name": "Dress",
     "price": 80,
     "onSale": 25,
@@ -621,6 +632,7 @@
   },
   {
     "_id": "64079896671b3565194c451e",
+    "style": ["Skirt"],
     "name": "Daman",
     "price": 110,
     "onSale": 30,
@@ -679,6 +691,7 @@
   },
   {
     "_id": "64079896671b3565194c451f",
+    "style": ["Dress"],
     "name": "Suit & Glasses",
     "price": 99,
     "onSale": 10,
