@@ -93,13 +93,13 @@ const Details = ({ data }: { data: IProducts }) => {
         <SubTitle2 className='!font-poppins text-light-100 ml-9'>654 sold</SubTitle2>
       </div>
       <div className='flex flex-row items-center justify-start my-8'>
-        <Heading5 className='text-light-200 !font-poppins'>{data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</Heading5>
+        <Heading6 className='text-light-200 !font-poppins'>{data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</Heading6>
         {data.onSale > 1 &&
-          <SubTitle1 className='text-dark-300 line-through ml-7 !font-poppins'>{data.onSale}$</SubTitle1>
+          <SubTitle2 className='text-dark-300 line-through ml-7 !font-poppins'>{data.price}$</SubTitle2>
         }
       </div>
       <div className='flex flex-row items-center justify-start'>
-        <Heading6 className='text-light-200 !font-poppins mr-4'>Size:</Heading6>
+        <Heading6 className='text-light-200 !font-poppins mr-4 text-base'>Size:</Heading6>
         <div className='flex flex-row items-center justify-start'>
           {data.size.map((item, index) =>
             <BasicButton
@@ -115,12 +115,13 @@ const Details = ({ data }: { data: IProducts }) => {
         </div>
       </div>
       <div className='flex flex-row items-center justify-start my-8'>
-        <Heading6 className='text-light-200 !font-poppins mr-4'>Color:</Heading6>
+        <Heading6 className='text-light-200 !font-poppins mr-4 text-base'>Color:</Heading6>
         {data.color.map(color =>
           <Button
             variant='text'
             className={`ml-4 min-w-0 w-10 h-10 rounded-full border border-solid border-dark-100 ${color === currencyColor && 'outline outline-offset-2 outline-1'}`}
-            sx={{ background: color, outlineColor: color }}
+            sx={{ outlineColor: color }}
+            style={{background: color}}
             onClick={() => setCurrencyColor(color)}
             key={color}
           ></Button>

@@ -74,7 +74,7 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
               textColor="inherit"
               aria-label="full width tabs example"
             >
-              {listTabs.map(item => <Tab className="text-light-200 font-bold text-2xl font-poppins capitalize" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
+              {listTabs.map(item => <Tab className="text-light-200 font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
             </Tabs>
           </AppBar>
           {value === 0 ? (
