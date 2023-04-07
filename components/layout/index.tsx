@@ -28,9 +28,9 @@ const Layout = ({ title, children, privet }: IProps) => {
           <link rel="shortcut icon" href="/favicon/favicon.ico" />
           <title>{`${title} - Shop Center`}</title>
         </Head>
-        <div className="bg-container overflow-hidden">
+        <div className="bg-container">
           <Navbar />
-          <main className="m-auto">{children}</main>
+          <main className="m-auto overflow-hidden">{children}</main>
           <Footer />
         </div>
       </>

@@ -9,15 +9,15 @@ const Header = () => {
   return (
     <>
       <div className="container mx-auto">
-        <div className="relative">
-          <div className="absolute top-4 left-4 w-40 h-40 bg-red-dark-300 rounded-full z-[1]"></div>
-          <div className="absolute bottom-8 left-96 w-52 h-52 bg-[#ffe442] rounded-full z-[1]"></div>
+        <div className="relative px-2 sm:px-0">
+          <div className="absolute top-4 left-4 w-28 h-28 sm:w-40 sm:h-40 bg-red-dark-300 rounded-full z-[1]"></div>
+          <div className="absolute bottom-8 right-4 sm:left-96 w-28 h-28 sm:w-52 sm:h-52 bg-[#ffe442] rounded-full z-[1]"></div>
           {/* <div className="absolute top-16 right-0 w-48 h-48 bg-[#7ea43d] rounded-full z-[1]"></div> */}
-          <div className="absolute top-6 right-96 w-32 h-32 bg-[#ff914d] rounded-full z-[1]"></div>
+          <div className="absolute top-6 right-96 w-32 h-32 hidden sm:block bg-[#ff914d] rounded-full z-[1]"></div>
           {/* <div className="absolute top-72 right-40 w-28 h-28 bg-[#980053] rounded-full z-[1]"></div> */}
-          <div className="w-full sticky z-[2] bg-[#f6f6f680] rounded-3xl flex mt-4" style={{ backdropFilter: "blur(30px)" }}>
-            <div className="py-24 px-16">
-              <Display2 className="cursor-default">
+          <div className="w-full sticky z-[2] sm:bg-[url('/images/home/header/girl-with-packages.png')] bg-no-repeat bg-[20rem_2rem] lg:bg-[url('')] lg:bg-[#f6f6f680] rounded-3xl flex mt-6 lg:mt-4 " style={{ backdropFilter: "blur(30px)" }}>
+            <div className="p-4 sm:py-12 sm:px-8 lg:py-24 lg:px-16">
+              <Display2 className="cursor-default max-[640px]:text-4xl max-[640px]:text-center">
                 2023 Summer Collections
               </Display2>
               <Heading6 className="text-dark-200 my-8 w-full max-w-sm">
@@ -35,39 +35,39 @@ const Header = () => {
                 </BasicButton>
               </Link>
             </div>
-            <div className="bg-[url('/images/home/header/girl-with-packages.png')] w-6/12 bg-no-repeat bg-cover pr-40"></div>
+            <div className="bg-[url('/images/home/header/girl-with-packages.png')] bg-no-repeat w-6/12 bg-cover pr-40 hidden lg:block"></div>
           </div>
         </div>
       </div>
       <div className="bg-[#FFF5F1] mt-8 mb-6">
-        <div className="container m-auto">
-          <div className="h-20 flex justify-center items-center gap-4">
+        <div className="container m-auto overflow-y-hidden overflow-x-auto">
+          <div className="h-20 flex justify-center items-center gap-4 w-[600px] m-auto">
             <Image className="cursor-pointer"
-              onClick={() => router.replace('/category')}
+              onClick={() => router.push('/category')}
               src='/images/home/header/H&M.png'
               alt="Brands"
               width={90}
               height={50} />
             <Image className="cursor-pointer"
-              onClick={() => router.replace('/category')}
+              onClick={() => router.push('/category')}
               src='/images/home/header/DeFacto.png'
               alt="Brands"
               width={90}
               height={90} />
             <Image className="cursor-pointer"
-              onClick={() => router.replace('/category')}
+              onClick={() => router.push('/category')}
               src='/images/home/header/LACOSTE.png'
               alt="Brands"
               width={190}
               height={190} />
             <Image className="cursor-pointer"
-              onClick={() => router.replace('/category')}
+              onClick={() => router.push('/category')}
               src='/images/home/header/PUMA.png'
               alt="Brands"
               width={60}
               height={50} />
             <Image className="cursor-pointer"
-              onClick={() => router.replace('/category')}
+              onClick={() => router.push('/category')}
               src='/images/home/header/MANGO.png'
               alt="Brands"
               width={90}

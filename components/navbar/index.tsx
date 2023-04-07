@@ -88,7 +88,9 @@ const Navbar = () => {
               <span className="block w-3 h-[2px] bg-container absolute bottom-[13px] right-[13px] rounded-2xl"></span>
             </div>
             <div className="w-full flex justify-center">
-              <Logo />
+              <Link href='/' className="no-underline">
+                <Logo />
+              </Link>
             </div>
             {openNav &&
               <div>
@@ -106,13 +108,13 @@ const Navbar = () => {
                     </div>
                     <div className="flex justify-between max-[425px]:flex-col max-[425px]:gap-8 max-[315px]:gap-4 max-[425px]:mr-8">
                       <div
-                        className={`flex transition-all duration-1000 ${animation ? 'ml-0' : 'ml-[-10rem]'}`}
+                        className={`flex transition-all duration-1000 ${animation ? 'ml-0' : 'ml-[-15rem]'}`}
                         onClick={() => setOpenNav(false)}
                       >
                         <Items />
                       </div>
                       <div
-                        className={`flex flex-col gap-4 h-24 mr-8 min-[500px]:mr-12 max-[425px]:w-[14.8rem] transition-all duration-1000 ${animation ? 'mt-0' : 'mt-[-11rem]'}`}
+                        className={`flex flex-col gap-4 h-24 mr-8 min-[500px]:mr-12 max-[425px]:w-[14.8rem] transition-all duration-1000 ${animation ? 'mt-0' : 'ml-[-20rem] min-[425px]-mt-[-11rem]'}`}
                         onClick={() => setOpenNav(false)}
                       >
                         <Profile />
