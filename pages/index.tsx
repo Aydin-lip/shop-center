@@ -1,5 +1,5 @@
 import Header from "@/components/home/header";
-import NewCollection from "@/components/home/new";
+import NewCollection from "@/components/home/collection";
 import OnSaleProducts from "@/components/home/onSale";
 import PopularProducts from "@/components/home/popular";
 import TrendingProducts from "@/components/home/trending";
