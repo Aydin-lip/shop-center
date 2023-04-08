@@ -17,7 +17,7 @@ interface IProps {
 const Card = ({ data }: IProps) => {
   return (
     <>
-      <div className="w-full mx-auto rounded-2xl bg-container p-3" style={{ maxWidth: "280px" }}>
+      <div className="w-full mx-auto rounded-2xl bg-container p-3 max-w-[280px]">
         <Link href={`/product/detail/${data._id}`}>
           <div className="rounded-lg w-full bg-dark-50 flex relative cursor-pointer hover:shadow-md">
             {data.showOnSale && data.onSale && data.onSale > 1 ?

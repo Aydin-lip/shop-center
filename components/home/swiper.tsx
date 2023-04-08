@@ -16,8 +16,22 @@ const SwiperBox = ({ children }: IProps) => {
     <>
       <div className="relative">
         <Swiper
-          slidesPerView={4}
-          spaceBetween={1}
+          slidesPerView={1}
+          spaceBetween={10}
+          breakpoints={{
+            600: {
+              slidesPerView: 2,
+              spaceBetween: 0
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1280: {
+              slidesPerView: 4,
+              spaceBetween: 0
+            },
+          }}
           freeMode={true}
           navigation={true}
           modules={[FreeMode, Pagination, Navigation]}
