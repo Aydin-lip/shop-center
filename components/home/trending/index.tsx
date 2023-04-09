@@ -35,10 +35,10 @@ const TrendingProducts = ({ from, products }: IProps) => {
       <div className={`flex justify-between max-[470px]:flex-col max-[470px]:gap-4 items-center ${from === 'home' ? 'mt-8' : 'mt-11'} mb-6`}>
         {from === 'home' ?
           <Heading3
-            className="text-light-300 cursor-default max-[768px]:text-2xl mr-auto">
+            className="text-light-300 cursor-default max-[768px]:text-2xl mr-auto max-[640px]:px-2">
             <span className="text-red-dark-100">Trending</span> Products
           </Heading3> :
-          <Heading5 className="text-light-200 max-[768px]:text-2xl mr-auto">Related Product</Heading5>
+          <Heading5 className="text-light-200 max-[768px]:text-2xl mr-auto max-[640px]:px-2">Related Product</Heading5>
         }
         {from === 'home' &&
           <div className="flex gap-3 ml-auto">

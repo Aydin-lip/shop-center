@@ -11,8 +11,8 @@ const OnSaleProducts = ({products}: {products: IProducts[]}) => {
       <div>
         <div className="bg-[#FFF5F1] pb-10">
           <div className="container m-auto mb-6">
-            <div className="flex justify-between items-center py-6">
-              <Heading3 className="text-light-300 cursor-default"><span className="text-red-dark-100">On Sale</span> Products</Heading3>
+            <div className="flex justify-between items-center py-6 max-[640px]:px-2">
+              <Heading3 className="text-light-300 cursor-default max-[768px]:text-2xl"><span className="text-red-dark-100">On Sale</span> Products</Heading3>
               <Body2 className="text-red-dark-100 cursor-pointer" onClick={() => router.replace('/category')}>View All</Body2>
             </div>
             <div className="flex flex-wrap justify-center gap-y-8 gap-x-4">

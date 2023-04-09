@@ -9,7 +9,7 @@ const NewCollection = ({ collections }: { collections: ICollection[] }) => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex justify-between items-center mt-10 mb-6">
+      <div className="flex justify-between items-center mt-10 mb-6 max-[640px]:px-2">
         <Heading3 className="text-light-300 cursor-default max-[768px]:text-2xl"><span className="text-red-dark-100">New</span> Collection</Heading3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 grid-rows-2 gap-4 max-[410px]:p-2">
@@ -17,8 +17,8 @@ const NewCollection = ({ collections }: { collections: ICollection[] }) => {
           <Image src="/images/home/new-collection/new-collection-style.png" alt="new-collection" width={370} height={460} />
         </div>
         {collections.map(collection =>
-          <div className="flex justify-center">
-            <SmallCard collection={collection} key={collection._id} />
+          <div className="flex justify-center" key={collection._id}>
+            <SmallCard collection={collection} />
           </div>
         )}
       </div>
