@@ -105,97 +105,99 @@ const SignUp = () => {
         <title>Sign Up - Shop Center</title>
       </Head>
       <div className="fixed overflow-auto bg-container top-0 right-0 bottom-0 left-0 flex justify-center items-center">
-        <div className="absolute top-0 my-4 flex flex-col items-center max-w-sm w-full px-12 py-8 bg-dark-50 rounded-xl border border-solid border-dark-100">
-          <div>
-            <Logo />
-          </div>
-          <Heading5 className="pt-8">Create Account!</Heading5>
-          <Caption className="flex justify-center items-center gap-1 cursor-default py-4">
-            Already Have An Account?
-            <Link href='/register/sign-in' className="no-underline text-red-dark-100">
-              Sign In
-            </Link>
-          </Caption>
-          <form className="flex flex-col gap-4 w-full max-w-sm">
-
-            <div className="flex gap-4">
-              <TextField
-                type="text"
-                size="small"
-                label="Name"
-                variant="outlined"
-                color="secondary"
-                error={formErr.name}
-                value={form.name}
-                onChange={e => {
-                  setForm({ ...form, name: e.target.value })
-                  if (formErr.name && e.target.value.length >= 3) setFormErr({ ...formErr, name: false })
-                }}
-              />
-              <TextField
-                type="text"
-                size="small"
-                label="LastName"
-                variant="outlined"
-                color="secondary"
-                value={form.lastName}
-                onChange={e => {
-                  setForm({ ...form, lastName: e.target.value })
-                }}
-              />
+        <div className="w-full h-full md:h-auto flex justify-center">
+          <div className="md:my-4 flex flex-col items-center md:max-w-sm w-full h-full md:h-auto md:px-12 py-4 md:py-8 bg-dark-50 rounded-xl border border-solid border-dark-100">
+            <div>
+              <Logo />
             </div>
-            <TextField
-              type="text"
-              size="small"
-              label="Phone number"
-              variant="outlined"
-              color="secondary"
-              error={formErr.phone}
-              value={form.phone}
-              onChange={e => {
-                setForm({ ...form, phone: e.target.value })
-                if (formErr.phone && e.target.value.length >= 8) setFormErr({ ...formErr, phone: false })
-              }}
-            />
-            <TextField
-              type="email"
-              size="small"
-              label="Email"
-              variant="outlined"
-              color="secondary"
-              error={formErr.email}
-              value={form.email}
-              onChange={e => {
-                setForm({ ...form, email: e.target.value })
-                if (formErr.email && e.target.value.includes("@")) setFormErr({ ...formErr, email: false })
-              }}
-            />
-            <TextField
-              type="password"
-              size="small"
-              label="Password"
-              variant="outlined"
-              color="secondary"
-              error={formErr.password}
-              value={form.password}
-              onChange={e => {
-                setForm({ ...form, password: e.target.value })
-                if (formErr.password && e.target.value.length >= 8) setFormErr({ ...formErr, password: false })
-              }}
-            />
+            <Heading5 className="pt-8">Create Account!</Heading5>
+            <Caption className="flex justify-center items-center gap-1 cursor-default py-4">
+              Already Have An Account?
+              <Link href='/register/sign-in' className="no-underline text-red-dark-100">
+                Sign In
+              </Link>
+            </Caption>
+            <form className="flex flex-col gap-4 w-full max-w-sm">
 
-            <span className={loading ? 'cursor-progress' : ''}>
-              <BasicButton
-                variant="contained"
-                color="primary"
-                className="w-full"
-                onClick={signUpFunc}
-                disabled={loading}
-              >Sign Up</BasicButton>
-            </span>
-          </form>
-          <div className="pt-8">
-            <LoginGmail login="Sign Up" />
+              <div className="flex gap-4">
+                <TextField
+                  type="text"
+                  size="small"
+                  label="Name"
+                  variant="outlined"
+                  color="secondary"
+                  error={formErr.name}
+                  value={form.name}
+                  onChange={e => {
+                    setForm({ ...form, name: e.target.value })
+                    if (formErr.name && e.target.value.length >= 3) setFormErr({ ...formErr, name: false })
+                  }}
+                />
+                <TextField
+                  type="text"
+                  size="small"
+                  label="LastName"
+                  variant="outlined"
+                  color="secondary"
+                  value={form.lastName}
+                  onChange={e => {
+                    setForm({ ...form, lastName: e.target.value })
+                  }}
+                />
+              </div>
+              <TextField
+                type="text"
+                size="small"
+                label="Phone number"
+                variant="outlined"
+                color="secondary"
+                error={formErr.phone}
+                value={form.phone}
+                onChange={e => {
+                  setForm({ ...form, phone: e.target.value })
+                  if (formErr.phone && e.target.value.length >= 8) setFormErr({ ...formErr, phone: false })
+                }}
+              />
+              <TextField
+                type="email"
+                size="small"
+                label="Email"
+                variant="outlined"
+                color="secondary"
+                error={formErr.email}
+                value={form.email}
+                onChange={e => {
+                  setForm({ ...form, email: e.target.value })
+                  if (formErr.email && e.target.value.includes("@")) setFormErr({ ...formErr, email: false })
+                }}
+              />
+              <TextField
+                type="password"
+                size="small"
+                label="Password"
+                variant="outlined"
+                color="secondary"
+                error={formErr.password}
+                value={form.password}
+                onChange={e => {
+                  setForm({ ...form, password: e.target.value })
+                  if (formErr.password && e.target.value.length >= 8) setFormErr({ ...formErr, password: false })
+                }}
+              />
+
+              <span className={loading ? 'cursor-progress' : ''}>
+                <BasicButton
+                  variant="contained"
+                  color="primary"
+                  className="w-full"
+                  onClick={signUpFunc}
+                  disabled={loading}
+                >Sign Up</BasicButton>
+              </span>
+            </form>
+            <div className="pt-8">
+              <LoginGmail login="Sign Up" />
+            </div>
           </div>
         </div>
       </div>

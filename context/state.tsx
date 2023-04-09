@@ -49,12 +49,12 @@ const Context = ({ children }: { children: JSX.Element }) => {
   useEffect(() => {
     getInfo()
       .then(res => {
-        setUserInfo(res.data.user)
+        setUserInfo(res?.data?.user)
         setLoading(false)
       })
       .catch(err => {
         setLoading(false)
-        if (err.response.status === 404) {
+        if (err?.response?.status === 404) {
           localStorage.removeItem('token')
         } else {
           setUserInfo({ ...userInfo, _id: '1' })
