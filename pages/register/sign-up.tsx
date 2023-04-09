@@ -107,9 +107,9 @@ const SignUp = () => {
       <div className="fixed overflow-auto bg-container top-0 right-0 bottom-0 left-0 flex justify-center items-center">
         <div className="w-full h-full md:h-auto flex justify-center">
           <div className="md:my-4 flex flex-col items-center md:max-w-sm w-full h-full md:h-auto md:px-12 py-4 md:py-8 bg-dark-50 rounded-xl border border-solid border-dark-100">
-            <div>
+            <Link href='/' className="no-underline">
               <Logo />
-            </div>
+            </Link>
             <Heading5 className="pt-8">Create Account!</Heading5>
             <Caption className="flex justify-center items-center gap-1 cursor-default py-4">
               Already Have An Account?
