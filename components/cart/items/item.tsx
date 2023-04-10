@@ -234,18 +234,18 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
 
   return product ? (
     <>
-      <div className="border border-dark-100 border-solid flex h-[250px] w-[800px]">
+      <div className="border flex-col md:flex-row items-center border-dark-100 border-solid flex lg:h-[250px] xl:w-[800px] lg:w-[630px]">
         <div className="flex items-center">
-          <Image src={product.img} alt="" width={180} height={180} />
+          <Image src={product.img} alt="" width={180} height={180} className="w-40 h-40 lg:w-auto lg:h-auto" />
         </div>
-        <div className="flex flex-col justify-between p-8 pb-2 min-w-[50%]">
+        <div className="flex flex-col justify-between py-2 lg:p-8 lg:pb-2 min-w-[50%]">
           <SubTitle2 className="text-light-300">{product.name}</SubTitle2>
           <div>
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between my-4 lg:mb-8">
               <div className="flex gap-4 items-center"><span>Size: </span> {Size(allSize, allSize.indexOf(data.count[0].size.toLocaleUpperCase()))}</div>
               <div className="flex gap-4 items-center"><span>Color: </span> {Color(allColor, allColor.indexOf(data.count[0].color.toLocaleLowerCase()))}</div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-4 lg:gap-0">
               <ButtonGroup color="secondary" variant="outlined">
                 <Button onClick={changeCount} disabled={count === 1}>-</Button>
                 <Button className="cursor-default">{count}</Button>
@@ -254,7 +254,7 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
               <span className="text-red-dark-100 mr-16">{count * product.price}$</span>
             </div>
           </div>
-          <div>
+          <div className="mt-2">
             <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('delete')}>Delete</BasicButton>
             <Tooltip title='Add favorites and delete from cart'>
               <BasicButton color="secondary" variant="text" onClick={() => deleteHandler('save')}>Save for later</BasicButton>

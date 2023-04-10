@@ -31,7 +31,7 @@ const Address = ({ address }: { address: IAddress[] }) => {
 
   return (
     <>
-      <div className="w-[800px] min-h-[450px] border border-dark-100 border-solid">
+      <div className="w-full max-w-[800px] min-h-[450px] border border-dark-100 border-solid">
         <div className="pl-8">
 
           <FormControl>

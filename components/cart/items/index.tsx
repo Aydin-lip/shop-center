@@ -40,7 +40,7 @@ const Items = ({ products, bag, price, setPrice }: IProps) => {
 
   return (
     <>
-      <div className="flex flex-col gap-8 max-h-[600px] overflow-y-auto">
+      <div className="flex flex-col gap-8 min-[600px]:max-h-[600px] overflow-y-auto w-[350px] min-[600px]:w-full xl:w-auto">
         {bag.map(b =>
           <Item data={b} product={products.find(p => p._id === b.product_id)} price={price} setPrice={setPrice} key={b.id} />
         )}

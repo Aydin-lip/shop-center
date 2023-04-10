@@ -14,7 +14,7 @@ interface IProps {
   }[]
 }
 const OrderSummary = ({ step, setStep, total }: IProps) => {
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loadingBtn, setLoadingBtn] = useState<boolean>(false)
 
   const router = useRouter()
 
@@ -23,17 +23,17 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
   total.forEach(t => allTotal += t.price)
   total.forEach(t => discount += t.discount)
 
-  const { info, setInfo } = useAppContext()
+  const { info, setInfo, loading } = useAppContext()
 
   useEffect(() => {
     if (info.cart.bag.length === 0) {
-      setLoading(true)
+      setLoadingBtn(true)
     }
-  }, [])
+  }, [!loading])
 
   const nextStep = () => {
     if (step === 2) {
-      setLoading(true)
+      setLoadingBtn(true)
       let example = {
         image: "/images/data/hodi.png",
         title: "Heart Print Thermal Lined Drawstring Hoodie",
@@ -48,12 +48,12 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
               setInfo({ ...info, cart: { ...info.cart, bag: [] } })
             })
             .catch(err => { })
-          setLoading(false)
+          setLoadingBtn(false)
           setStep(1)
           router.replace('/')
         })
         .catch(err => {
-          setLoading(false)
+          setLoadingBtn(false)
         })
     } else {
       setStep(step + 1)
@@ -62,7 +62,7 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
 
   return (
     <>
-      <div className="border border-dark-100 border-solid w-[350px] h-[320px] p-6">
+      <div className="border border-dark-100 border-solid w-full max-w-[300px] h-[320px] p-6">
         <Heading5 className="text-light-300">Order Summary</Heading5>
         <div className="mb-8 mt-12">
           <div className="flex justify-between text-light-200 my-6">
@@ -81,8 +81,8 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
             <span>{(allTotal - discount).toFixed(2)} $</span>
           </div>
         </div>
-        <span className={loading ? 'cursor-progress' : ''}>
-          <BasicButton color="primary" variant="contained" className="w-full mt-3" onClick={nextStep} disabled={loading}>Check Out Now</BasicButton>
+        <span className={loadingBtn ? 'cursor-progress' : ''}>
+          <BasicButton color="primary" variant="contained" className="w-full mt-3" onClick={nextStep} disabled={loadingBtn}>Check Out Now</BasicButton>
         </span>
       </div>
     </>

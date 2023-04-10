@@ -72,7 +72,7 @@ const Item = ({ data }: IProps) => {
           <SubTitle1 className="text-light-300">{data.title}</SubTitle1>
         }
       </div>
-      <div className="w-[590px] leading-8 text-light-100 mt-0">
+      <div className="max-w-[590px] leading-8 text-light-100 mt-0">
         {edit ?
           <TextField
             size="small"
@@ -132,7 +132,7 @@ const Item = ({ data }: IProps) => {
                   <path d="M17.3399 10.95C17.3199 10.95 17.2899 10.95 17.2699 10.95C14.1499 10.64 11.6399 8.27 11.1599 5.17C11.0999 4.76 11.3799 4.38 11.7899 4.31C12.1999 4.25 12.5799 4.53 12.6499 4.94C13.0299 7.36 14.9899 9.22 17.4299 9.46C17.8399 9.5 18.1399 9.87 18.0999 10.28C18.0499 10.66 17.7199 10.95 17.3399 10.95Z" fill="#8EAAF2" />
                   <path d="M21 22.75H3C2.59 22.75 2.25 22.41 2.25 22C2.25 21.59 2.59 21.25 3 21.25H21C21.41 21.25 21.75 21.59 21.75 22C21.75 22.41 21.41 22.75 21 22.75Z" fill="#8EAAF2" />
                 </svg>
-              }>Edit</BasicButton>
+              } onClick={openEdit}>Edit</BasicButton>
           </>
         }
       </div>
