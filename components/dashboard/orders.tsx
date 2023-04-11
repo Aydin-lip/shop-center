@@ -8,8 +8,8 @@ import { IDeliverd } from '@/models/user';
 const DeliverdBox = (detail: IDeliverd, hr: boolean) => {
   return (
     <div key={detail.id}>
-      <div className="flex gap-4 items-end my-9">
-        <Image src={detail.image} alt={detail.title} width={180} height={180} />
+      <div className="flex max-[450px]:flex-col gap-4 items-center md:items-end my-9">
+        <Image src={detail.image} alt={detail.title} width={180} height={180} className='w-[150px] h-[150px] md:w-auto md:h-auto' />
         <div className="flex flex-col gap-5 py-4">
           <p className="m-0">{detail.title}</p>
           <span><span className="text-dark-200">code: </span>{detail.code}</span>
@@ -31,10 +31,10 @@ const Orders = () => {
 
   return (
     <>
-      <div className="w-full h-full mx-4 border-solid border border-dark-100 px-32">
-        <div className="flex gap-8 pt-12">
+      <div className="w-full h-full mx-4 border-solid border border-dark-100 px-8 lg:px-16 xl:px-32">
+        <div className="flex gap-8 pt-8 lg:pt-12">
           <div>
-            <SubTitle1 className="text-light-100 cursor-pointer" onClick={() => setDeliverdItem(true)}>
+            <SubTitle1 className="text-light-100 cursor-pointer max-[768px]:text-base" onClick={() => setDeliverdItem(true)}>
               Deliverd
             </SubTitle1>
             {deliverdItem &&
@@ -42,7 +42,7 @@ const Orders = () => {
             }
           </div>
           <div>
-            <SubTitle1 className="text-light-100 cursor-pointer" onClick={() => setDeliverdItem(false)}>
+            <SubTitle1 className="text-light-100 cursor-pointer max-[768px]:text-base" onClick={() => setDeliverdItem(false)}>
               Processing
             </SubTitle1>
             {!deliverdItem &&

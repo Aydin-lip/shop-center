@@ -13,7 +13,7 @@ interface IDetailMessageBox {
 }
 const messageBox = (detail: IDetailMessageBox, hr: boolean) => {
   return (
-    <div className="my-10" key={detail.id}>
+    <div className="my-6 lg:my-10" key={detail.id}>
       <div className="flex justify-between items-cetnter">
         <div className="flex gap-2 items-center">
           <div className="w-8 h-8 bg-[#008A0466] rounded-full flex justify-center items-center">
@@ -72,7 +72,7 @@ const Messages = () => {
 
   return (
     <>
-      <div className="w-full h-full mx-4 border-solid border border-dark-100 px-10 overflow-y-auto">
+      <div className="w-full h-full mx-4 border-solid border border-dark-100 px-6 lg:px-10 overflow-y-auto">
         {info.messages.map((m, i) => messageBox(m, info.messages[++i] ? true : false))}
       </div>
     </>

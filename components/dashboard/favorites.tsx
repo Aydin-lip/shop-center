@@ -11,8 +11,8 @@ const Favorites = ({ products }: { products: IProducts[] }) => {
 
   return (
     <>
-      <div className="w-full h-full pl-10 overflow-y-auto">
-        <div className="flex flex-wrap">
+      <div className="w-full h-full md:pl-10 overflow-y-auto">
+        <div className="flex flex-wrap justify-center">
           {favorites?.map(p =>
             <div className="" key={p._id}>
               <Card data={{ ...p, showOnSale: true }} />

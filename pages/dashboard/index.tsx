@@ -16,7 +16,7 @@ const Dashboard = ({products}: {products: IProducts[]}) => {
   return (
     <>
       <Layout title="Dashboard" privet={true}>
-        <div className="container m-auto flex mb-56 h-[600px] mt-20">
+        <div className="container m-auto flex mb-56 md:h-[600px] mt-12 md:mt-20">
           <Menu item={item} setItem={setItem} setLogout={setLogout} />
           {item === "Profile" && <Profile />}
           {item === "Orders" && <Orders />}
