@@ -6,11 +6,11 @@ const dataItem = ['casualStyle', 'heartPattern', 'lognSleeve', 'polyester', 'pro
 
 const Description = ({data}: {data: IDescription}) => {
   return (
-    <div className="flex flex-col justify-start py-11">
+    <div className="flex flex-col justify-start px-2 py-6 md:py-11">
       <SubTitle2 className="text-light-100">
         {data.text}
       </SubTitle2>
-      <div className="flex flex-col flex-wrap justify-start items-start h-64 gap-11 mt-14 mb-16 w-fit">
+      <div className="flex flex-col flex-wrap justify-start items-start h-64 gap-6 md:gap-11 mt-14 mb-16 w-fit">
         {dataItem.map((item, idx) =>
           data.items[item] ? 
           <div className="flex flex-row items-center" key={idx}>

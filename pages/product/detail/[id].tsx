@@ -37,7 +37,7 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
   return (
     <Layout title='Detail'>
       <div className="container mx-auto flex flex-col justify-center items-center">
-        <div className='flex flex-row items-stretch justify-between mt-16 w-full'>
+        <div className='flex flex-col min-[650px]:flex-row items-center min-[650px]:items-stretch justify-between mt-16 w-full'>
           {loading ? (
             <>
               <div className='relative w-2/3 flex justify-center'>
@@ -66,16 +66,18 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
             sx={{ '& .css-1nlllfd-MuiTabs-indicator': { height: 3 } }}
             className="text-[#424242] shadow-none bg-transparent border-0 border-b-[#C3C3CE] border-b border-solid"
           >
-            <Tabs
-              className='bg-[#ffffff] border-[#C3C3CE]'
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="inherit"
-              aria-label="full width tabs example"
-            >
-              {listTabs.map(item => <Tab className="text-light-200 font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
-            </Tabs>
+          <Tabs
+            className='bg-[#ffffff] border-[#C3C3CE]'
+            value={value}
+            onChange={handleChange}
+            variant="scrollable"
+            scrollButtons
+            allowScrollButtonsMobile
+            indicatorColor="primary"
+            textColor="inherit"
+          >
+            {listTabs.map(item => <Tab className="text-light-200 font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
+          </Tabs>
           </AppBar>
           {value === 0 ? (
             loading ? (

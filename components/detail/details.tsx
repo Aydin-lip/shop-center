@@ -80,7 +80,7 @@ const Details = ({ data }: { data: IProducts }) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-start w-[48%]">
+    <div className="flex flex-col justify-center items-start max-[400px]:w-full min-[650px]:w-[48%]">
       <Heading6 className='text-light-200 !font-poppins'>{data.name}</Heading6>
       <div className='flex flex-row items-center justify-start text-light-100 mt-5'>
         <div className='flex flex-row items-center'>
@@ -92,7 +92,7 @@ const Details = ({ data }: { data: IProducts }) => {
         <SubTitle2 className='!font-poppins text-light-100 ml-9'>523 review</SubTitle2>
         <SubTitle2 className='!font-poppins text-light-100 ml-9'>654 sold</SubTitle2>
       </div>
-      <div className='flex flex-row items-center justify-start my-8'>
+      <div className='flex flex-row items-center justify-start my-6 lg:my-8'>
         <Heading6 className='text-light-200 !font-poppins'>{data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</Heading6>
         {data.onSale > 1 &&
           <SubTitle2 className='text-dark-300 line-through ml-7 !font-poppins'>{data.price}$</SubTitle2>
@@ -100,7 +100,7 @@ const Details = ({ data }: { data: IProducts }) => {
       </div>
       <div className='flex flex-row items-center justify-start'>
         <Heading6 className='text-light-200 !font-poppins mr-4 text-base'>Size:</Heading6>
-        <div className='flex flex-row items-center justify-start'>
+        <div className='flex flex-row items-center justify-start flex-wrap'>
           {data.size.map((item, index) =>
             <BasicButton
               color={item === currencySize ? 'primary' : 'secondary'}
@@ -114,7 +114,7 @@ const Details = ({ data }: { data: IProducts }) => {
           )}
         </div>
       </div>
-      <div className='flex flex-row items-center justify-start my-8'>
+      <div className='flex flex-row items-center justify-start my-6 lg:my-8'>
         <Heading6 className='text-light-200 !font-poppins mr-4 text-base'>Color:</Heading6>
         {data.color.map(color =>
           <Button
@@ -149,7 +149,7 @@ const Details = ({ data }: { data: IProducts }) => {
           <SubTitle2 className="text-dark-400 ml-3 !font-poppins">10 days return policy</SubTitle2>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-between mt-12 w-full">
+      <div className="flex flex-row items-center justify-between mt-6 lg:mt-12 w-full">
         <ButtonWithIcon
           className={`flex flex-row items-center justify-center w-[55%] h-10 ${cart ? 'bg-dark-300 hover:bg-light-200' : ''}`}
           variant='contained'
