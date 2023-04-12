@@ -7,7 +7,7 @@ import { getAllProduct } from "@/services/http.service";
 const index = ({products}: {products: IProducts[]}) => {
   return (
     <Layout title='Category'>
-      <div className='container mx-auto flex flex-row items-start justify-between my-12'>
+      <div className='container mx-auto flex flex-col gap-4 md:flex-row items-start justify-between md:my-12'>
         <Filters />
         <ListCart products={products} />
       </div>

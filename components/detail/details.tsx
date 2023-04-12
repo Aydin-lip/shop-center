@@ -81,25 +81,25 @@ const Details = ({ data }: { data: IProducts }) => {
 
   return (
     <div className="flex flex-col justify-center items-start max-[400px]:w-full min-[650px]:w-[48%]">
-      <Heading6 className='text-light-200 !font-poppins'>{data.name}</Heading6>
-      <div className='flex flex-row items-center justify-start text-light-100 mt-5'>
+      <Heading6 className='text-light-200 !font-poppins max-[400px]:pl-2'>{data.name}</Heading6>
+      <div className='flex flex-row items-center justify-start text-light-100 mt-5 max-[400px]:pl-2'>
         <div className='flex flex-row items-center'>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.9686 4.5341C11.9301 4.41022 11.8576 4.30087 11.7601 4.21961C11.6626 4.13836 11.5443 4.08878 11.4201 4.07703L7.95604 3.74886L6.58704 0.404284C6.48595 0.158559 6.25598 0 5.99999 0C5.74401 0 5.51394 0.158559 5.41351 0.404284L4.04451 3.74886L0.579941 4.07703C0.325946 4.10149 0.110881 4.28101 0.031427 4.5341C-0.00728901 4.65808 -0.0103006 4.79119 0.0227653 4.91694C0.0558312 5.04269 0.123522 5.15556 0.217452 5.24156L2.83599 7.63752L2.06393 11.186C2.00744 11.4469 2.10447 11.7167 2.31194 11.8732C2.42061 11.9557 2.55156 12.0001 2.68594 12C2.80113 12 2.91416 11.9674 3.01297 11.9056L5.99999 10.0419L8.98648 11.9056C9.09361 11.9725 9.21721 12.0051 9.34193 11.9993C9.46665 11.9936 9.58701 11.9497 9.68806 11.8732C9.89551 11.7167 9.99257 11.4469 9.93608 11.186L9.164 7.63755L11.7825 5.24158C11.8765 5.15559 11.9442 5.04272 11.9772 4.91697C12.0103 4.79122 12.0073 4.6581 11.9686 4.53412V4.5341Z" fill="#FFC107" />
           </svg>
           <Body1 className='!font-poppins text-light-100'>4.5</Body1>
         </div>
-        <SubTitle2 className='!font-poppins text-light-100 ml-9'>523 review</SubTitle2>
-        <SubTitle2 className='!font-poppins text-light-100 ml-9'>654 sold</SubTitle2>
+        <SubTitle2 className='!font-poppins text-light-100 ml-4 min-[400px]:ml-9'>523 review</SubTitle2>
+        <SubTitle2 className='!font-poppins text-light-100 ml-4 min-[400px]:ml-9'>654 sold</SubTitle2>
       </div>
-      <div className='flex flex-row items-center justify-start my-6 lg:my-8'>
+      <div className='flex flex-row items-center justify-start my-6 lg:my-8 max-[400px]:pl-2'>
         <Heading6 className='text-light-200 !font-poppins'>{data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</Heading6>
         {data.onSale > 1 &&
-          <SubTitle2 className='text-dark-300 line-through ml-7 !font-poppins'>{data.price}$</SubTitle2>
+          <SubTitle2 className='text-dark-300 line-through ml-4 min-[400px]:ml-7 !font-poppins'>{data.price}$</SubTitle2>
         }
       </div>
-      <div className='flex flex-row items-center justify-start'>
-        <Heading6 className='text-light-200 !font-poppins mr-4 text-base'>Size:</Heading6>
+      <div className='flex flex-row items-center justify-start max-[400px]:pl-2'>
+        <Heading6 className='text-light-200 !font-poppins min-[400px]:mr-4 text-base'>Size:</Heading6>
         <div className='flex flex-row items-center justify-start flex-wrap'>
           {data.size.map((item, index) =>
             <BasicButton
@@ -114,8 +114,8 @@ const Details = ({ data }: { data: IProducts }) => {
           )}
         </div>
       </div>
-      <div className='flex flex-row items-center justify-start my-6 lg:my-8'>
-        <Heading6 className='text-light-200 !font-poppins mr-4 text-base'>Color:</Heading6>
+      <div className='flex flex-row items-center justify-start my-6 lg:my-8 max-[400px]:pl-2'>
+        <Heading6 className='text-light-200 !font-poppins min-[400px]:mr-4 text-base'>Color:</Heading6>
         {data.color.map(color =>
           <Button
             variant='text'
@@ -127,7 +127,7 @@ const Details = ({ data }: { data: IProducts }) => {
           ></Button>
         )}
       </div>
-      <div className="flex flex-col items-start justify-center">
+      <div className="flex flex-col items-start justify-center max-[400px]:pl-2">
         <div className="flex flex-row items-center justify-start">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.9998 14.75H11.9998C11.5898 14.75 11.2498 14.41 11.2498 14C11.2498 13.59 11.5898 13.25 11.9998 13.25H12.9998C13.6898 13.25 14.2498 12.69 14.2498 12V2.75H5.99978C4.81978 2.75 3.73975 3.38998 3.15975 4.41998C2.95975 4.77998 2.49979 4.91002 2.13979 4.71002C1.77979 4.51002 1.64975 4.05 1.84975 3.69C2.68975 2.19 4.27978 1.25 5.99978 1.25H14.9998C15.4098 1.25 15.7498 1.59 15.7498 2V12C15.7498 13.52 14.5198 14.75 12.9998 14.75Z" fill="#008A04" />

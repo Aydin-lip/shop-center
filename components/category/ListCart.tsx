@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import { Heading6, SubTitle2 } from '@/mui/customize';
-import { ButtonGroup, Button, MenuItem, Select, SelectChangeEvent, Pagination } from '@mui/material';
+import { ButtonGroup, Button, MenuItem, Select, SelectChangeEvent, Pagination, Tabs, Tab } from '@mui/material';
 import Card from "@/components/card";
 import IProducts from '@/models/products';
 
+const listFilter = ['All', 'T-shirt', 'Dress', 'Top', 'Skirt', 'Hoodie'];
+function a11yProps(index: number) {
+  return {
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
+  };
+}
+
 const ListCart = ({ products }: { products: IProducts[] }) => {
-  const listFilter = ['All', 'T-shirt', 'Dress', 'Top', 'Skirt', 'Hoodie'];
 
   const [filterProducts, setFilterProducts] = useState<IProducts[]>(products)
   const [groupProducts, setGroupProducts] = useState<IProducts[]>(products)
@@ -49,11 +56,27 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
   };
 
   return (
-    <div className='w-[73%]'>
-      <div className="flex flex-row items-center justify-between">
-        <div className="flex flex-row items-center justify-start">
+    <div className='w-full md:w-[73%]'>
+      <div className="flex flex-col xl:flex-row gap-4 items-center justify-between">
+        <div className="w-full flex flex-row items-center justify-start">
           <Heading6>Category:</Heading6>
-          <ul className="list-none flex flex-row items-center justify-start">
+          <Tabs
+            className='bg-[#ffffff] border-[#C3C3CE]'
+            value={category}
+            onChange={e => {
+              const target = e.target as HTMLElement
+              let id = listFilter.map(l => l.toLocaleLowerCase()).indexOf(target.innerText.toLocaleLowerCase())
+              changeProducts(id, groupProducts)
+            }}
+            variant="scrollable"
+            scrollButtons
+            allowScrollButtonsMobile
+            indicatorColor="primary"
+            textColor="inherit"
+          >
+            {listFilter.map((item, idx) => <Tab className="text-light-200 font-bold font-poppins capitalize text-lg" key={idx} label={item} {...a11yProps(idx++)} />)}
+          </Tabs>
+          {/* <ul className="list-none flex flex-row items-center justify-start">
             {listFilter.map((item, idx) =>
               <li
                 className={`cursor-pointer px-3 hover:bg-[#fcfcfc] rounded-md`}
@@ -65,9 +88,9 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
                 >{item}</SubTitle2>
               </li>
             )}
-          </ul>
+          </ul> */}
         </div>
-        <ButtonGroup className='shadow-none' variant="contained">
+        <ButtonGroup className='shadow-none ml-auto' variant="contained">
           <Button
             variant="outlined"
             color="secondary"
@@ -76,7 +99,7 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
             onClick={() => {
               setFilterProducts(filterProducts.map((n, idx) => (
                 filterProducts[filterProducts.length - idx - 1]
-            )))
+              )))
               setDesc(!desc)
             }}
             sx={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
