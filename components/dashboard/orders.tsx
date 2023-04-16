@@ -11,10 +11,10 @@ const DeliverdBox = (detail: IDeliverd, hr: boolean) => {
       <div className="flex max-[450px]:flex-col gap-4 items-center md:items-end my-9">
         <Image src={detail.image} alt={detail.title} width={180} height={180} className='w-[150px] h-[150px] md:w-auto md:h-auto' />
         <div className="flex flex-col gap-5 py-4">
-          <p className="m-0">{detail.title}</p>
-          <span><span className="text-dark-200">code: </span>{detail.code}</span>
-          <span><span className="text-dark-200">date: </span>{detail.code}</span>
-          <span><span className="text-dark-200">price: </span>{detail.price}$</span>
+          <p className="m-0 them-dashboard-order">{detail.title}</p>
+          <span className='them-dashboard-order'><span className="text-dark-200">code: </span>{detail.code}</span>
+          <span className='them-dashboard-order'><span className="text-dark-200">date: </span>{detail.code}</span>
+          <span className='them-dashboard-order'><span className="text-dark-200">price: </span>{detail.price}$</span>
         </div>
       </div>
       {hr &&
@@ -34,7 +34,7 @@ const Orders = () => {
       <div className="w-full h-full mx-4 border-solid border border-dark-100 px-8 lg:px-16 xl:px-32">
         <div className="flex gap-8 pt-8 lg:pt-12">
           <div>
-            <SubTitle1 className="text-light-100 cursor-pointer max-[768px]:text-base" onClick={() => setDeliverdItem(true)}>
+            <SubTitle1 className="text-light-100 them-dashboard-order-title cursor-pointer max-[768px]:text-base" onClick={() => setDeliverdItem(true)}>
               Deliverd
             </SubTitle1>
             {deliverdItem &&
@@ -42,7 +42,7 @@ const Orders = () => {
             }
           </div>
           <div>
-            <SubTitle1 className="text-light-100 cursor-pointer max-[768px]:text-base" onClick={() => setDeliverdItem(false)}>
+            <SubTitle1 className="text-light-100 them-dashboard-order-title cursor-pointer max-[768px]:text-base" onClick={() => setDeliverdItem(false)}>
               Processing
             </SubTitle1>
             {!deliverdItem &&

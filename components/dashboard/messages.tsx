@@ -23,7 +23,7 @@ const messageBox = (detail: IDetailMessageBox, hr: boolean) => {
               <path d="M10.0166 19.0083C9.1916 19.0083 8.3916 18.675 7.80827 18.0917C7.22493 17.5083 6.8916 16.7083 6.8916 15.8833H8.1416C8.1416 16.375 8.3416 16.8583 8.6916 17.2083C9.0416 17.5583 9.52494 17.7583 10.0166 17.7583C11.0499 17.7583 11.8916 16.9167 11.8916 15.8833H13.1416C13.1416 17.6083 11.7416 19.0083 10.0166 19.0083Z" fill="white" />
             </svg>
           </div>
-          <SubTitle2 className="text-light-300">{detail.title}</SubTitle2>
+          <SubTitle2 className="text-light-300 them-dashboard-message-title">{detail.title}</SubTitle2>
         </div>
         <div className="flex gap-2 items-center">
           <span className="flex">

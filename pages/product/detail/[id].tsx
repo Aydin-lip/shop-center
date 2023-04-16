@@ -60,14 +60,14 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
             </>
           )}
         </div>
-        <Box className="bg-[#ffffff] w-full mt-20" >
+        <Box className="bg-container w-full mt-20" >
           <AppBar
             position="static"
             sx={{ '& .css-1nlllfd-MuiTabs-indicator': { height: 3 } }}
             className="text-[#424242] shadow-none bg-transparent border-0 border-b-[#C3C3CE] border-b border-solid"
           >
           <Tabs
-            className='bg-[#ffffff] border-[#C3C3CE]'
+            className='bg-container border-[#C3C3CE]'
             value={value}
             onChange={handleChange}
             variant="scrollable"
@@ -76,7 +76,7 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
             indicatorColor="primary"
             textColor="inherit"
           >
-            {listTabs.map(item => <Tab className="text-light-200 font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
+            {listTabs.map(item => <Tab className="them-detail-tab-color font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
           </Tabs>
           </AppBar>
           {value === 0 ? (

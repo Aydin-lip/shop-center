@@ -10,10 +10,10 @@ const NewCollection = ({ collections }: { collections: ICollection[] }) => {
   return (
     <div className="container mx-auto">
       <div className="flex justify-between items-center mt-10 mb-6 max-[640px]:px-2">
-        <Heading3 className="text-light-300 cursor-default max-[768px]:text-2xl"><span className="text-red-dark-100">New</span> Collection</Heading3>
+        <Heading3 className="text-light-300 cursor-default max-[768px]:text-2xl them-home-collection-title"><span className="text-red-dark-100">New</span> Collection</Heading3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 grid-rows-2 gap-4 max-[410px]:p-2">
-        <div className="bg-red-light-100 w-full h-full flex items-end justify-center col-span-2 row-span-2">
+        <div className="bg-red-light-100 them-home-collection-bg w-full h-full flex items-end justify-center col-span-2 row-span-2">
           <Image src="/images/home/new-collection/new-collection-style.png" alt="new-collection" width={370} height={460} />
         </div>
         {collections.map(collection =>
@@ -33,7 +33,7 @@ const NewCollection = ({ collections }: { collections: ICollection[] }) => {
             <BasicButton
               variant="contained"
               color="secondary"
-              className="mt-10 rounded-3xl mr-auto bg-container hover:bg-dark-50"
+              className="mt-10 rounded-3xl mr-auto bg-container them-home-btn"
               onClick={() => router.push('/category')}
               endIcon={
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

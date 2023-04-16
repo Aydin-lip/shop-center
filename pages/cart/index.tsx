@@ -21,7 +21,7 @@ const Cart = ({ products }: { products: IProducts[] }) => {
       <Layout title="Cart" privet={true}>
         <div className="container m-auto">
           <StepperCart step={step} />
-          <Heading5 className="text-light-300 pl-2 md:pl-0 max-[768px]:text-xl">{step === 1 ? 'Your Items' : 'Select Delivery Address'}</Heading5>
+          <Heading5 className="text-light-300 pl-2 md:pl-0 max-[768px]:text-xl them-cart-title">{step === 1 ? 'Your Items' : 'Select Delivery Address'}</Heading5>
           <div className="flex justify-center gap-4 mt-8 px-2 max-[600px]:flex-col max-[600px]:items-center">
             {step === 1 ?
               <Items products={products} bag={info?.cart?.bag} price={price} setPrice={setPrice} />

@@ -13,15 +13,15 @@ const PopularProducts = ({ products }: { products: IProducts[] }) => {
     <>
       <div className="container m-auto mb-24 mt-10">
         <div className="flex gap-4 items-center flex-col md:flex-row px-2 md:px-0">
-          <div className="rounded-lg bg-[#FFE5E6] flex items-end w-full max-w-[630px] relative max-[350px]:h-[250px]">
+          <div className="rounded-lg them-home-popular-card-bgOne flex items-end w-full max-w-[630px] relative max-[350px]:h-[250px]">
             <Image src='/images/home/two-box/women-best-sale.png' alt="" width={400} height={250} className="ml-[-1rem] max-[350px]:hidden" />
             <div className="absolute top-0 left-0 right-0 bottom-0 min-[350px]:pr-12 flex items-center max-[350px]:justify-center justify-end">
               <div>
-                <Heading3 style={{ textShadow: '0px 0px 10px white' }}>Best Sale Here!</Heading3>
+                <Heading3 className="them-home-popular-card-title">Best Sale Here!</Heading3>
                 <BasicButton
                   variant="contained"
                   color="secondary"
-                  className="mt-10 rounded-3xl mr-auto bg-container hover:bg-dark-50"
+                  className="mt-10 rounded-3xl mr-auto bg-container them-home-btn"
                   onClick={() => router.replace('/category')}
                   endIcon={
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,15 +31,15 @@ const PopularProducts = ({ products }: { products: IProducts[] }) => {
               </div>
             </div>
           </div>
-          <div className="rounded-lg bg-[#F3EED9] flex items-end w-full max-w-[630px] relative max-[350px]:h-[250px]">
+          <div className="rounded-lg them-home-popular-card-bgTwo flex items-end w-full max-w-[630px] relative max-[350px]:h-[250px]">
             <Image src='/images/home/two-box/men-best-sale.png' alt="" width={400} height={250} className="ml-[-6rem] max-[350px]:hidden" />
             <div className="absolute top-0 left-0 right-0 bottom-0 min-[350px]:pr-12 flex items-center max-[350px]:justify-center justify-end">
               <div className="max-w-[250px]">
-                <Heading3 style={{ textShadow: '0px 0px 10px white' }}>All under 50$ for men</Heading3>
+                <Heading3 className="them-home-popular-card-title">All under 50$ for men</Heading3>
                 <BasicButton
                   variant="contained"
                   color="secondary"
-                  className="mt-10 rounded-3xl mr-auto bg-container hover:bg-dark-50"
+                  className="mt-10 rounded-3xl mr-auto bg-container them-home-btn"
                   onClick={() => router.replace('/category')}
                   endIcon={
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@ const PopularProducts = ({ products }: { products: IProducts[] }) => {
         </div>
 
         <div className="mt-8">
-          <Heading3 className="text-light-300 cursor-default mb-6 max-[768px]:text-2xl max-[640px]:px-2"><span className="text-red-dark-100">Popular</span> Products</Heading3>
+          <Heading3 className="text-light-300 cursor-default mb-6 max-[768px]:text-2xl max-[640px]:px-2 them-home-popular-title"><span className="text-red-dark-100">Popular</span> Products</Heading3>
           <SwiperBox>
             {products?.map(product =>
               <Card data={{ ...product, showOnSale: true }} key={product._id} />

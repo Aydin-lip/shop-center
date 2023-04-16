@@ -106,12 +106,12 @@ const SignUp = () => {
       </Head>
       <div className="fixed overflow-auto bg-container top-0 right-0 bottom-0 left-0 flex justify-center items-center">
         <div className="w-full h-full md:h-auto flex justify-center">
-          <div className="md:my-4 flex flex-col items-center md:max-w-sm w-full h-full md:h-auto md:px-12 py-4 md:py-8 bg-dark-50 rounded-xl border border-solid border-dark-100">
+          <div className="them-register-bg md:my-4 flex flex-col items-center md:max-w-sm w-full h-full md:h-auto md:px-12 py-4 md:py-8 rounded-xl border border-solid border-dark-100">
             <Link href='/' className="no-underline">
               <Logo />
             </Link>
-            <Heading5 className="pt-8">Create Account!</Heading5>
-            <Caption className="flex justify-center items-center gap-1 cursor-default py-4">
+            <Heading5 className="pt-8 them-register-title">Create Account!</Heading5>
+            <Caption className="flex justify-center items-center gap-1 cursor-default py-4 them-register-color">
               Already Have An Account?
               <Link href='/register/sign-in' className="no-underline text-red-dark-100">
                 Sign In
@@ -128,6 +128,7 @@ const SignUp = () => {
                   color="secondary"
                   error={formErr.name}
                   value={form.name}
+                  className="them-register-input"
                   onChange={e => {
                     setForm({ ...form, name: e.target.value })
                     if (formErr.name && e.target.value.length >= 3) setFormErr({ ...formErr, name: false })
@@ -140,6 +141,7 @@ const SignUp = () => {
                   variant="outlined"
                   color="secondary"
                   value={form.lastName}
+                  className="them-register-input"
                   onChange={e => {
                     setForm({ ...form, lastName: e.target.value })
                   }}
@@ -153,6 +155,7 @@ const SignUp = () => {
                 color="secondary"
                 error={formErr.phone}
                 value={form.phone}
+                className="them-register-input"
                 onChange={e => {
                   setForm({ ...form, phone: e.target.value })
                   if (formErr.phone && e.target.value.length >= 8) setFormErr({ ...formErr, phone: false })
@@ -166,6 +169,7 @@ const SignUp = () => {
                 color="secondary"
                 error={formErr.email}
                 value={form.email}
+                className="them-register-input"
                 onChange={e => {
                   setForm({ ...form, email: e.target.value })
                   if (formErr.email && e.target.value.includes("@")) setFormErr({ ...formErr, email: false })
@@ -179,6 +183,7 @@ const SignUp = () => {
                 color="secondary"
                 error={formErr.password}
                 value={form.password}
+                className="them-register-input"
                 onChange={e => {
                   setForm({ ...form, password: e.target.value })
                   if (formErr.password && e.target.value.length >= 8) setFormErr({ ...formErr, password: false })

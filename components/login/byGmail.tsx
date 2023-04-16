@@ -25,7 +25,7 @@ const LoginGmail = ({login}: IProps) => {
               </defs>
             </svg>
           </span>
-          <Body2>
+          <Body2 className="them-register-color">
             {login} with Google Account
           </Body2>
         </BasicButton>

@@ -15,9 +15,9 @@ const Header = () => {
           {/* <div className="absolute top-16 right-0 w-48 h-48 bg-[#7ea43d] rounded-full z-[1]"></div> */}
           <div className="absolute top-6 right-96 w-32 h-32 hidden sm:block bg-[#ff914d] rounded-full z-[1]"></div>
           {/* <div className="absolute top-72 right-40 w-28 h-28 bg-[#980053] rounded-full z-[1]"></div> */}
-          <div className="w-full sticky z-[2] sm:bg-[url('/images/home/header/girl-with-packages.png')] bg-no-repeat bg-[20rem_2rem] lg:bg-[url('/')] lg:bg-[#f6f6f680] rounded-3xl flex mt-6 lg:mt-4 " style={{ backdropFilter: "blur(30px)" }}>
+          <div className="w-full sticky z-[2] sm:bg-[url('/images/home/header/girl-with-packages.png')] bg-no-repeat bg-[20rem_2rem] lg:bg-[url('/')] lg:them-home-header rounded-3xl flex mt-6 lg:mt-4 " style={{ backdropFilter: "blur(30px)" }}>
             <div className="p-4 sm:py-12 sm:px-8 lg:py-24 lg:px-16">
-              <Display2 className="cursor-default max-[640px]:text-4xl max-[640px]:text-center">
+              <Display2 className="cursor-default max-[640px]:text-4xl max-[640px]:text-center them-home-header-text">
                 2023 Summer Collections
               </Display2>
               <Heading6 className="text-dark-200 my-8 w-full max-w-sm">
@@ -39,7 +39,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#FFF5F1] mt-8 mb-6">
+      <div className="them-home-header-nav mt-8 mb-6">
         <div className="container m-auto overflow-y-hidden overflow-x-auto">
           <div className="h-20 flex justify-center items-center gap-4 w-[600px] m-auto">
             <Image className="cursor-pointer"

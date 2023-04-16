@@ -8,7 +8,7 @@ const itemsFooter: string[] = ['Home', 'Women', 'men', 'kids', 'On Sale', 'Conta
 const Footer = () => {
   return (
     <footer
-      className="overflow-hidden w-full flex flex-col mt-10 justify-center items-center pt-9 pb-2 bg-[url('/images/footer/bg-Footer.jpg')] bg-cover bg-bottom-right-_7 bg-origin-border"
+      className="them-footer overflow-hidden w-full flex flex-col mt-10 justify-center items-center pt-9 pb-2 bg-[url('/images/footer/bg-Footer.jpg')] bg-cover bg-bottom-right-_7 bg-origin-border"
     >
       <div></div>
       <Heading5 className="font-poppins text-center max-[400px]:text-xl">
@@ -19,7 +19,7 @@ const Footer = () => {
         <TextField
           size="small"
           placeholder="Email Address"
-          className="bg-container border-none py-2 pl-6 pr-1.5 rounded-lg mt-8 max-[400px]:my-4 mb-12 font-poppins font-medium w-11/12"
+          className="them-footer-email bg-container border-none py-2 pl-6 pr-1.5 rounded-lg mt-8 max-[400px]:my-4 mb-12 font-poppins font-medium w-11/12"
           sx={{ '& .css-nz481w-MuiInputBase-input-MuiInput-input': { color: '#7F7F7F' } }}
           variant="standard"
           color="secondary"

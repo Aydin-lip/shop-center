@@ -67,9 +67,10 @@ const Item = ({ data }: IProps) => {
             placeholder="title"
             defaultValue={data.title}
             color='secondary'
+            className='them-cart-input'
             onChange={e => title = e.target.value} />
           :
-          <SubTitle1 className="text-light-300">{data.title}</SubTitle1>
+          <SubTitle1 className="text-light-300 them-cart-title">{data.title}</SubTitle1>
         }
       </div>
       <div className="max-w-[590px] leading-8 text-light-100 mt-0">
@@ -82,7 +83,7 @@ const Item = ({ data }: IProps) => {
             placeholder="address"
             defaultValue={data.detail}
             color='secondary'
-            className="w-full"
+            className="w-full them-cart-input"
             onChange={e => detail = e.target.value} />
           :
           data.detail
@@ -95,9 +96,10 @@ const Item = ({ data }: IProps) => {
               placeholder="phone number"
               defaultValue={data.phone}
               color="secondary"
+              className='them-cart-input'
               onChange={e => phone = e.target.value} />
             :
-            <span className="text-light-300"> {data.phone}</span>
+            <span className="ml-2 text-light-300 them-cart-address-phone">{data.phone}</span>
           }
         </span>
       </div>

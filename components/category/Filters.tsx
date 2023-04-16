@@ -41,16 +41,16 @@ const Filters = () => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
           </svg>
         </span>
-        <span>Filters & Sort</span>
+        <span className=''>Filters & Sort</span>
       </div>
-      <div className={`border border-dark-100 border-solid rounded w-full md:w-[22%] min-w-[220px] overflow-hidden transition-all duration-1000 ${showMore ? 'max-[768px]:h-0 max-[768px]:hidden' : 'max-[768px]:h-auto'}`}>
+      <div className={`border border-dark-100 border-solid rounded w-[99.5%] md:w-[22%] min-w-[220px] overflow-hidden transition-all duration-1000 ${showMore ? 'max-[768px]:h-0 max-[768px]:hidden' : 'max-[768px]:h-auto'}`}>
         <div className='px-4 py-2.5'>
-          <SubTitle2 className='text-light-200 border-0 border-b border-b-dark-100 border-solid pb-3 font-poppins'>Filters (Not yet launched)</SubTitle2>
+          <SubTitle2 className='text-light-200 border-0 border-b border-b-dark-100 border-solid pb-3 font-poppins them-category-filter-title'>Filters (Not yet launched)</SubTitle2>
           <div className='flex flex-col justify-start items-center border-0 border-b border-b-dark-100 border-solid py-3'>
-            <SubTitle2 className="w-full">Price</SubTitle2>
+            <SubTitle2 className="w-full them-category-filter">Price</SubTitle2>
             <div className="flex flex-row items-center justify-between w-full pt-3 md:py-3">
               {value.map(item =>
-                <Body2 key={item} className="py-0.5 rounded-sm px-2 bg-light-400 text-light-100">{item}$</Body2>
+                <Body2 key={item} className="py-0.5 rounded-sm px-2 bg-light-400 text-light-100 them-category-filter-price">{item}$</Body2>
               )}
             </div>
             <Slider
@@ -63,7 +63,7 @@ const Filters = () => {
           </div>
           <div className="border-0 pb-2 border-b border-b-dark-100 border-solid">
             <div className="flex flex-row items-center justify-start py-4">
-              <SubTitle2 className="text-light-200 w-1/4">Brand</SubTitle2>
+              <SubTitle2 className="text-light-200 w-1/4 them-category-filter">Brand</SubTitle2>
               <BasicTextField
                 placeholder="Search brands..."
                 size="small"
@@ -90,6 +90,7 @@ const Filters = () => {
                 {Object.keys(listBrand).splice(0, displayValue).map((item, idx) =>
                   <FormControlLabel
                     key={idx}
+                    className='them-category-filter'
                     control={
                       <Checkbox
                         checked={Object.values(listBrand).splice(0, displayValue)[idx]}
@@ -110,15 +111,16 @@ const Filters = () => {
             </div>
           </div>
           <div className="flex items-center justify-between flex-row border-0 border-b border-b-dark-100 border-solid py-2">
-            <Body1>Just On Sale</Body1>
+            <Body1 className='them-category-filter'>Just On Sale</Body1>
             <IOSSwitch sx={{ m: 1 }} defaultChecked />
           </div>
           <div className="pb-3 flex flex-col justify-center items-start border-0 border-b border-b-dark-100 border-solid">
-            <Body1 className="py-4">Sleeve</Body1>
+            <Body1 className="py-4 them-category-filter">Sleeve</Body1>
             <FormControl component="fieldset" variant="standard" className='flex-wrap flex-row md:flex-col gap-x-4'>
               {Object.keys(listSleeve).map((item, idx) =>
                 <FormControlLabel
                   key={idx}
+                  className='them-category-filter'
                   control={
                     <Checkbox
                       checked={Object.values(listSleeve)[idx]}
@@ -132,11 +134,12 @@ const Filters = () => {
             </FormControl>
           </div>
           <div className="pb-3 flex flex-col justify-center items-start">
-            <Body1 className="py-4">Sleeve</Body1>
+            <Body1 className="py-4 them-category-filter">Sleeve</Body1>
             <FormControl component="fieldset" variant="standard" className='flex-wrap flex-row md:flex-col gap-x-4'>
               {Object.keys(listSize).map((item, idx) =>
                 <FormControlLabel
                   key={idx}
+                  className='them-category-filter'
                   control={
                     <Checkbox
                       checked={Object.values(listSize)[idx]}

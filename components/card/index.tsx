@@ -19,7 +19,7 @@ const Card = ({ data }: IProps) => {
     <>
       <div className="w-full mx-auto rounded-2xl bg-container p-3 max-w-[280px]">
         <Link href={`/product/detail/${data._id}`}>
-          <div className="rounded-lg w-full bg-dark-50 flex relative cursor-pointer hover:shadow-md">
+          <div className="rounded-lg w-full them-cart-bg flex relative cursor-pointer hover:shadow-md">
             {data.showOnSale && data.onSale && data.onSale > 1 ?
               <div className="rounded-tr-lg rounded-bl bg-red-light-800 absolute top-0 right-0 py-1 px-2">
                 <Body2 className="text-container">{data.onSale}%</Body2>
@@ -32,7 +32,7 @@ const Card = ({ data }: IProps) => {
         <span className="text-light-100 block my-4">{data.name}</span>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <SubTitle1>{data.onSale && data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</SubTitle1>
+            <SubTitle1 className="them-cart-price">{data.onSale && data.onSale > 1 ? (data.price - (data.price / 100) * data.onSale).toFixed(1) : data.price}$</SubTitle1>
             {data.onSale && data.onSale > 1 ?
               <span className="text-dark-300 line-through">{data.price}$</span>
               : ''

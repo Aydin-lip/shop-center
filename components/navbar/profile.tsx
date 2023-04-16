@@ -4,8 +4,10 @@ import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import Link from 'next/link';
 import { useAppContext } from '@/context/state';
+import Them from './them';
 
-const cart = () => {
+
+const cart = (mobile: boolean) => {
   return (
     <>
       <span className='flex'>
@@ -14,14 +16,14 @@ const cart = () => {
           <path d="M21 8.75H9C8.59 8.75 8.25 8.41 8.25 8C8.25 7.59 8.59 7.25 9 7.25H21C21.41 7.25 21.75 7.59 21.75 8C21.75 8.41 21.41 8.75 21 8.75Z" fill="#424242" />
         </svg>
       </span>
-      <Button2>
+      <Button2 className={`${mobile ? 'them-profile-btn-mobile' : 'them-profile-btn'}`}>
         Cart
       </Button2>
     </>
   )
 }
 
-const login = () => {
+const login = (mobile: boolean) => {
   return (
     <>
       <span className='flex'>
@@ -31,7 +33,7 @@ const login = () => {
           <path d="M12 20.75C11.59 20.75 11.25 20.41 11.25 20C11.25 19.59 11.59 19.25 12 19.25C16.27 19.25 19.25 16.27 19.25 12C19.25 7.73 16.27 4.75 12 4.75C11.59 4.75 11.25 4.41 11.25 4C11.25 3.59 11.59 3.25 12 3.25C17.15 3.25 20.75 6.85 20.75 12C20.75 17.15 17.15 20.75 12 20.75Z" fill="#424242" />
         </svg>
       </span>
-      <Button2>
+      <Button2 className={`${mobile ? 'them-profile-btn-mobile' : 'them-profile-btn'}`}>
         SignUp | Login
       </Button2>
     </>
@@ -42,13 +44,14 @@ const Profile = () => {
   const { info } = useAppContext()
   return (
     <>
-      <div className='flex gap-4 md:gap-8'>
+      <div className='flex gap-4 lg:gap-8 items-center'>
+        <Them />
         <Link href='/cart' className='no-underline'>
           <BasicButton className='h-10 py-1 pr-2 pl-1 gap-1 hidden md:flex' variant='text' color='secondary'>
-            {cart()}
+            {cart(false)}
           </BasicButton>
           <BasicButton className='h-10 py-1 pr-2 pl-1 gap-1 bg-dark-50 flex md:hidden' variant='text' color='secondary'>
-            {cart()}
+            {cart(true)}
           </BasicButton>
         </Link>
         {info._id > '1' ?
@@ -64,10 +67,10 @@ const Profile = () => {
           :
           <Link href='/register/sign-in' className='no-underline'>
             <BasicButton className='h-10 py-1 pl-2 pr-3 gap-1 rounded-lg w-[150px] hidden md:flex' variant="outlined" color='secondary'>
-              {login()}
+              {login(false)}
             </BasicButton>
             <BasicButton className='h-10 py-1 pl-2 pr-3 gap-1 rounded-lg w-[150px] bg-dark-300 flex md:hidden' variant="outlined" color='secondary'>
-              {login()}
+              {login(true)}
             </BasicButton>
           </Link>
         }

@@ -215,7 +215,7 @@ const Profile = () => {
                 label="name"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="bg-container border-none rounded-lg font-poppins font-medium lg:w-full min-w-[200px] max-w-[300px]"
+                className="them-dashboard-profile-input bg-container border-none rounded-lg font-poppins font-medium lg:w-full min-w-[200px] max-w-[300px]"
                 sx={{ '& .css-nz481w-MuiInputBase-input-MuiInput-input': { color: '#7F7F7F' } }}
                 color="secondary"
                 disabled={!editName}
@@ -232,7 +232,7 @@ const Profile = () => {
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="bg-container border-none rounded-lg font-poppins font-medium md:w-full min-w-[200px] max-w-[300px]"
+                className="them-dashboard-profile-input bg-container border-none rounded-lg font-poppins font-medium md:w-full min-w-[200px] max-w-[300px]"
                 sx={{ '& .css-nz481w-MuiInputBase-input-MuiInput-input': { color: '#7F7F7F' } }}
                 color="secondary"
                 disabled={!editEmail}
@@ -250,7 +250,7 @@ const Profile = () => {
                 label="phone number"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
-                className="bg-container border-none rounded-lg font-poppins font-medium md:w-full min-w-[200px] max-w-[300px]"
+                className="them-dashboard-profile-input bg-container border-none rounded-lg font-poppins font-medium md:w-full min-w-[200px] max-w-[300px]"
                 sx={{ '& .css-nz481w-MuiInputBase-input-MuiInput-input': { color: '#7F7F7F' } }}
                 color="secondary"
                 disabled={!editPhone}
@@ -267,7 +267,7 @@ const Profile = () => {
                 type="password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                className="bg-container border-none rounded-lg font-poppins font-medium md:w-full min-w-[200px] max-w-[300px]"
+                className="them-dashboard-profile-input bg-container border-none rounded-lg font-poppins font-medium md:w-full min-w-[200px] max-w-[300px]"
                 sx={{ '& .css-nz481w-MuiInputBase-input-MuiInput-input': { color: '#7F7F7F' } }}
                 color="secondary"
                 disabled={!editPassword}
@@ -281,22 +281,22 @@ const Profile = () => {
           </div>
 
           <div className="mt-12 p-1">
-            <SubTitle2 className="text-light-200">your favorite category</SubTitle2>
+            <SubTitle2 className="text-light-200 them-dashboard-profile-title">your favorite category</SubTitle2>
             <div className="flex gap-4 lg:gap-16 mt-8 flex-wrap">
-              <BasicButton variant="text" className={`text-light-200 ${category.includes('Women') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'category')}>Women</BasicButton>
-              <BasicButton variant="text" className={`text-light-200 ${category.includes('Men') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'category')}>Men</BasicButton>
-              <BasicButton variant="text" className={`text-light-200 ${category.includes('Kids') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'category')}>Kids</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${category.includes('Women') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'category')}>Women</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${category.includes('Men') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'category')}>Men</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${category.includes('Kids') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'category')}>Kids</BasicButton>
             </div>
           </div>
 
           <div className="mt-12 p-1">
-            <SubTitle2 className="text-light-200">your favorite style</SubTitle2>
+            <SubTitle2 className="text-light-200 them-dashboard-profile-title">your favorite style</SubTitle2>
             <div className="flex gap-4 lg:gap-16 mt-8 flex-wrap">
-              <BasicButton variant="text" className={`text-light-200 ${favorite.includes('Basic') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Basic</BasicButton>
-              <BasicButton variant="text" className={`text-light-200 ${favorite.includes('Casual') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Casual</BasicButton>
-              <BasicButton variant="text" className={`text-light-200 ${favorite.includes('Sport') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Sport</BasicButton>
-              <BasicButton variant="text" className={`text-light-200 ${favorite.includes('Vacation') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Vacation</BasicButton>
-              <BasicButton variant="text" className={`text-light-200 ${favorite.includes('Party') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Party</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${favorite.includes('Basic') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Basic</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${favorite.includes('Casual') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Casual</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${favorite.includes('Sport') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Sport</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${favorite.includes('Vacation') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Vacation</BasicButton>
+              <BasicButton variant="text" className={`text-light-200 them-dashboard-profile-items ${favorite.includes('Party') ? 'bg-[#fef5f6]' : ''}`} onClick={e => changeHandler(e, 'favorite')}>Party</BasicButton>
             </div>
           </div>
 

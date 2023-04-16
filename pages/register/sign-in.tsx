@@ -63,11 +63,11 @@ const SignIn = () => {
       </Head>
       <div className="absolute bg-container top-0 right-0 bottom-0 left-0 flex justify-center items-center">
         <div className="w-full h-full md:h-auto flex justify-center">
-          <div className="md:my-4 flex flex-col items-center md:max-w-sm w-full h-full md:h-auto md:px-12 py-4 md:py-8 bg-dark-50 rounded-xl border border-solid border-dark-100">
+          <div className="them-register-bg md:my-4 flex flex-col items-center md:max-w-sm w-full h-full md:h-auto md:px-12 py-4 md:py-8 rounded-xl border border-solid border-dark-100">
             <Link href='/' className="no-underline">
               <Logo />
             </Link>
-            <Heading5 className="py-8">Welcome Back!</Heading5>
+            <Heading5 className="py-8 them-register-title">Welcome Back!</Heading5>
             <form className="flex flex-col gap-6 w-full max-w-sm">
               <TextField
                 error={emailErr}
@@ -78,6 +78,7 @@ const SignIn = () => {
                 variant="outlined"
                 color="secondary"
                 value={email}
+                className="them-register-input"
                 onChange={e => {
                   setEmail(e.target.value)
                   if (emailErr && e.target.value.includes('@')) setEmailErr(false)
@@ -92,6 +93,7 @@ const SignIn = () => {
                 variant="outlined"
                 color="secondary"
                 value={password}
+                className="them-register-input"
                 onChange={e => {
                   setPassword(e.target.value)
                   if (passwordErr && e.target.value.length >= 8) setPasswordErr(false)
@@ -101,8 +103,8 @@ const SignIn = () => {
               <div className="flex items-center justify-between">
                 <FormGroup>
                   <FormControlLabel
-                    control={<Checkbox checked={remember} onChange={() => setRemember(!remember)} color="primary" />}
-                    label={<Body2>Remember me</Body2>}
+                    control={<Checkbox checked={remember} onChange={() => setRemember(!remember)} color="primary" className="them-register-color" />}
+                    label={<Body2 className="them-register-color">Remember me</Body2>}
                   />
                 </FormGroup>
                 <span>
@@ -124,7 +126,7 @@ const SignIn = () => {
                   disabled={loading}
                 >Sign In</BasicButton>
               </span>
-              <Caption className="flex justify-center items-center gap-1 cursor-default">
+              <Caption className="flex justify-center items-center gap-1 cursor-default them-register-color">
                 Don’t Have An Account?
                 <Link href='/register/sign-up' className="no-underline text-red-dark-100">
                   Sign Up Now

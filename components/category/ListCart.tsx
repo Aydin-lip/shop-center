@@ -59,9 +59,9 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
     <div className='w-full md:w-[73%]'>
       <div className="flex flex-col xl:flex-row gap-4 items-center justify-between">
         <div className="w-full flex flex-row items-center justify-start">
-          <Heading6>Category:</Heading6>
+          <Heading6 className='them-category-list-title ml-2'>Category:</Heading6>
           <Tabs
-            className='bg-[#ffffff] border-[#C3C3CE]'
+            className='bg-container border-[#C3C3CE]'
             value={category}
             onChange={e => {
               const target = e.target as HTMLElement
@@ -74,7 +74,7 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
             indicatorColor="primary"
             textColor="inherit"
           >
-            {listFilter.map((item, idx) => <Tab className="text-light-200 font-bold font-poppins capitalize text-lg" key={idx} label={item} {...a11yProps(idx++)} />)}
+            {listFilter.map((item, idx) => <Tab className="text-light-200 them-category-tab font-bold font-poppins capitalize text-lg" key={idx} label={item} {...a11yProps(idx++)} />)}
           </Tabs>
           {/* <ul className="list-none flex flex-row items-center justify-start">
             {listFilter.map((item, idx) =>
@@ -116,9 +116,10 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
             variant="outlined"
             color="secondary"
             size="small"
+            className='them-category-list'
             sx={{ width: '135px', borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
           >
-            <MenuItem value='Trending'>Trending</MenuItem>
+            <MenuItem value='Trending' className=''>Trending</MenuItem>
             <MenuItem value='OnSale'>On Sale</MenuItem>
             <MenuItem value='Popular'>Popular</MenuItem>
           </Select>

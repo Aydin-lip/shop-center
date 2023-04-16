@@ -1,3 +1,4 @@
+import { useAppContext } from "@/context/state";
 import { SubTitle2 } from "@/mui/customize";
 import { Backdrop, Badge, Box, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -54,9 +55,11 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
   const handleOpen = () => setOpenSpeed(true);
   const handleClose = () => setOpenSpeed(false);
 
+  const { info, them } = useAppContext()
+
   return (
     <>
-      <div className="bg-dark-50 w-full max-w-[250px] lg:max-w-[300px] min-w-[200px] h-full hidden md:block">
+      <div className="bg-dark-50 them-dashboard-menu w-full max-w-[250px] lg:max-w-[300px] min-w-[200px] h-full hidden md:block">
         <div className="py-7 flex">
           {item === 'Profile' &&
             <div className="w-1 h-14 bg-red-dark-100 rounded-r-lg"></div>
@@ -69,7 +72,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
                 <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#7F7F7F" />
               </svg>
             </div>
-            <SubTitle2 className="text-light-200">My Profile</SubTitle2>
+            <SubTitle2 className="text-light-200 them-dashboard-menu-item">My Profile</SubTitle2>
           </div>
         </div>
         <div className="py-3 flex">
@@ -83,7 +86,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
               <path d="M15.4202 13.15C14.8602 13.15 14.4102 12.7 14.4102 12.15C14.4102 11.6 14.8602 11.15 15.4102 11.15C15.9602 11.15 16.4102 11.6 16.4102 12.15C16.4102 12.7 15.9702 13.15 15.4202 13.15Z" fill="#7F7F7F" />
               <path d="M8.42016 13.15C7.86016 13.15 7.41016 12.7 7.41016 12.15C7.41016 11.6 7.86016 11.15 8.41016 11.15C8.96016 11.15 9.41016 11.6 9.41016 12.15C9.41016 12.7 8.97016 13.15 8.42016 13.15Z" fill="#7F7F7F" />
             </svg>
-            <SubTitle2 className="text-light-200">My Orders</SubTitle2>
+            <SubTitle2 className="text-light-200 them-dashboard-menu-item">My Orders</SubTitle2>
           </div>
         </div>
         <div className="py-3 flex">
@@ -94,7 +97,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 21.65C11.69 21.65 11.39 21.61 11.14 21.52C7.32 20.21 1.25 15.56 1.25 8.69001C1.25 5.19001 4.08 2.35001 7.56 2.35001C9.25 2.35001 10.83 3.01001 12 4.19001C13.17 3.01001 14.75 2.35001 16.44 2.35001C19.92 2.35001 22.75 5.20001 22.75 8.69001C22.75 15.57 16.68 20.21 12.86 21.52C12.61 21.61 12.31 21.65 12 21.65ZM7.56 3.85001C4.91 3.85001 2.75 6.02001 2.75 8.69001C2.75 15.52 9.32 19.32 11.63 20.11C11.81 20.17 12.2 20.17 12.38 20.11C14.68 19.32 21.26 15.53 21.26 8.69001C21.26 6.02001 19.1 3.85001 16.45 3.85001C14.93 3.85001 13.52 4.56001 12.61 5.79001C12.33 6.17001 11.69 6.17001 11.41 5.79001C10.48 4.55001 9.08 3.85001 7.56 3.85001Z" fill="#7F7F7F" />
             </svg>
-            <SubTitle2 className="text-light-200">My Favorites</SubTitle2>
+            <SubTitle2 className="text-light-200 them-dashboard-menu-item">My Favorites</SubTitle2>
           </div>
         </div>
         <div className="py-3 flex">
@@ -107,8 +110,8 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
               <path d="M13.8796 3.93999C13.8096 3.93999 13.7396 3.92999 13.6696 3.90999C13.3796 3.82999 13.0996 3.76999 12.8296 3.72999C11.9796 3.61999 11.1596 3.67999 10.3896 3.90999C10.1096 3.99999 9.80963 3.90999 9.61963 3.69999C9.42963 3.48999 9.36963 3.18999 9.47963 2.91999C9.88963 1.86999 10.8896 1.17999 12.0296 1.17999C13.1696 1.17999 14.1696 1.85999 14.5796 2.91999C14.6796 3.18999 14.6296 3.48999 14.4396 3.69999C14.2896 3.85999 14.0796 3.93999 13.8796 3.93999Z" fill="#7F7F7F" />
               <path d="M12.0195 22.81C11.0295 22.81 10.0695 22.41 9.36953 21.71C8.66953 21.01 8.26953 20.05 8.26953 19.06H9.76953C9.76953 19.65 10.0095 20.23 10.4295 20.65C10.8495 21.07 11.4295 21.31 12.0195 21.31C13.2595 21.31 14.2695 20.3 14.2695 19.06H15.7695C15.7695 21.13 14.0895 22.81 12.0195 22.81Z" fill="#7F7F7F" />
             </svg>
-            <SubTitle2 className="text-light-200">Messages</SubTitle2>
-            <Badge badgeContent={2} color="primary" className="ml-auto mr-4" />
+            <SubTitle2 className="text-light-200 them-dashboard-menu-item">Messages</SubTitle2>
+            <Badge badgeContent={info.messages.length} color="primary" className="ml-auto mr-4" />
           </div>
         </div>
         <div className="py-3 flex">
@@ -118,7 +121,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
               <path d="M19.9298 12.81H9.75977C9.34977 12.81 9.00977 12.47 9.00977 12.06C9.00977 11.65 9.34977 11.31 9.75977 11.31H19.9298C20.3398 11.31 20.6798 11.65 20.6798 12.06C20.6798 12.47 20.3398 12.81 19.9298 12.81Z" fill="#7F7F7F" />
               <path d="M11.7598 20.75C6.60977 20.75 3.00977 17.15 3.00977 12C3.00977 6.85 6.60977 3.25 11.7598 3.25C12.1698 3.25 12.5098 3.59 12.5098 4C12.5098 4.41 12.1698 4.75 11.7598 4.75C7.48977 4.75 4.50977 7.73 4.50977 12C4.50977 16.27 7.48977 19.25 11.7598 19.25C12.1698 19.25 12.5098 19.59 12.5098 20C12.5098 20.41 12.1698 20.75 11.7598 20.75Z" fill="#7F7F7F" />
             </svg>
-            <SubTitle2 className="text-light-200">Log out</SubTitle2>
+            <SubTitle2 className="text-light-20 them-dashboard-menu-item">Log out</SubTitle2>
           </div>
         </div>
       </div>
@@ -136,16 +139,17 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
-            tooltipTitle={action.name !== 'Log out' ? action.name : <span className="text-red-dark-100">{action.name}</span>}
+            tooltipTitle={action.name !== 'Log out' ? <span className="text-dark-500">{action.name}</span> : <span className="text-red-dark-100">{action.name}</span>}
             tooltipOpen
             onClick={() => {
               action.name !== 'Log out' ?
                 setItem(action.name.split(" ")[1])
                 : setLogout(true)
-                
+
               handleClose()
             }}
-            style={{ whiteSpace: 'nowrap', filter: `${item === action.name.split(" ")[1] ? 'contrast(0.7)' : 'contrast(1)'}` }}
+            // style={{ whiteSpace: 'nowrap', filter: `${item === action.name.split(" ")[1] ? 'contrast(0.7)' : 'contrast(1)'}` }}
+            style={{ whiteSpace: 'nowrap', filter: `${them ? `${item === action.name.split(" ")[1] ? 'brightness(0.9)' : 'brightness(0.6)'}` : `${item === action.name.split(" ")[1] ? 'contrast(0.7)' : 'contrast(1)'}`}` }}
           />
         ))}
       </SpeedDial>

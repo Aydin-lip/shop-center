@@ -239,11 +239,11 @@ const Item = ({ data, product, price, setPrice }: IProps) => {
           <Image src={product.img} alt="" width={180} height={180} className="w-40 h-40 lg:w-auto lg:h-auto" />
         </div>
         <div className="flex flex-col justify-between py-2 lg:p-8 lg:pb-2 min-w-[50%]">
-          <SubTitle2 className="text-light-300">{product.name}</SubTitle2>
+          <SubTitle2 className="text-light-300 them-cart-item">{product.name}</SubTitle2>
           <div>
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between my-4 lg:mb-8">
-              <div className="flex gap-4 items-center"><span>Size: </span> {Size(allSize, allSize.indexOf(data.count[0].size.toLocaleUpperCase()))}</div>
-              <div className="flex gap-4 items-center"><span>Color: </span> {Color(allColor, allColor.indexOf(data.count[0].color.toLocaleLowerCase()))}</div>
+              <div className="flex gap-4 items-center them-cart-item"><span>Size: </span> {Size(allSize, allSize.indexOf(data.count[0].size.toLocaleUpperCase()))}</div>
+              <div className="flex gap-4 items-center them-cart-item"><span>Color: </span> {Color(allColor, allColor.indexOf(data.count[0].color.toLocaleLowerCase()))}</div>
             </div>
             <div className="flex items-center justify-between gap-4 lg:gap-0">
               <ButtonGroup color="secondary" variant="outlined">
