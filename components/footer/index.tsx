@@ -27,7 +27,7 @@ const Footer = () => {
             disableUnderline: true,
             endAdornment: (
               <InputAdornment position="end">
-                <East color="primary" className="bg-red-dark-200 text-container p-1.5 rounded-[4px] cursor-pointer" />
+                <East color="primary" className="bg-red-dark-100 w-8 h-8 text-container p-1.5 rounded-md cursor-pointer" />
               </InputAdornment>
             )
           }}

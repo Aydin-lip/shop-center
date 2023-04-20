@@ -31,6 +31,7 @@ const Handler: NextApiHandler = async (req, res) => {
       _id,
       profile: {
         fullname,
+        email,
         phone,
         category: ["Women"],
         style: ["Basic", "Sport", "Party"]

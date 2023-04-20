@@ -16,7 +16,8 @@ const DarkModeStyle = ({ darkMode }: { darkMode: boolean }) => {
         .them-cart-input,
         .them-dashboard-profile-items,
         .them-contact-input,
-        .them-category-list {
+        .them-category-list,
+        .them-navbar-search-btn {
           filter: ${darkMode && 'invert(1)'};
         }
         .them-profile-btn {

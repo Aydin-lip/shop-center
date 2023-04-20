@@ -1,4 +1,3 @@
-import Products from "@/data/products";
 import { Heading5 } from "@/mui/customize";
 import Card from "../card";
 import SwiperBox from "../home/swiper";
