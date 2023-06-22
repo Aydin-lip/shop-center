@@ -82,7 +82,7 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
           </div>
         </div>
         <span className={loadingBtn ? 'cursor-progress' : ''}>
-          <BasicButton color="primary" variant="contained" className="w-full mt-3" onClick={nextStep} disabled={loadingBtn}>Check Out Now</BasicButton>
+          <BasicButton color="primary" variant="contained" className="w-full mt-[-.5rem] bg-red-dark-100" onClick={nextStep} disabled={loadingBtn}>Check Out Now</BasicButton>
         </span>
       </div>
     </>

@@ -29,6 +29,9 @@ const DarkModeStyle = ({ darkMode }: { darkMode: boolean }) => {
         .them-home-header {
           color: ${darkMode ? '#00000080' : '#f6f6f680'};
         }
+        .them-home-header-btn {
+          background-color: ${darkMode ? '#242323' : '#dd0426'};
+        }
         .them-home-header-text {
           ${darkMode && 'color: #fff;'}
         }

@@ -54,7 +54,7 @@ const Logout = ({ logout, setLogout }: IProps) => {
               Are you sure you want to log out of your account?
             </p>
             <div className="flex gap-6 mt-8">
-              <BasicButton variant='contained' onClick={logoutHandler}>Log out</BasicButton>
+              <BasicButton variant='contained' className='bg-red-dark-100' onClick={logoutHandler}>Log out</BasicButton>
               <BasicButton color='primary' variant='outlined' onClick={handleClose}>Cancle</BasicButton>
             </div>
           </div>
@@ -65,7 +65,7 @@ const Logout = ({ logout, setLogout }: IProps) => {
               Are you sure you want to log out of your account?
             </p>
             <div className="flex gap-6 mt-8 justify-end min-[400px]:pr-12">
-              <BasicButton variant='contained' onClick={logoutHandler}>Log out</BasicButton>
+              <BasicButton variant='contained' className='bg-red-dark-100' onClick={logoutHandler}>Log out</BasicButton>
               <BasicButton color='primary' variant='outlined' onClick={handleClose}>Cancle</BasicButton>
             </div>
           </div>

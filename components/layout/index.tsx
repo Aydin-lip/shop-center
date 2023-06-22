@@ -5,6 +5,7 @@ import Footer from "../footer";
 import Navbar from "../navbar";
 import { useAppContext } from "@/context/state";
 import { useRouter } from "next/router";
+import { StyledEngineProvider } from "@mui/material";
 
 interface IProps {
   title: string,
@@ -23,7 +24,7 @@ const Layout = ({ title, children, privet }: IProps) => {
 
   return info._id <= '1' && privet && !loading ?
     <></> : (
-      <>
+      <StyledEngineProvider injectFirst>
         <Head>
           <link rel="shortcut icon" href="/favicon/favicon.ico" />
           <title>{`${title} - Shop Center`}</title>
@@ -33,7 +34,7 @@ const Layout = ({ title, children, privet }: IProps) => {
           <main className="m-auto overflow-hidden">{children}</main>
           <Footer />
         </div>
-      </>
+        </StyledEngineProvider>
     )
 }
 

@@ -21,6 +21,7 @@ const Favorites = ({ products }: { products: IProducts[] }) => {
                   size="small"
                   color="error"
                   variant="contained"
+                  className="bg-red-dark-100"
                   onClick={() => {
                     let newBag = {
                       product_id: p._id,

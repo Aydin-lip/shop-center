@@ -32,7 +32,7 @@ const ContactUs = () => {
         color="secondary"
         className="w-10/12 them-contact-input"
       />
-      <BasicButton variant="contained" className="w-10/12 font-inter mt-8">Submit</BasicButton>
+      <BasicButton variant="contained" className="w-10/12 font-inter mt-8 bg-red-dark-100">Submit</BasicButton>
     </div>
   )
 }

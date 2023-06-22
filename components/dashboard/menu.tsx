@@ -52,8 +52,12 @@ interface IProps {
 }
 const Menu = ({ item, setItem, setLogout }: IProps) => {
   const [openSpeed, setOpenSpeed] = useState<boolean>(false);
-  const handleOpen = () => setOpenSpeed(true);
-  const handleClose = () => setOpenSpeed(false);
+  const handleOpen = () => {
+    setOpenSpeed(true)
+  }
+  const handleClose = () => {
+    setOpenSpeed(false)
+  }
 
   const { info, them } = useAppContext()
 
@@ -130,7 +134,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
         ariaLabel="SpeedDial tooltip example"
         sx={{ position: 'absolute', bottom: 16, right: 16 }}
         className="z-[3] fixed md:hidden"
-        icon={<SpeedDialIcon />}
+        icon={<span className={`w-full h-full flex justify-center items-center rounded-full ${openSpeed ? 'bg-red-dark-300' : 'bg-red-dark-100'}`}><SpeedDialIcon /></span>}
         onClose={handleClose}
         onOpen={handleOpen}
         open={openSpeed}
@@ -139,6 +143,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
+            className="bg-dark-50"
             tooltipTitle={action.name !== 'Log out' ? <span className="text-dark-500">{action.name}</span> : <span className="text-red-dark-100">{action.name}</span>}
             tooltipOpen
             onClick={() => {
@@ -150,6 +155,7 @@ const Menu = ({ item, setItem, setLogout }: IProps) => {
             }}
             // style={{ whiteSpace: 'nowrap', filter: `${item === action.name.split(" ")[1] ? 'contrast(0.7)' : 'contrast(1)'}` }}
             style={{ whiteSpace: 'nowrap', filter: `${them ? `${item === action.name.split(" ")[1] ? 'brightness(0.9)' : 'brightness(0.6)'}` : `${item === action.name.split(" ")[1] ? 'contrast(0.7)' : 'contrast(1)'}`}` }}
+            // style={{ whiteSpace: 'nowrap', filter: `${them ? `${item === action.name.split(" ")[1] ? 'brightness(0.9)' : 'brightness(0.6)'}` : `${item === action.name.split(" ")[1] ? 'contrast(0.7)' : 'contrast(1)'}`}`, backgroundColor: '#fff', borderRadius: '50%' }}
           />
         ))}
       </SpeedDial>

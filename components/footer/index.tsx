@@ -15,7 +15,7 @@ const Footer = () => {
         Join Our Community to Get More<br />
         Discount Every Week
       </Heading5>
-      <div className="w-full max-w-[200px] min-[350px]:max-w-[400px] max-[400px]:mx-2">
+      <div className="w-full flex justify-center max-w-[200px] min-[350px]:max-w-[400px] max-[400px]:mx-2">
         <TextField
           size="small"
           placeholder="Email Address"

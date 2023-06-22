@@ -94,8 +94,8 @@ const Navbar = () => {
             </div>
             {openNav &&
               <div>
-                <div className={`fixed top-0 left-0 right-0 bottom-0 bg-[#00000061] transition-all duration-1000 ${animation ? 'opacity-100' : 'opacity-0'}`}>
-                  <StyledFab className="bg-container" onClick={closeNavHandler}>
+                <div className={`fixed top-0 left-0 right-0 bottom-0 bg-[#00000061] transition-all duration-1000 ${animation ? 'opacity-100' : 'opacity-0'}`} onClick={closeNavHandler}>
+                  <StyledFab className="bg-dark-50" onClick={closeNavHandler}>
                     <AddIcon style={{ transform: 'rotate(45deg)' }} />
                   </StyledFab>
                 </div>
