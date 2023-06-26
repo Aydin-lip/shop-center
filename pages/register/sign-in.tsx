@@ -16,7 +16,7 @@ const SignIn = () => {
   const [emailErr, setEmailErr] = useState<boolean>(false)
   const [password, setPassword] = useState<string>("")
   const [passwordErr, setPasswordErr] = useState<boolean>(false)
-  const [remember, setRemember] = useState<boolean>(false)
+  const [remember, setRemember] = useState<boolean>(true)
   const [loading, setLoading] = useState<boolean>(false)
   const [login, setLogin] = useState<boolean | null>(null)
 
@@ -121,7 +121,7 @@ const SignIn = () => {
                 <BasicButton
                   variant="contained"
                   color="primary"
-                  className="w-full"
+                  className="w-full bg-red-dark-100"
                   onClick={signInFunc}
                   disabled={loading}
                 >Sign In</BasicButton>

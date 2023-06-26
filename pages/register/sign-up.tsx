@@ -194,7 +194,7 @@ const SignUp = () => {
                 <BasicButton
                   variant="contained"
                   color="primary"
-                  className="w-full"
+                  className="w-full bg-red-dark-100"
                   onClick={signUpFunc}
                   disabled={loading}
                 >Sign Up</BasicButton>
