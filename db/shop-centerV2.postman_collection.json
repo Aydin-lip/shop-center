@@ -23,7 +23,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/api/register/sign-in"
+						"url": "http://localhost:3000/api/v2/register/sign-in"
 					},
 					"response": []
 				},
@@ -41,7 +41,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/api/register/sign-up"
+						"url": "http://localhost:3000/api/v2/register/sign-up"
 					},
 					"response": []
 				}
@@ -76,7 +76,7 @@
 												}
 											}
 										},
-										"url": "http://localhost:3000/api/info/edit/cart/bag/add"
+										"url": "http://localhost:3000/api/v2/info/edit/cart/bag/add"
 									},
 									"response": []
 								},
@@ -91,7 +91,7 @@
 												"type": "text"
 											}
 										],
-										"url": "http://localhost:3000/api/info/edit/cart/bag/delete/1"
+										"url": "http://localhost:3000/api/v2/info/edit/cart/bag/delete/1"
 									},
 									"response": []
 								},
@@ -115,7 +115,7 @@
 												}
 											}
 										},
-										"url": "http://localhost:3000/api/info/edit/cart/address/add"
+										"url": "http://localhost:3000/api/v2/info/edit/cart/address/add"
 									},
 									"response": []
 								},
@@ -130,7 +130,7 @@
 												"type": "text"
 											}
 										],
-										"url": "http://localhost:3000/api/info/edit/cart/address/delete/3"
+										"url": "http://localhost:3000/api/v2/info/edit/cart/address/delete/3"
 									},
 									"response": []
 								},
@@ -154,7 +154,7 @@
 												}
 											}
 										},
-										"url": "http://localhost:3000/api/info/edit/cart/address/edit"
+										"url": "http://localhost:3000/api/v2/info/edit/cart/address/edit"
 									},
 									"response": []
 								},
@@ -169,7 +169,7 @@
 												"type": "text"
 											}
 										],
-										"url": "http://localhost:3000/api/info/edit/cart/bag/delete/all"
+										"url": "http://localhost:3000/api/v2/info/edit/cart/bag/delete/all"
 									},
 									"response": []
 								}
@@ -195,7 +195,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/info/edit/profile"
+								"url": "http://localhost:3000/api/v2/info/edit/profile"
 							},
 							"response": []
 						},
@@ -219,7 +219,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/info/edit/favorites"
+								"url": "http://localhost:3000/api/v2/info/edit/favorites"
 							},
 							"response": []
 						}
@@ -248,7 +248,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/info/add/order"
+								"url": "http://localhost:3000/api/v2/info/add/order"
 							},
 							"response": []
 						},
@@ -266,7 +266,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/info/add/message"
+								"url": "http://localhost:3000/api/v2/info/add/message"
 							},
 							"response": []
 						}
@@ -283,7 +283,7 @@
 								"type": "text"
 							}
 						],
-						"url": "http://localhost:3000/api/info/get"
+						"url": "http://localhost:3000/api/v2/info/get"
 					},
 					"response": []
 				}
@@ -297,7 +297,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3000/api/product/all"
+						"url": "http://localhost:3000/api/v2/product/all"
 					},
 					"response": []
 				},
@@ -306,7 +306,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3000/api/product/64079896671b3565194c4513"
+						"url": "http://localhost:3000/api/v2/product/64079896671b3565194c4513"
 					},
 					"response": []
 				}
@@ -317,7 +317,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:3000/api/collection"
+				"url": "http://localhost:3000/api/v2/collection"
 			},
 			"response": []
 		}
