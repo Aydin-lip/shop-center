@@ -8,10 +8,10 @@ import Details from '@/components/detail/details';
 import Review from '@/components/detail/tabs/review';
 import Description from '@/components/detail/tabs/description';
 import TrendingProducts from '@/components/home/trending';
-import { getAllProduct } from '@/services/http.service';
 import IProducts from '@/models/products';
 import { useRouter } from 'next/router';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
+import getAllProducts from '@/db/productsV2';
 
 function a11yProps(index: number) {
   return {
@@ -66,18 +66,18 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
             sx={{ '& .css-1nlllfd-MuiTabs-indicator': { height: 3 } }}
             className="text-[#424242] shadow-none bg-transparent border-0 border-b-[#C3C3CE] border-b border-solid"
           >
-          <Tabs
-            className='bg-container border-[#C3C3CE]'
-            value={value}
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons
-            allowScrollButtonsMobile
-            indicatorColor="primary"
-            textColor="inherit"
-          >
-            {listTabs.map(item => <Tab className="them-detail-tab-color font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
-          </Tabs>
+            <Tabs
+              className='bg-container border-[#C3C3CE]'
+              value={value}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons
+              allowScrollButtonsMobile
+              indicatorColor="primary"
+              textColor="inherit"
+            >
+              {listTabs.map(item => <Tab className="them-detail-tab-color font-bold font-poppins capitalize text-lg" key={item.id} label={item.title} {...a11yProps(item.id)} />)}
+            </Tabs>
           </AppBar>
           {value === 0 ? (
             loading ? (
@@ -111,12 +111,8 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  let products: IProducts[] = []
+  let products = await getAllProducts()
   let id = context.params?.id
-  try {
-    let productRes = await getAllProduct()
-    products = productRes.data.products
-  } catch (err) { }
 
   let productID = products.filter(p => p._id === id)[0]
 
@@ -135,11 +131,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-  let products: IProducts[] = []
-  try {
-    let productRes = await getAllProduct()
-    products = productRes.data.products
-  } catch (err) { }
+  let products = await getAllProducts()
 
   let paths = products.map(p => ({ params: { id: p._id } }))
 

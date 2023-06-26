@@ -5,8 +5,8 @@ import Messages from "@/components/dashboard/messages";
 import Orders from "@/components/dashboard/orders";
 import Profile from "@/components/dashboard/profile";
 import Layout from "@/components/layout";
+import getAllProducts from "@/db/productsV2";
 import IProducts from "@/models/products";
-import { getAllProduct } from "@/services/http.service";
 import { useState } from "react";
 
 const Dashboard = ({products}: {products: IProducts[]}) => {
@@ -30,11 +30,7 @@ const Dashboard = ({products}: {products: IProducts[]}) => {
 }
 
 export const getStaticProps = async () => {
-  let products = []
-  try {
-    const res = await getAllProduct()
-    products = res.data.products
-  } catch (err) {}
+  let products = await getAllProducts()
 
   return{
     props: {

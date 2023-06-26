@@ -1,8 +1,8 @@
 import Filters from "@/components/category/Filters";
 import ListCart from "@/components/category/ListCart";
 import Layout from "@/components/layout";
+import getAllProducts from "@/db/productsV2";
 import IProducts from "@/models/products";
-import { getAllProduct } from "@/services/http.service";
 
 const index = ({products}: {products: IProducts[]}) => {
   return (
@@ -16,11 +16,8 @@ const index = ({products}: {products: IProducts[]}) => {
 }
 
 export const getStaticProps = async () => {
-  let products = []
-  try {
-    let productRes = await getAllProduct()
-    products = productRes.data.products
-  } catch (err) { }
+  let products = await getAllProducts()
+
   return {
     props: {
       products

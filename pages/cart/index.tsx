@@ -5,9 +5,9 @@ import RelatedProduct from "@/components/cart/related";
 import StepperCart from "@/components/cart/stepper";
 import Layout from "@/components/layout";
 import { useAppContext } from "@/context/state";
+import getAllProducts from "@/db/productsV2";
 import IProducts from "@/models/products";
 import { Heading5 } from "@/mui/customize";
-import { getAllProduct } from "@/services/http.service";
 import { useState } from "react";
 
 const Cart = ({ products }: { products: IProducts[] }) => {
@@ -42,11 +42,7 @@ const Cart = ({ products }: { products: IProducts[] }) => {
 }
 
 export const getStaticProps = async () => {
-  let products = []
-  try {
-    const res = await getAllProduct()
-    products = res.data.products
-  } catch (err) { }
+  let products = await getAllProducts()
 
   return {
     props: {

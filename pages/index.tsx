@@ -6,8 +6,9 @@ import TrendingProducts from "@/components/home/trending";
 import Layout from "@/components/layout";
 import ICollection from "@/models/collection";
 import IProducts from "@/models/products";
-import { getAllCollection, getAllProduct } from "@/services/http.service";
 import { useRouter } from "next/router";
+import getAllCollection from "@/db/collectionV2";
+import getAllProducts from "@/db/productsV2";
 
 const Home = ({ collections, products }: { collections: ICollection[], products: IProducts[] }) => {
   const router = useRouter()
@@ -42,14 +43,9 @@ const Home = ({ collections, products }: { collections: ICollection[], products:
 }
 
 export const getStaticProps = async () => {
-  let collections = []
-  let products = []
-  try {
-    let collectionRes = await getAllCollection()
-    let productRes = await getAllProduct()
-    collections = collectionRes.data.collection
-    products = productRes.data.products
-  } catch (err) { }
+  let collections = await getAllCollection()
+  let products = await getAllProducts()
+
   return {
     props: {
       collections,
