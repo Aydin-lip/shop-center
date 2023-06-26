@@ -2,7 +2,7 @@ import { IDeliverd, IProcessing, IProfile } from '@/models/user';
 import axios from 'axios'
 
 const httpService = axios.create({
-  baseURL: "/api",
+  baseURL: "/api/v2",
   headers: {
     'Content-type': 'application/json',
   },
