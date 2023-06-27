@@ -2,9 +2,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Items = () => {
+  // States
   const [width, setWidth] = useState<number>(1000)
 
   useEffect(() => {
+    // Get window width for change color items
     if (typeof window !== 'undefined') {
       setWidth(window.innerWidth)
       window.addEventListener('resize', e => {

@@ -1,3 +1,4 @@
+// Effect change them on screen
 const ChangeThem = ({ change }: { change: boolean }) => {
   return (
     <>

@@ -1,7 +1,8 @@
-import { BasicButton, SubTitle2 } from "@/mui/customize";
-import { Button, ButtonGroup, Tooltip } from "@mui/material";
 import Image from "next/image";
 import { Dispatch, MouseEvent, SetStateAction, useRef, useState } from "react";
+// Mui
+import { BasicButton, SubTitle2 } from "@/mui/customize";
+import { Button, ButtonGroup, Tooltip } from "@mui/material";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -9,17 +10,23 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+// Models
 import { IBag } from "@/models/user";
 import IProducts from "@/models/products";
+// Api
 import { cartDeleteBag, editFavorites } from "@/services/http.service";
+// Context
 import { useAppContext } from "@/context/state";
 
-
+// Size component
 const Size = (options: string[], size: number) => {
+  // States
   const [open, setOpen] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(size);
+
   const anchorRef = useRef<HTMLDivElement>(null);
 
+  // Change size Function
   const handleMenuItemClick = (
     event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>,
     index: number,
@@ -28,6 +35,7 @@ const Size = (options: string[], size: number) => {
     setOpen(false);
   };
 
+  // Open and close model size
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -95,11 +103,16 @@ const Size = (options: string[], size: number) => {
     </>
   );
 }
+
+// Color component
 const Color = (options: string[], color: number) => {
+  // States
   const [open, setOpen] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(color);
+
   const anchorRef = useRef<HTMLDivElement>(null);
 
+  // Change color
   const handleMenuItemClick = (
     event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>,
     index: number,
@@ -108,6 +121,7 @@ const Color = (options: string[], color: number) => {
     setOpen(false);
   };
 
+  // Open and close mode color
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -191,45 +205,51 @@ interface IProps {
   }[]>>
 }
 const Item = ({ data, product, price, setPrice }: IProps) => {
+  // States
   const [count, setCount] = useState<number>(data.count.length)
-  const { info, setInfo } = useAppContext()
 
+  const { info, setInfo } = useAppContext()
+  // Default size and color
   let allSize = ['XS', 'S', 'M', 'L', 'XL']
   let allColor = ['red', 'pink', 'blue', 'black']
-  if (product) {
+  if (product) { // Set size and color
     allSize = product.size
     allColor = product.color
   }
-
+  // Change count product function
   const changeCount = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    // Get target button
     const target = e.target as HTMLElement;
     if (product) {
-      let priceFilter = price.filter(p => p.id !== data.id)
-      if (target.innerText === '-') {
+      let priceFilter = price.filter(p => p.id !== data.id) // Filter product for get price's
+      if (target.innerText === '-') { // If it is negative, reduce it
         let num = count - 1
-        setCount(num)
+        setCount(num) // Change count state 
+        // Change all price in summary state
         setPrice([...priceFilter, { id: data.id, price: num * product.price, discount: num * (product.price - (product.price - (product.price / 100) * product.onSale)) }])
-      } else {
+      } else { // If it was positive, add it
         let num = count + 1
-        setCount(num)
+        setCount(num) // Change count state
+        // Change all price in summary state
         setPrice([...priceFilter, { id: data.id, price: num * product.price, discount: num * (product.price - (product.price - (product.price / 100) * product.onSale)) }])
       }
     }
   }
 
+  // Delete product from bag function
   const deleteHandler = (target: string) => {
     if (target === 'delete') {
-      cartDeleteBag(data.id)
+      cartDeleteBag(data.id) // Delete product by id
     } else {
-      cartDeleteBag(data.id)
-      editFavorites({ product_id: data.product_id })
+      cartDeleteBag(data.id) // Delete product by id
+      editFavorites({ product_id: data.product_id }) // Add to favorites
     }
 
-    let priceFilter = price.filter(p => p.id !== data.id)
-    setPrice([...priceFilter, { id: data.id, price: 0, discount: 0 }])
+    let priceFilter = price.filter(p => p.id !== data.id) // Separating the price of goods
+    setPrice([...priceFilter, { id: data.id, price: 0, discount: 0 }]) // Save price state
 
-    let filterBag = info.cart.bag.filter(b => b.id !== data.id)
-    setInfo({ ...info, cart: { ...info.cart, bag: filterBag } })
+    let filterBag = info.cart.bag.filter(b => b.id !== data.id) // Delete from bag
+    setInfo({ ...info, cart: { ...info.cart, bag: filterBag } }) // Save context
   }
 
   return product ? (

@@ -1,8 +1,11 @@
-import { useAppContext } from "@/context/state";
-import { BasicButton, Heading5 } from "@/mui/customize";
-import { addOrder, cartDeleteBagAll } from "@/services/http.service";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
+//  Context
+import { useAppContext } from "@/context/state";
+// Mui
+import { BasicButton, Heading5 } from "@/mui/customize";
+// Api
+import { addOrder, cartDeleteBagAll } from "@/services/http.service";
 
 interface IProps {
   step: number
@@ -14,10 +17,11 @@ interface IProps {
   }[]
 }
 const OrderSummary = ({ step, setStep, total }: IProps) => {
+  // States
   const [loadingBtn, setLoadingBtn] = useState<boolean>(false)
 
   const router = useRouter()
-
+  // List data
   let allTotal = 0
   let discount = 0
   total.forEach(t => allTotal += t.price)
@@ -26,26 +30,28 @@ const OrderSummary = ({ step, setStep, total }: IProps) => {
   const { info, setInfo, loading } = useAppContext()
 
   useEffect(() => {
+    // Check user bag count if = 0 => next btn is disabled
     if (info.cart.bag.length === 0) {
       setLoadingBtn(true)
     }
   }, [!loading])
 
+  // Function next Step cart
   const nextStep = () => {
     if (step === 2) {
       setLoadingBtn(true)
-      let example = {
+      let example = { // default order obj <example>
         image: "/images/data/hodi.png",
         title: "Heart Print Thermal Lined Drawstring Hoodie",
         code: "2346004",
         price: 156,
         data: "2023-Jan-12"
       }
-      addOrder({ processing: example })
+      addOrder({ processing: example }) // Send data
         .then(res => {
-          cartDeleteBagAll()
+          cartDeleteBagAll() // Delete all bag
             .then(res => {
-              setInfo({ ...info, cart: { ...info.cart, bag: [] } })
+              setInfo({ ...info, cart: { ...info.cart, bag: [] } }) // Save context bag empty
             })
             .catch(err => { })
           setLoadingBtn(false)

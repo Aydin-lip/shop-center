@@ -1,6 +1,7 @@
 import { IDescription } from '@/models/products';
 import { SubTitle2, Heading6 } from '@/mui/customize';
 
+// List and data items
 const listDetails = ['Casual Style', 'Heart Pattern', 'Logn Sleeve', '100% Polyester', 'Product code: HS0976', 'Fabric'];
 const dataItem = ['casualStyle', 'heartPattern', 'lognSleeve', 'polyester', 'productCode', 'fabric'];
 

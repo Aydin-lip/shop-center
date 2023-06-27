@@ -1,8 +1,10 @@
 import * as React from 'react';
+// Mui
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 
+// Style input search
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
     color: '#c0c0c0',

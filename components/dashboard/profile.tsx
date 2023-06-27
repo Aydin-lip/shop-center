@@ -1,14 +1,17 @@
+import { Dispatch, MouseEvent, SetStateAction, useMemo, useState } from "react";
+// Mui
 import { BasicButton, SubTitle2 } from "@/mui/customize";
 import { TextField, Tooltip } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import { Dispatch, MouseEvent, SetStateAction, useMemo, useState } from "react";
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+// Context
 import { useAppContext } from "@/context/state";
+// Api for send data edited
 import { editProfile } from "@/services/http.service";
 
 
-const CssTextField = styled(TextField)({
+const CssTextField = styled(TextField)({ // Style inputs
   '& label.Mui-focused': {
     color: '#c0c0c0',
   },
@@ -41,6 +44,7 @@ const editIcon = () => {
 const Profile = () => {
   const { info, setInfo } = useAppContext()
 
+  // States
   const [category, setCategory] = useState<string[]>(info.profile.category)
   const [favorite, setFavorite] = useState<string[]>(info.profile.style)
 
@@ -54,89 +58,99 @@ const Profile = () => {
   const [editPhone, setEditPhone] = useState<boolean>(false)
   const [editPassword, setEditPassword] = useState<boolean>(false)
 
+  const [loadingBtnSave, setLoadingBtnSave] = useState<boolean>(false)
+
+
+  // Function change favorites and style category
   const changeHandler = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, type: string) => {
+    // Get target from btn <for text>
     const target = e.target as HTMLElement;
     if (type === 'category') {
 
-      if (category.includes(target.innerText)) {
-        let filterCategory = category.filter(c => c !== target.innerText)
-        let newInfo = {
+      if (category.includes(target.innerText)) { // If there are categories in the list
+        let filterCategory = category.filter(c => c !== target.innerText) // It is filtered from the list of categories
+        let newInfo = { // Create new information with new category list
           ...info,
           profile: {
             ...info.profile,
             category: filterCategory
           }
         }
+        // Send data
         editProfile({
           ...info.profile,
           category: filterCategory
         }).then(res => {
-          setCategory(filterCategory)
-          setInfo(newInfo)
+          setCategory(filterCategory) // Change state
+          setInfo(newInfo) // Save to context
         })
-      } else {
-        let filterCategory = [...category, target.innerText]
-        let newInfo = {
+      } else { // If the category does not exist in the list
+        let filterCategory = [...category, target.innerText] // Add to list
+        let newInfo = { // Create new information with new category list
           ...info,
           profile: {
             ...info.profile,
             category: filterCategory
           }
         }
+        // Send data
         editProfile({
           ...info.profile,
           category: filterCategory
         }).then(res => {
-          setCategory(filterCategory)
-          setInfo(newInfo)
+          setCategory(filterCategory) // Change state
+          setInfo(newInfo) // Create new information with new category list
         })
       }
 
     } else {
 
-      if (favorite.includes(target.innerText)) {
-        let filterFavorites = favorite.filter(c => c !== target.innerText)
-        let newInfo = {
+      if (favorite.includes(target.innerText)) { // If the desired style is in the list
+        let filterFavorites = favorite.filter(c => c !== target.innerText) // It is filtered from the list of favorites
+        let newInfo = { // Create new information with new favorites list
           ...info,
           profile: {
             ...info.profile,
             style: filterFavorites
           }
         }
+        // Send data
         editProfile({
           ...info.profile,
           style: filterFavorites
         }).then(res => {
-          setFavorite(filterFavorites)
-          setInfo(newInfo)
+          setFavorite(filterFavorites) // Change state
+          setInfo(newInfo) // Save context
         })
-      } else {
-        let filterFavorites = [...favorite, target.innerText]
-        let newInfo = {
+      } else { // If the desired style is not in the list
+        let filterFavorites = [...favorite, target.innerText] // Add to list
+        let newInfo = { // Create new information with new favorites list
           ...info,
           profile: {
             ...info.profile,
             style: filterFavorites
           }
         }
+        // Send data
         editProfile({
           ...info.profile,
           style: filterFavorites
         }).then(res => {
-          setFavorite(filterFavorites)
-          setInfo(newInfo)
+          setFavorite(filterFavorites) // Change state
+          setInfo(newInfo) // Save context
         })
       }
 
     }
   }
 
+  // Function edit name|email|phone|password style and btn
   const editHandler = (
-    edit: boolean,
-    setEdit: Dispatch<SetStateAction<boolean>>,
-    change: string,
-    setChange: Dispatch<SetStateAction<string>>,
-    name: string
+    edit: boolean, // Edit or not
+    setEdit: Dispatch<SetStateAction<boolean>>, // State name to change boolean
+    change: string, // The data you want to edit
+    setChange: Dispatch<SetStateAction<string>>, // State for save edited string
+    name: string // The name of the desired state
   ) => {
 
     let obj = {}
@@ -168,29 +182,40 @@ const Profile = () => {
       <>
         <Tooltip title="Cancel">
           <HighlightOffIcon
-            className="text-[#9f9f9f] cursor-pointer"
+            className={`text-[#9f9f9f] ${loadingBtnSave ? 'cursor-wait' : 'cursor-pointer'} `}
             onClick={() => {
-              setEdit(false)
-              setChange(txt)
+              if (!loadingBtnSave) { // Check loadingBtnSave ture or false
+                setEdit(false)
+                setChange(txt)
+              }
             }} />
         </Tooltip>
         <Tooltip title="Save">
           <SaveAltIcon
-            className="ml-1 text-[#9f9f9f] cursor-pointer"
+            className={`ml-1 text-[#9f9f9f] ${loadingBtnSave ? 'cursor-wait' : 'cursor-pointer'} `}
             onClick={() => {
+              // Check data for send
               if (
                 name === 'password' && change.length < 8 ||
                 name === 'email' && !change.includes('@')
               ) {
                 return
               }
-              editProfile({
-                ...info.profile,
-                ...obj
-              }).then(res => {
-                setInfo({ ...info, profile: { ...info.profile, ...obj } })
-                setEdit(false)
-              })
+              if (!loadingBtnSave) { // Check loadingBtnSave
+                setLoadingBtnSave(true)
+                // send Data
+                editProfile({
+                  ...info.profile,
+                  ...obj
+                }).then(res => {
+                  setInfo({ ...info, profile: { ...info.profile, ...obj } }) // Save context
+                  setEdit(false)
+                  setLoadingBtnSave(false)
+                }).catch(err => {
+                  setEdit(false)
+                  setLoadingBtnSave(false)
+                })
+              }
             }} />
         </Tooltip>
       </>

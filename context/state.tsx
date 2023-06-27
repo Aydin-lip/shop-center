@@ -1,11 +1,14 @@
+import { createContext, useContext, useEffect, useState } from 'react';
+// Components
 import Loading from '@/components/loading';
 import ChangeThem from '@/components/styleThem/changeThem';
 import DarkModeStyle from '@/components/styleThem/darkModeStyle';
+// Models
 import { IUserInfo } from '@/models/user';
+// Connect with api getInfo
 import { getInfo } from '@/services/http.service';
-import { createContext, useContext, useEffect, useState } from 'react';
 
-let defaultUser: IUserInfo = {
+let defaultUser: IUserInfo = { // Base user information
   _id: '0',
   profile: {
     fullname: '',
@@ -45,14 +48,17 @@ const AppContext = createContext<IContext>(contextDefaultValue);
 
 
 const Context = ({ children }: { children: JSX.Element }) => {
+  // States
   const [userInfo, setUserInfo] = useState<IUserInfo>(defaultUser)
   const [loading, setLoading] = useState<boolean>(true)
   const [darkMode, setDarkMode] = useState<boolean>(false)
   const [changeThem, setChangeThem] = useState<boolean>(false)
 
+  // Function change user information
   const setInfo = (info: IUserInfo) => {
     setUserInfo(info)
   }
+  // Function change them
   const setThem = (them: boolean) => {
     setChangeThem(true)
     setDarkMode(them)
@@ -62,9 +68,10 @@ const Context = ({ children }: { children: JSX.Element }) => {
   }
 
   useEffect(() => {
+    // Get user information by token in out api
     getInfo()
       .then(res => {
-        setUserInfo(res?.data?.user)
+        setUserInfo(res?.data?.user) // Save information in state
         setLoading(false)
       })
       .catch(err => {
@@ -79,7 +86,7 @@ const Context = ({ children }: { children: JSX.Element }) => {
     if (them && them === 'dark') setThem(true)
   }, [])
 
-  let value = {
+  let value = { // List value for send to components
     info: userInfo,
     setInfo,
     loading,

@@ -1,8 +1,11 @@
+import { Dispatch, SetStateAction, useState } from "react";
+// Context
 import { useAppContext } from "@/context/state";
+// Mui
 import { SubTitle2 } from "@/mui/customize";
 import { Backdrop, Badge, Box, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
 
+// Menu items for mobile responsive
 const actions = [
   {
     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,10 +54,14 @@ interface IProps {
   setLogout: Dispatch<SetStateAction<boolean>>
 }
 const Menu = ({ item, setItem, setLogout }: IProps) => {
+  // States
   const [openSpeed, setOpenSpeed] = useState<boolean>(false);
+
+  // Function open menu
   const handleOpen = () => {
     setOpenSpeed(true)
   }
+  // Function close menu
   const handleClose = () => {
     setOpenSpeed(false)
   }

@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import Layout from "@/components/layout";
+// Mui
 import { SubTitle2, Body2, BasicTextField, Body1, IOSSwitch } from '@/mui/customize'
 import { Slider, InputAdornment, FormControl, FormControlLabel, Checkbox, Button } from '@mui/material';
 
 const Filters = () => {
+  // States
   const [value, setValue] = useState<number[]>([20, 37]);
   const [displayValue, setDisplayValue] = useState<number>(7)
   const [showMore, setShowMore] = useState<boolean>(false)
-
-  const handleChange = (event: Event, newValue: number | number[]) => setValue(newValue as number[]);
-
-  const [listBrand, setListBrand] = useState({
+  const [listBrand, setListBrand] = useState({ // All brands and actived
     'H&M': true, adidas: false, Defacto: true, Fendi: true,
     Prada: false, Nike: false, MANGO: true,
     'H&M2': true, adidas2: false, Defacto2: true, Fendi2: true,
@@ -18,12 +16,15 @@ const Filters = () => {
     'H&M3': true, adidas3: false, Defacto3: true, Fendi3: true,
     Prada3: false, Nike3: false, MANGO3: true,
   });
-  const [listSleeve, setListSleeve] = useState({
+  const [listSleeve, setListSleeve] = useState({ // Sleeve
     Sleeveless: true, 'Short Sleeve': false, 'Long Sleeve': true, 'Half Sleeve': false,
   });
-  const [listSize, setListSize] = useState({
+  const [listSize, setListSize] = useState({ // Sizes
     FreeSize: true, XS: false, S: false, M: true, L: false, XL: false,
   });
+
+  // Function change price value min and max
+  const handleChange = (event: Event, newValue: number | number[]) => setValue(newValue as number[]);
 
   const changeCheckbox = (event: React.ChangeEvent<HTMLInputElement>, type: string) =>
     type === 'brand' ?

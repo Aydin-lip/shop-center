@@ -1,11 +1,16 @@
-import { useState } from 'react'
-import { Body2, Heading3 } from "@/mui/customize";
-import Card from "../card";
-import IProducts from "@/models/products";
 import { useRouter } from "next/router";
+import { useState } from 'react'
+// Mui
+import { Body2, Heading3 } from "@/mui/customize";
+// Components
+import Card from "../card";
+// Models
+import IProducts from "@/models/products";
 
 const OnSaleProducts = ({ products }: { products: IProducts[] }) => {
+  // States
   const [showMore, setShowMore] = useState<boolean>(false)
+  
   const router = useRouter()
 
   return (

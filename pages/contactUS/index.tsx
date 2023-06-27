@@ -1,10 +1,13 @@
+import { useState } from "react"
+// Componnets
 import ContactUs from "@/components/contact"
 import Layout from "@/components/layout"
+// Mui
 import { Heading4, Heading6 } from "@/mui/customize"
 import { Tooltip } from "@mui/material"
-import { useState } from "react"
 
 const index = () => {
+  // States
   const [copy, setCopy] = useState<{ phone: boolean, email: boolean }>({ phone: false, email: false })
 
   return (

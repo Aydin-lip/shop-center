@@ -1,10 +1,13 @@
+import { useRouter } from "next/router";
+import Image from "next/image";
+// Mui
 import { BasicButton } from "@/mui/customize";
 import { Heading3 } from "@/mui/customize";
-import Image from "next/image";
+// Components
 import SwiperBox from "./swiper";
 import Card from "../card";
+// Models
 import IProducts from "@/models/products";
-import { useRouter } from "next/router";
 
 const PopularProducts = ({ products }: { products: IProducts[] }) => {
   const router = useRouter()

@@ -1,16 +1,21 @@
-import LoginGmail from "@/components/login/byGmail";
-import Logo from "@/components/logo/shopCenter";
-import { useAppContext } from "@/context/state";
-import { Caption } from "@/mui/customize";
-import { BasicButton } from "@/mui/customize";
-import { Heading5 } from "@/mui/customize";
-import { signUp } from "@/services/http.service";
-import { Alert, TextField } from "@mui/material";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+// Componnets
+import LoginGmail from "@/components/login/byGmail";
+import Logo from "@/components/logo/shopCenter";
+// Context for get data
+import { useAppContext } from "@/context/state";
+// Mui
+import { Caption } from "@/mui/customize";
+import { BasicButton } from "@/mui/customize";
+import { Heading5 } from "@/mui/customize";
+import { Alert, TextField } from "@mui/material";
+// Api signIn
+import { signUp } from "@/services/http.service";
 
+// Interface form & error form
 interface IFrom {
   name: string
   lastName: string
@@ -26,6 +31,7 @@ interface IFromErr {
 }
 
 const SignUp = () => {
+  // States
   const [form, setForm] = useState<IFrom>({
     name: "",
     lastName: "",
@@ -44,15 +50,18 @@ const SignUp = () => {
 
 
   const { info, setInfo } = useAppContext()
-  const router = useRouter()
 
+  const router = useRouter()
   useEffect(() => {
+    // Checks whether the user is logged in or not
     if (info._id > '1') {
       router.replace('/')
     }
   }, [info])
 
+  // SignUp function for send user data to Api
   const signUpFunc = () => {
+    // It checks whether the user has entered the inputs correctly or not
     let err = {
       name: false,
       phone: false,
@@ -64,6 +73,7 @@ const SignUp = () => {
     if (!form.email.includes("@")) err.email = true
     if (form.password.length < 8) err.password = true
     setFormErr(err)
+    // If entered the inputs correctly send data
     if (
       !err.name &&
       !err.phone &&
@@ -71,6 +81,7 @@ const SignUp = () => {
       !err.password
     ) {
       setLoading(true)
+      // List data for send
       let user = {
         fullname: `${form.name} ${form.lastName}`,
         phone: form.phone,
@@ -80,8 +91,8 @@ const SignUp = () => {
       signUp(user)
         .then(res => {
           setLogin(true)
-          setInfo(res.data.user)
-          localStorage.setItem("token", res.data.user.token)
+          setInfo(res.data.user) // Save responsive in context
+          localStorage.setItem("token", res.data.user.token) // Save token in user localstorage
           router.replace('/')
           setLoading(false)
           setTimeout(() => {

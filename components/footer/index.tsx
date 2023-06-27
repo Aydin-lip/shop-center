@@ -1,8 +1,9 @@
+// Mui
 import { Heading4, Heading5 } from "@/mui/customize"
 import { TextField, InputAdornment, Tooltip } from "@mui/material"
 import { East, Instagram, Facebook, Twitter } from '@mui/icons-material';
 import { Caption, SubTitle2 } from "@/mui/customize";
-
+// Items footer
 const itemsFooter: string[] = ['Home', 'Women', 'men', 'kids', 'On Sale', 'Contact Us'];
 
 const Footer = () => {

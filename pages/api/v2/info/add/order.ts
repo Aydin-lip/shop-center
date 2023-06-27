@@ -1,23 +1,28 @@
-import UsersCollection from "@/db/usersV2";
-import { IDeliverd, IProcessing } from "@/models/user";
 import { NextApiHandler } from "next";
+// Users Collection info and token
+import UsersCollection from "@/db/usersV2";
+// Models
+import { IDeliverd, IProcessing } from "@/models/user";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
-    // get data body and check token
+    // Get data body and check token
     const { deliverd, processing }: { deliverd: IDeliverd, processing: IProcessing } = req.body
     const { token } = req.headers
     if (!token) {
       res.status(400).json({ message: "There is no token in the header" })
       return
     }
-    // checks to see if she has the deliverd || processing or not
+    // Checks to see if she has the deliverd || processing or not
     if (deliverd || processing) {
-      // get collection token and info
+      // Get collection token and info
       let { collectionToken, collectionInfo } = await UsersCollection()
-      // get user info
+      // Get user information by token
       let userInfoAll = await collectionInfo.find({ token }).toArray()
+      // For ease calling
       let userInfo = userInfoAll[0]
+
+      // Check
       if (userInfo) {
         // To shorten the text deliverd || processing for user
         let infoDeliverd: IDeliverd[] = userInfo.order.deliverd
@@ -38,8 +43,8 @@ const Handler: NextApiHandler = async (req, res) => {
         }
         // send
         try {
-          await collectionInfo.updateOne({ token }, { $set: { order } })
-          res.status(200).json({ message: "Success", order })
+          await collectionInfo.updateOne({ token }, { $set: { order } }) // Send database
+          res.status(200).json({ message: "Success", order }) // Send order
         } catch (err) {
           res.status(500).json({ message: "have a problem in database!" })
         }

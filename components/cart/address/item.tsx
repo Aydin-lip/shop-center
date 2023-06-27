@@ -1,40 +1,48 @@
 import { useState } from 'react'
+// Mui
 import { BasicButton, SubTitle1 } from "@/mui/customize";
 import { TextField } from "@mui/material";
+// Modals
 import { IAddress } from '@/models/user';
+// Api
 import { cartDeleteAddress, cartEditAddress } from '@/services/http.service';
+// Context
 import { useAppContext } from '@/context/state';
 
 interface IProps {
   data: IAddress
 }
 const Item = ({ data }: IProps) => {
+  // State
   const [edit, setEdit] = useState<boolean>(data.title.length <= 0)
   const [loadingEdit, setLoadingEdit] = useState<boolean>(false)
   const [loadingRemove, setLoadingRemove] = useState<boolean>(false)
 
+  // Open and Close edit
   const openEdit = () => setEdit(true)
   const closeEdit = () => setEdit(false)
 
+  // List data
   let title = data.title
   let detail = data.detail
   let phone = data.phone
 
   const { info, setInfo } = useAppContext()
 
+  // Function save change address
   const saveChange = () => {
     setLoadingEdit(true)
-    let editAddress = {
+    let editAddress = { // Things have changed
       id: data.id,
       title,
       detail,
       phone
     }
-    cartEditAddress(editAddress)
+    cartEditAddress(editAddress) // Send data to api
       .then(res => {
-        let filterAddress = info.cart.address.filter(a => a.id !== data.id)
-        filterAddress.push(editAddress)
-        setInfo({ ...info, cart: { ...info.cart, address: filterAddress } })
+        let filterAddress = info.cart.address.filter(a => a.id !== data.id) // Filter address by id
+        filterAddress.push(editAddress) // Add new change address to list address's
+        setInfo({ ...info, cart: { ...info.cart, address: filterAddress } }) // Save context
         setLoadingEdit(false)
         setEdit(false)
       })
@@ -44,12 +52,13 @@ const Item = ({ data }: IProps) => {
       })
   }
 
+  // Function remove address from list
   const removeAddress = () => {
     setLoadingRemove(true)
-    cartDeleteAddress(data.id)
+    cartDeleteAddress(data.id) // Send address id to api
       .then(res => {
-        let filterAddress = info.cart.address.filter(a => a.id !== data.id)
-        setInfo({ ...info, cart: { ...info.cart, address: filterAddress } })
+        let filterAddress = info.cart.address.filter(a => a.id !== data.id) // Filter address by id
+        setInfo({ ...info, cart: { ...info.cart, address: filterAddress } }) // Save context
         setLoadingRemove(false)
       })
       .catch(err => {

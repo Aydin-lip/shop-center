@@ -1,13 +1,16 @@
+import { useEffect, useState } from "react";
+import Link from "next/link";
+// Mui
 import { Container, Fab, Tooltip } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import styled from "@emotion/styled";
+// Components
 import Logo from "../logo/shopCenter";
 import SearchNav from "./search";
 import Profile from "./profile";
 import Items from "./items";
 import AppButton from "./appButton";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import styled from "@emotion/styled";
-import AddIcon from '@mui/icons-material/Add';
+
 
 const StyledFab = styled(Fab)({
   position: 'absolute',
@@ -19,16 +22,18 @@ const StyledFab = styled(Fab)({
 });
 
 const Navbar = () => {
+  // States
   const [scroll, setScroll] = useState<boolean>(false)
   const [openNav, setOpenNav] = useState<boolean>(false)
   const [animation, setAnimation] = useState<boolean>(false)
-
+  // Function open navbar in mobile responsive
   const openNavHandler = () => {
     setOpenNav(true)
     setTimeout(() => {
       setAnimation(true)
     }, 100);
   }
+  // Function close navbar in mobile responsive
   const closeNavHandler = () => {
     setAnimation(false)
     setTimeout(() => {
@@ -37,6 +42,7 @@ const Navbar = () => {
   }
 
   useEffect(() => {
+    // For change height navbar scroll time
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () =>
         setScroll(window.pageYOffset >= 20),

@@ -1,41 +1,51 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+// Mui
 import { Heading6, SubTitle2, Heading5, SubTitle1, Body1, BasicButton, ButtonWithIcon } from '@/mui/customize';
 import { Button } from '@mui/material';
+// Models
 import IProducts from '@/models/products';
-import { useAppContext } from '@/context/state';
-import { useRouter } from 'next/router';
-import { cartAddBag, cartDeleteBag, editFavorites } from '@/services/http.service';
 import { IBag } from '@/models/user';
+// Context
+import { useAppContext } from '@/context/state';
+// Get api for send data
+import { cartAddBag, cartDeleteBag, editFavorites } from '@/services/http.service';
 
 
 const Details = ({ data }: { data: IProducts }) => {
   const router = useRouter()
   const { info, setInfo, loading } = useAppContext()
 
+  // List size and color default
   let listSize = ['XS', 'S', 'M', 'L', 'XL'];
   let listColors = ['#F58289', '#CBC0B9', '#D5641B', '#456BF1', '#80838F', '#3B3D43'];
-  if (data) {
+  if (data) { // Change default
     listSize = data.size
     listColors = data.color
   }
 
+  // States
   const [currencySize, setCurrencySize] = useState<string>(listSize[0]);
   const [currencyColor, setCurrencyColor] = useState<string>(listColors[0]);
   const [favorites, setFavorites] = useState<boolean>(info.favorites.includes(data._id))
   const [cart, setCart] = useState<boolean>(info.cart.bag.map(b => b.product_id)?.includes(data._id))
 
   useEffect(() => {
+    // Change default data size&color
     setFavorites(info.favorites.includes(data._id))
     setCart(info.cart.bag.map(b => b.product_id)?.includes(data._id))
   }, [!loading])
 
+  // Function add product to favorites
   const favoritesHandler = () => {
+    // Check user account
     if (info._id === '0') {
       router.replace('/register/sign-in')
       return
     }
-    editFavorites({ product_id: data._id })
+    editFavorites({ product_id: data._id }) // Add to user favorites list
     const favorites = info.favorites
+    // Send favorites
     if (favorites.includes(data._id)) {
       let filter = favorites.filter(f => f !== data._id)
       setInfo({ ...info, favorites: filter })
@@ -46,23 +56,25 @@ const Details = ({ data }: { data: IProducts }) => {
     }
   }
 
+  // Function add product to bag
   const cartHandler = () => {
+    // Check user account
     if (info._id === '0') {
       router.replace('/register/sign-in')
       return
     }
 
-    if (cart) {
+    if (cart) { // If the product is in the bag, it will be removed
       let id = info.cart.bag.find(b => b.product_id === data._id)?.id
       if (id)
-        cartDeleteBag(id)
+        cartDeleteBag(id) // Delete bag by id
           .then(res => {
             let filter = info.cart.bag.filter(f => f.product_id !== data._id)
             setInfo({ ...info, cart: { ...info.cart, bag: filter } })
             setCart(false)
           })
 
-    } else {
+    } else { // If the product is not in the bag, it will be added
       let id = info.cart.bag[info.cart.bag.length - 1] ? info.cart.bag[info.cart.bag.length - 1].id + 1 : 1
       let newCart = {
         product_id: data._id,
@@ -71,7 +83,7 @@ const Details = ({ data }: { data: IProducts }) => {
           size: currencySize
         }]
       }
-      cartAddBag(newCart)
+      cartAddBag(newCart) // Send to api
         .then(res => {
           setInfo({ ...info, cart: { ...info.cart, bag: [...info.cart.bag, { id, ...newCart }] } })
           setCart(true)
@@ -121,7 +133,7 @@ const Details = ({ data }: { data: IProducts }) => {
             variant='text'
             className={`ml-4 min-w-0 w-10 h-10 rounded-full border border-solid border-dark-100 ${color === currencyColor && 'outline outline-offset-2 outline-1'}`}
             sx={{ outlineColor: color }}
-            style={{background: color}}
+            style={{ background: color }}
             onClick={() => setCurrencyColor(color)}
             key={color}
           ></Button>

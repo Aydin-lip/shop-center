@@ -1,28 +1,37 @@
 import { useState } from 'react'
+// Mui
 import { Heading6 } from "@/mui/customize";
 import { FormControl, FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
+// Components
 import Item from './item';
+// Modals
 import { IAddress } from '@/models/user';
+// Context
 import { useAppContext } from '@/context/state';
+// Api
 import { cartAddAddress } from '@/services/http.service';
 
 
 const Address = ({ address }: { address: IAddress[] }) => {
+  // States
   const [loading, setLoading] = useState<boolean>(false)
+
   const { info, setInfo } = useAppContext()
 
+  // Function add new address to list address's
   const addNewAddress = () => {
     if (!loading) {
       setLoading(true)
+      // List data
       const id = address[address.length - 1] ? address[address.length - 1].id + 1 : 1
-      const newAddress = {
+      const newAddress = { // Default data address
         title: 'Title',
         detail: 'Address',
         phone: '09'
       }
-      cartAddAddress(newAddress)
+      cartAddAddress(newAddress) // Send address
         .then(res => {
-          setInfo({ ...info, cart: { ...info.cart, address: [...address, { ...newAddress, id }] } })
+          setInfo({ ...info, cart: { ...info.cart, address: [...address, { ...newAddress, id }] } }) // Save context
           setLoading(false)
         })
         .catch(err => setLoading(false))

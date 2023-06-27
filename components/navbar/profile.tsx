@@ -1,13 +1,16 @@
+import Link from 'next/link';
+// Mui
 import { BasicButton, Button2 } from '@/mui/customize';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
-import Link from 'next/link';
+// Context
 import { useAppContext } from '@/context/state';
+// Them Component
 import Them from './them';
 
 
-const cart = (mobile: boolean) => {
+const cart = (mobile: boolean) => { // Function cart btn
   return (
     <>
       <span className='flex'>
@@ -23,7 +26,7 @@ const cart = (mobile: boolean) => {
   )
 }
 
-const login = (mobile: boolean) => {
+const login = (mobile: boolean) => { // Function signIn'up btn
   return (
     <>
       <span className='flex'>

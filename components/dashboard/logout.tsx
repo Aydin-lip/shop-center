@@ -1,8 +1,10 @@
 import { Dispatch, SetStateAction } from 'react'
+import { useRouter } from 'next/router';
+// Mui
 import Modal from '@mui/material/Modal';
 import { BasicButton, Heading3 } from '@/mui/customize';
+// Context
 import { useAppContext } from '@/context/state';
-import { useRouter } from 'next/router';
 
 
 interface IProps {
@@ -13,10 +15,13 @@ const Logout = ({ logout, setLogout }: IProps) => {
   const router = useRouter()
   const { info, setInfo } = useAppContext()
 
+  // Function close logout modal
   const handleClose = () => setLogout(false)
+  // Function logout
   const logoutHandler = () => {
-    localStorage.removeItem("token")
+    localStorage.removeItem("token") // remove token from localstorage
     router.replace('/')
+    // Set default information for user
     setInfo({
       _id: '0',
       profile: {

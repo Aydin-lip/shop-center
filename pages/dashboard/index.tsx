@@ -1,3 +1,5 @@
+import { useState } from "react";
+// Componnets
 import Favorites from "@/components/dashboard/favorites";
 import Logout from "@/components/dashboard/logout";
 import Menu from "@/components/dashboard/menu";
@@ -5,11 +7,13 @@ import Messages from "@/components/dashboard/messages";
 import Orders from "@/components/dashboard/orders";
 import Profile from "@/components/dashboard/profile";
 import Layout from "@/components/layout";
-import getAllProducts from "@/db/productsV2";
+// Models
 import IProducts from "@/models/products";
-import { useState } from "react";
+// Get information directly from the original source
+import getAllProducts from "@/db/productsV2";
 
 const Dashboard = ({products}: {products: IProducts[]}) => {
+  // States
   const [item, setItem] = useState<string>('Profile')
   const [logout, setLogout] = useState<boolean>(false)
 
@@ -29,6 +33,7 @@ const Dashboard = ({products}: {products: IProducts[]}) => {
   )
 }
 
+// Next data fetching SSG
 export const getStaticProps = async () => {
   let products = await getAllProducts()
 

@@ -1,9 +1,12 @@
-import ConnectionJSON from "@/db/json";
-import UsersCollection from "@/db/usersV1";
 import { NextApiHandler } from "next";
+// connection json
+import ConnectionJSON from "@/db/json";
+// User collection info and token
+import UsersCollection from "@/db/usersV1";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
+    // Get data from body and token in header & check
     const { product_id }: { product_id: string } = req.body
     const { token } = req.headers
     if (!token) {
@@ -14,26 +17,30 @@ const Handler: NextApiHandler = async (req, res) => {
       res.status(400).json({ message: "There is no product id in the parameter" })
       return
     }
+
     let { collectionToken, collectionInfo } = await UsersCollection()
+
+    // Get user information by token
     let userInfo = await collectionInfo.find(ci => ci.token === token)
 
+    // Check
     if (userInfo) {
-      let favorites: string[] = userInfo.favorites
-      if (favorites.find(n => n === product_id)) {
-        favorites = favorites.filter(n => n !== product_id)
+      let favorites: string[] = userInfo.favorites // All user favorites
+      if (favorites.find(n => n === product_id)) { // Find by id
+        favorites = favorites.filter(n => n !== product_id) // If there is, delete it
       } else {
-        favorites.push(product_id)
+        favorites.push(product_id) // If not, add it
       }
 
-      let newUserInfo = {
+      let newUserInfo = { // Create new user info with changed
         ...userInfo,
         favorites
       }
-      let filterCollectionInfo = collectionInfo.filter(ci => ci._id !== userInfo?._id)
-      filterCollectionInfo.push(newUserInfo)
+      let filterCollectionInfo = collectionInfo.filter(ci => ci._id !== userInfo?._id) // Filter information by id
+      filterCollectionInfo.push(newUserInfo) // Add new information with change
       try {
-        await ConnectionJSON('usersInfo', filterCollectionInfo)
-        res.status(200).json({ message: "Your favorite categories have been successfully changed", favorites })
+        await ConnectionJSON('usersInfo', filterCollectionInfo) // Send json
+        res.status(200).json({ message: "Your favorite categories have been successfully changed", favorites }) // Send favorites
       } catch (err) {
         res.status(500).json({ message: "have a problem in database!" })
       }

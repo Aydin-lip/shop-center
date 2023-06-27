@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
+import { GetStaticProps } from 'next';
 import { useState } from 'react';
+// Mui
 import { AppBar, Tabs, Tab, Box, Skeleton } from '@mui/material';
-
 // Components
 import Layout from "@/components/layout";
 import Product from '@/components/detail/Product';
@@ -8,28 +10,31 @@ import Details from '@/components/detail/details';
 import Review from '@/components/detail/tabs/review';
 import Description from '@/components/detail/tabs/description';
 import TrendingProducts from '@/components/home/trending';
+// Models
 import IProducts from '@/models/products';
-import { useRouter } from 'next/router';
-import { GetStaticProps } from 'next';
+// Get information directly from the original source
 import getAllProducts from '@/db/productsV2';
-
+// Tab function setting
 function a11yProps(index: number) {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
-
+// Tab list
 const listTabs = [{ id: 1, title: 'Description' }, { id: 2, title: 'Review' }, { id: 3, title: 'Related Product' }]
 
 const Detail = ({ products, productID }: { products: IProducts[], productID: IProducts }) => {
+  // States
   const [productState, setProductState] = useState<IProducts>(productID)
   const [value, setValue] = useState<number>(0);
+  // Function for change Tab
   const handleChange = (event: React.SyntheticEvent, newValue: number) => setValue(newValue);
 
   const router = useRouter()
-  let loading = router.isFallback
+  let loading = router.isFallback // Checking loading is true or false
 
+  // Check state
   if (productID._id !== productState._id) {
     setProductState(productID)
   }
@@ -109,13 +114,13 @@ const Detail = ({ products, productID }: { products: IProducts[], productID: IPr
   )
 }
 
-
+// Next data fetching SSG
 export const getStaticProps: GetStaticProps = async (context) => {
   let products = await getAllProducts()
-  let id = context.params?.id
+  let id = context.params?.id // Get product id in params
 
-  let productID = products.filter(p => p._id === id)[0]
-
+  let productID = products.filter(p => p._id === id)[0] // Product separation by ID
+  // Check Is there a product
   if (!productID) {
     return {
       notFound: true
@@ -129,11 +134,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 }
-
+// Next data fetching SSG path
 export const getStaticPaths = async () => {
   let products = await getAllProducts()
 
-  let paths = products.map(p => ({ params: { id: p._id } }))
+  let paths = products.map(p => ({ params: { id: p._id } })) // List the path
 
   return {
     paths,

@@ -1,13 +1,18 @@
+// Components
 import Card from "../card";
+// Mui
 import { BasicButton } from "@/mui/customize";
+// Models
 import IProducts from "@/models/products";
+// Context
 import { useAppContext } from "@/context/state";
+// Api for send data 
 import { cartAddBag, editFavorites } from "@/services/http.service";
 
 
 const Favorites = ({ products }: { products: IProducts[] }) => {
   let { info, setInfo } = useAppContext()
-  let favorites = products?.filter(p => info.favorites.includes(p._id))
+  let favorites = products?.filter(p => info.favorites.includes(p._id)) // Filter favorites product from all product
 
   return (
     <>
@@ -30,7 +35,7 @@ const Favorites = ({ products }: { products: IProducts[] }) => {
                         size: p.size[0]
                       }]
                     }
-                    cartAddBag(newBag)
+                    cartAddBag(newBag) // Add product to bag and delete from favorites
                       .then(res => {
                         editFavorites({ product_id: p._id })
                         let filterFavorites = info.favorites.filter(f => f !== p._id)

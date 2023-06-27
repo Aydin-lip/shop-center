@@ -1,11 +1,14 @@
-import ConnectionJSON from "@/db/json";
-import UsersCollection from "@/db/usersV1";
-import { IDeliverd, IProcessing } from "@/models/user";
 import { NextApiHandler } from "next";
+// Connection json
+import ConnectionJSON from "@/db/json";
+// User collection token and info
+import UsersCollection from "@/db/usersV1";
+// Models
+import { IDeliverd, IProcessing } from "@/models/user";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
-    // get data body and check token
+    // Get data body and check token
     const { deliverd, processing }: { deliverd: IDeliverd, processing: IProcessing } = req.body
     const { token } = req.headers
     if (!token) {
@@ -14,11 +17,12 @@ const Handler: NextApiHandler = async (req, res) => {
     }
     // checks to see if she has the deliverd || processing or not
     if (deliverd || processing) {
-      // get collection token and info
+      // Get collection token and info
       let { collectionToken, collectionInfo } = await UsersCollection()
-      // get user info
+      // Get user info by token
       let userInfo = collectionInfo.find(ci => ci.token === token)
 
+      // Check
       if (userInfo) {
         // To shorten the text deliverd || processing for user
         let infoDeliverd: IDeliverd[] = userInfo.order.deliverd
@@ -38,16 +42,16 @@ const Handler: NextApiHandler = async (req, res) => {
           processing: processing ? [...infoProcessing, { ...processing, id: processingID }] : infoProcessing
         }
         // send
-        let newUserInfo = {
+        let newUserInfo = { // Create new user inf o
           ...userInfo,
           order
         }
-        let filterCollectionInfo = collectionInfo.filter(ci => ci._id !== userInfo?._id)
-        filterCollectionInfo.push(newUserInfo)
+        let filterCollectionInfo = collectionInfo.filter(ci => ci._id !== userInfo?._id) // Filter user information by id
+        filterCollectionInfo.push(newUserInfo) // Add new user info
 
         try {
-          await ConnectionJSON('usersInfo', filterCollectionInfo)
-          res.status(200).json({ message: "Success", order })
+          await ConnectionJSON('usersInfo', filterCollectionInfo) // Send json
+          res.status(200).json({ message: "Success", order }) // Send oder
         } catch (err) {
           res.status(500).json({ message: "have a problem in database!" })
         }

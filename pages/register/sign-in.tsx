@@ -1,17 +1,23 @@
-import LoginGmail from "@/components/login/byGmail";
-import Logo from "@/components/logo/shopCenter";
-import { useAppContext } from "@/context/state";
-import { Body2, Caption } from "@/mui/customize";
-import { BasicButton } from "@/mui/customize";
-import { Heading5 } from "@/mui/customize";
-import { signIn } from "@/services/http.service";
-import { Alert, Checkbox, FormControlLabel, FormGroup, TextField, Tooltip } from "@mui/material";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
+// Componnets
+import LoginGmail from "@/components/login/byGmail";
+import Logo from "@/components/logo/shopCenter";
+// Context for get data
+import { useAppContext } from "@/context/state";
+// Mui
+import { Body2, Caption } from "@/mui/customize";
+import { BasicButton } from "@/mui/customize";
+import { Heading5 } from "@/mui/customize";
+import { Alert, Checkbox, FormControlLabel, FormGroup, TextField, Tooltip } from "@mui/material";
+// Api signIn
+import { signIn } from "@/services/http.service";
+
 
 const SignIn = () => {
+  // States
   const [email, setEmail] = useState<string>("")
   const [emailErr, setEmailErr] = useState<boolean>(false)
   const [password, setPassword] = useState<string>("")
@@ -21,17 +27,21 @@ const SignIn = () => {
   const [login, setLogin] = useState<boolean | null>(null)
 
   const { info, setInfo } = useAppContext()
-  const router = useRouter()
 
+  const router = useRouter()
   useEffect(() => {
+    // Checks whether the user is logged in or not
     if (info._id > '1') {
       router.replace('/')
     }
   }, [info])
 
+  // SignIn function for send user data to Api
   const signInFunc = async () => {
+    // It checks whether the user has entered the inputs correctly or not
     if (!email.includes("@")) setEmailErr(true)
     if (password.length < 8) setPasswordErr(true)
+    // If entered the inputs correctly send data
     if (email.includes("@") && password.length >= 8) {
       setLoading(true)
       signIn({ email, password })
@@ -40,8 +50,8 @@ const SignIn = () => {
           setTimeout(() => {
             setLogin(null)
           }, 3000);
-          setInfo(res.data.user)
-          if (remember) localStorage.setItem("token", res.data.user.token)
+          setInfo(res.data.user) // Save responsive in context
+          if (remember) localStorage.setItem("token", res.data.user.token) // Save token in user localstorage
           router.replace('/')
           setLoading(false)
         })

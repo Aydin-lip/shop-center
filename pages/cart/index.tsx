@@ -1,20 +1,26 @@
+import { useState } from "react";
+// Componnets
 import Address from "@/components/cart/address";
 import Items from "@/components/cart/items";
 import OrderSummary from "@/components/cart/orderSummary";
 import RelatedProduct from "@/components/cart/related";
 import StepperCart from "@/components/cart/stepper";
 import Layout from "@/components/layout";
+// Context
 import { useAppContext } from "@/context/state";
-import getAllProducts from "@/db/productsV2";
+// Models
 import IProducts from "@/models/products";
+// Mui
 import { Heading5 } from "@/mui/customize";
-import { useState } from "react";
+// Get information directly from the original source
+import getAllProducts from "@/db/productsV2";
 
 const Cart = ({ products }: { products: IProducts[] }) => {
+  // States
   const [step, setStep] = useState<number>(1)
   const [price, setPrice] = useState<{ id: number, price: number, discount: number }[]>([])
 
-  const { info, loading } = useAppContext()
+  const { info, loading } = useAppContext() // Get information from context
 
   return !loading && (
     <>
@@ -41,6 +47,7 @@ const Cart = ({ products }: { products: IProducts[] }) => {
   )
 }
 
+// Next data fetching SSG
 export const getStaticProps = async () => {
   let products = await getAllProducts()
 

@@ -1,7 +1,9 @@
-import UsersCollection from "@/db/usersV2";
 import { NextApiHandler } from "next";
+// Users Collection info and token
+import UsersCollection from "@/db/usersV2";
 
 const Handler: NextApiHandler = async (req, res) => {
+  // Get data from query and token from header & check
   const { id } = req.query
   const { token } = req.headers
   if (!token) {
@@ -10,18 +12,21 @@ const Handler: NextApiHandler = async (req, res) => {
   }
 
   let { collectionToken, collectionInfo } = await UsersCollection()
+  // Get user information by token
   let userInfoAll = await collectionInfo.find({ token }).toArray()
+  // For ease calling
   let userInfo = userInfoAll[0]
 
+  // Check
   if (userInfo) {
-    let allAddress = userInfo.cart.address
+    let allAddress = userInfo.cart.address // All user address
 
-    if (allAddress.find(b => b.id == id)) {
-      allAddress = allAddress.filter(b => b.id != id)
+    if (allAddress.find(b => b.id == id)) { // Find addres by id
+      allAddress = allAddress.filter(b => b.id != id) // Filter address & delete 
 
       try {
-        await collectionInfo.updateOne({ token }, { $set: { cart: { ...userInfo.cart, address: allAddress } } })
-        res.status(200).json({ message: `This ID (${id}) has been successfully deleted from your address`, address: allAddress })
+        await collectionInfo.updateOne({ token }, { $set: { cart: { ...userInfo.cart, address: allAddress } } }) // Send database
+        res.status(200).json({ message: `This ID (${id}) has been successfully deleted from your address`, address: allAddress }) // Send address
       } catch (err) {
         res.status(500).json({ message: "have a problem in database!" })
       }

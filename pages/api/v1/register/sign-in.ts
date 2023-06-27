@@ -1,9 +1,12 @@
 import { NextApiHandler } from "next";
+// Bcrypt
 import * as bcrypt from "bcrypt"
+// Users Collection info and token
 import UsersCollection from "@/db/usersV1";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
+    // Receive and review the information sent
     const { email, password }: { email: string, password: string } = req.body
     if (!email || !password || password.length < 8 || !email.includes("@")) {
       res.status(400).json({ message: "One of the parameters is wrong!" })
@@ -11,17 +14,19 @@ const Handler: NextApiHandler = async (req, res) => {
     }
     let {collectionToken, collectionInfo} = await UsersCollection()
 
+    // Get user token by email
     let userToken = collectionToken.find(ct => ct.email === email)
-
+    // Check
     if (userToken) {
+      // Check password
       bcrypt.compare(password, userToken?.password, async (err, hash) => {
         if (err) {
           res.status(500).json({ message: "bcrypt have a problem!" })
           return
         }
         if (hash) {
-          let userInfo = await collectionInfo.find(ci => ci.token === userToken?.token)
-          res.status(200).json({ message: "Success", user: userInfo })
+          let userInfo = await collectionInfo.find(ci => ci.token === userToken?.token) // Get user information by token
+          res.status(200).json({ message: "Success", user: userInfo }) // Send user information
         } else {
           res.status(404).json({ message: "password is false." })
         }

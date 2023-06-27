@@ -1,5 +1,6 @@
 import Item from "./item";
 import { Dispatch, SetStateAction, useEffect } from "react";
+// Modals
 import IProducts from "@/models/products";
 import { IBag } from "@/models/user";
 
@@ -20,6 +21,7 @@ interface IProps {
 const Items = ({ products, bag, price, setPrice }: IProps) => {
 
   useEffect(() => {
+    // Create price obj product 
     let bagPrice: {
       id: number
       price: number
@@ -35,7 +37,7 @@ const Items = ({ products, bag, price, setPrice }: IProps) => {
         })
       }
     })
-    setPrice(bagPrice)
+    setPrice(bagPrice) // set price in state
   }, [])
 
   return (

@@ -1,10 +1,15 @@
 import { useState } from 'react';
-import { Heading6, SubTitle2 } from '@/mui/customize';
+// Mui
+import { Heading6 } from '@/mui/customize';
 import { ButtonGroup, Button, MenuItem, Select, SelectChangeEvent, Pagination, Tabs, Tab } from '@mui/material';
+// Components
 import Card from "@/components/card";
+// Models
 import IProducts from '@/models/products';
 
+// List filter for tab
 const listFilter = ['All', 'T-shirt', 'Dress', 'Top', 'Skirt', 'Hoodie'];
+// Style tab and setting
 function a11yProps(index: number) {
   return {
     id: `full-width-tab-${index}`,
@@ -13,7 +18,7 @@ function a11yProps(index: number) {
 }
 
 const ListCart = ({ products }: { products: IProducts[] }) => {
-
+  // States
   const [filterProducts, setFilterProducts] = useState<IProducts[]>(products)
   const [groupProducts, setGroupProducts] = useState<IProducts[]>(products)
   const [category, setCategory] = useState<number>(0);
@@ -21,10 +26,12 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
   const [desc, setDesc] = useState<boolean>(false)
   const [page, setPage] = useState<number>(1);
 
+  // Function change paggination count page
   const changePagination = (event: React.ChangeEvent<unknown>, value: number) => setPage(value);
 
+  // Change product category for show in filter
   const changeProducts = (id: number, p: IProducts[]) => {
-    setCategory(id)
+    setCategory(id) 
     if (listFilter[id]) {
       if (listFilter[id] === 'All') {
         setFilterProducts(p)
@@ -35,6 +42,7 @@ const ListCart = ({ products }: { products: IProducts[] }) => {
     }
   }
 
+  // Change sort style by trending|onsale|popular
   const changeGroup = (event: SelectChangeEvent) => {
     let value = event.target.value as string
     setGroup(value)

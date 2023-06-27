@@ -1,6 +1,10 @@
+// Button change them in navbar
+
+// Mui
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import { FormControlLabel } from '@mui/material';
+// Context
 import { useAppContext } from '@/context/state';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -53,6 +57,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 const Them = () => {
   const { them, setThem } = useAppContext()
 
+  // Function change them and save local
   const changeThemHandler = () => {
     setThem(!them)
     localStorage.setItem('them', !them ? 'dark' : 'light')

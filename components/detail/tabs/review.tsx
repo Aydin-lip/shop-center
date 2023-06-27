@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Heading5, Body2, Caption, SubTitle1, Heading6 } from '@/mui/customize';
 import Image from 'next/image';
+// Components
 import { star } from '@/helper';
-import hoodie from "@/public/images/detail/hoodie.png";
+// Mui
+import { Heading5, Body2, Caption, SubTitle1, Heading6 } from '@/mui/customize';
 import { Avatar, Pagination } from '@mui/material';
+// Models
 import { IComment } from '@/models/products';
 
 interface Comment {
@@ -19,8 +21,9 @@ interface Comment {
 }
 
 const Review = ({data}: {data: IComment[]}) => {
-
+  // States
   const [page, setPage] = useState<number>(1);
+  // pages count
   const changePagination = (event: React.ChangeEvent<unknown>, value: number) => setPage(value);
 
   return (

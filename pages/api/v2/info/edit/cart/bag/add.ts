@@ -1,5 +1,6 @@
-import UsersCollection from "@/db/usersV2";
 import { NextApiHandler } from "next";
+// Users Collection info and token
+import UsersCollection from "@/db/usersV2";
 
 interface IAddBag {
   product_id: string
@@ -10,6 +11,7 @@ interface IAddBag {
 }
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
+    // Get data from body and token as header & check
     const { product_id, count }: IAddBag = req.body
     const { token } = req.headers
     if (!token) {
@@ -20,20 +22,26 @@ const Handler: NextApiHandler = async (req, res) => {
       res.status(400).json({ message: "One of the parameters is wrong!" })
       return
     }
+
     let { collectionToken, collectionInfo } = await UsersCollection()
+    // Get user information by token
     let getUserInfo = await collectionInfo.find({ token }).toArray()
+    // For ease calling
     let userInfo = getUserInfo[0]
+
+    // Check
     if (userInfo) {
-      let allBag = userInfo.cart.bag
+      let allBag = userInfo.cart.bag // All user bag
+      // List new bag
       let newBag = {
         id: allBag[allBag.length - 1] ? allBag[allBag.length - 1].id + 1 : 1,
         product_id,
         count
       }
-      allBag.push(newBag)
+      allBag.push(newBag) // Added
       try {
-        await collectionInfo.updateOne({ token }, { $set: { cart: { ...userInfo.cart, bag: allBag } } })
-        res.status(200).json({ message: "Added successfully", bag: allBag })
+        await collectionInfo.updateOne({ token }, { $set: { cart: { ...userInfo.cart, bag: allBag } } }) // Send database
+        res.status(200).json({ message: "Added successfully", bag: allBag }) // Send bages
       } catch (err) {
         res.status(500).json({ message: "have a problem in database!" })
       }

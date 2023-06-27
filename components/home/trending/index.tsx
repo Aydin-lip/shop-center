@@ -1,20 +1,25 @@
-import { useState, useMemo } from 'react'
-import Card from "@/components/card";
-import { BasicButton, Heading3, Heading5 } from "@/mui/customize";
-import SwiperBox from "../swiper";
-import IProducts from '@/models/products';
 import { useRouter } from 'next/router';
+import { useState, useMemo } from 'react'
+// Components
+import Card from "@/components/card";
+import SwiperBox from "../swiper";
+// Mui
+import { BasicButton, Heading3, Heading5 } from "@/mui/customize";
+// Models
+import IProducts from '@/models/products';
 
 interface IProps {
   from: string
   products: IProducts[]
 }
 const TrendingProducts = ({ from, products }: IProps) => {
-  const router = useRouter()
-
+  // States
   const [category, setCategory] = useState<string>('Women')
   const [productState, setProductState] = useState<IProducts[]>(products)
 
+  const router = useRouter()
+
+  // Change state category for show category product
   const changeCategory = (target: string) => {
     setCategory(target)
     let filterProduct = products.filter(product => product.category === target)
@@ -22,6 +27,7 @@ const TrendingProducts = ({ from, products }: IProps) => {
   }
 
   useMemo(() => {
+    // Check path for change category
     if (router.asPath) {
       const path = router.asPath.split('#')[1]
       if (['Women', 'Men', 'Kids'].includes(path)) {

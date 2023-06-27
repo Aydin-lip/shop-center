@@ -1,12 +1,17 @@
-import * as bcrypt from "bcrypt"
 import { NextApiHandler } from "next";
-import { uuid } from "uuidv4";
-import UsersCollection from "@/db/usersV1";
-import ConnectionJSON from "@/db/json";
+// Bcrypt
+import * as bcrypt from "bcrypt"
 import cryptoRandomString from "crypto-random-string";
+// For id <uuid>
+import { uuid } from "uuidv4";
+// Users Collection info and token
+import UsersCollection from "@/db/usersV1";
+// Connection json
+import ConnectionJSON from "@/db/json";
 
 const Handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
+    // Receive and review the information sent
     let { fullname, phone, email, password }: { fullname: string, phone: string, email: string, password: string } = req.body
     if (!fullname || !phone || !email || !password || password.length < 8 || !email.includes("@")) {
       res.status(400).json({ message: "One of the parameters is wrong!" })
@@ -15,18 +20,21 @@ const Handler: NextApiHandler = async (req, res) => {
 
     let { collectionToken, collectionInfo } = await UsersCollection()
 
+    // List information
     let token: string = uuid()
     let passHash = await bcrypt.hash(password, 10)
     let date = new Date()
     let today = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
     let _id = cryptoRandomString({length: 24})
 
+    // User token object
     let userToken = {
       _id,
       email,
       password: passHash,
       token
     }
+    // User information object
     let userInfo = {
       _id,
       profile: {
@@ -61,12 +69,13 @@ const Handler: NextApiHandler = async (req, res) => {
       token
     }
 
-    collectionToken.push(userToken)
-    collectionInfo.push(userInfo)
+    collectionToken.push(userToken) // Add user token
+    collectionInfo.push(userInfo) // Add user information
 
     try {
-      await ConnectionJSON('usersInfo', collectionInfo)
-      await ConnectionJSON('usersToken', collectionToken)
+      await ConnectionJSON('usersInfo', collectionInfo) // Send information to json
+      await ConnectionJSON('usersToken', collectionToken) // Send token to json
+      // Send response
       res.status(201).json({
         message: "Your account has been successfully created", user: {
           ...userInfo,

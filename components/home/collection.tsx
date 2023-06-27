@@ -1,8 +1,11 @@
-import { BasicButton, Heading3 } from "@/mui/customize";
-import Image from "next/image";
-import SmallCard from "../card/small";
-import ICollection from "@/models/collection";
 import { useRouter } from "next/router";
+import Image from "next/image";
+// Mui
+import { BasicButton, Heading3 } from "@/mui/customize";
+// Components
+import SmallCard from "../card/small";
+// Models
+import ICollection from "@/models/collection";
 
 const NewCollection = ({ collections }: { collections: ICollection[] }) => {
   const router = useRouter()
